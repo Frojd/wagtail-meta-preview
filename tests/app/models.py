@@ -1,14 +1,15 @@
 from wagtail.core.models import Page
-from wagtail_seo_preview.mixins import TwitterSeoMixin, FacebookSeoMixin, SeoMixin
+from wagtail_seo_preview.mixins import TwitterModelMixin, FacebookModelMixin, SeoModelMixin
+from wagtail.admin.edit_handlers import FieldPanel
 
 
-class TwitterPage(TwitterSeoMixin, Page):
+class TwitterPage(TwitterModelMixin, Page):
     pass
 
 
-class FacebookPage(FacebookSeoMixin, Page):
+class FacebookPage(FacebookModelMixin, Page):
     pass
 
 
-class SeoPage(SeoMixin, Page):
+class SeoPage(SeoModelMixin, Page):
     pass
