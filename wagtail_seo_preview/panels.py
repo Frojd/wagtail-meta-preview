@@ -21,5 +21,5 @@ class TwitterPreviewPanel(BaseCompositeEditHandler):
 
     def classes(self):
         classes = super().classes()
-        classes.append("multi-field twitter-preview-panel")
+        classes.extend(["multi-field", "seo-preview-panel", "twitter-preview-panel"])
         return classes

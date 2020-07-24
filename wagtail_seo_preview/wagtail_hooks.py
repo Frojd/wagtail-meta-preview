@@ -9,7 +9,7 @@ def global_admin_css():
     """Add /static/css/custom.css to the admin."""
     return format_html(
         '<link rel="stylesheet" href="{}">',
-        versioned_static("wagtail_seo_preview/static/admin.css"),
+        versioned_static("wagtail_seo_preview/admin.css"),
     )
 
 
@@ -17,6 +17,5 @@ def global_admin_css():
 def global_admin_js():
     """Add /static/css/custom.js to the admin."""
     return format_html(
-        '<script src="{}"></script>',
-        versioned_static("wagtail_seo_preview/static/admin.js"),
+        '<script src="{}"></script>', versioned_static("wagtail_seo_preview/admin.js"),
     )
