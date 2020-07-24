@@ -12,7 +12,7 @@ class SeoTitlePanel(FieldPanel):
 class SeoDescriptionPanel(FieldPanel):
     def classes(self):
         classes = super().classes()
-        classes.append("seo-preview-title")
+        classes.append("seo-preview-description")
         return classes
 
 

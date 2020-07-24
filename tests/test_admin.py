@@ -36,4 +36,6 @@ class TestSeoPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, "twitter-preview-panel")
+        self.assertContains(response, "seo-preview-title")
+        self.assertContains(response, "seo-preview-description")
         self.assertContains(response, '<fieldset class="seo-preview">')
