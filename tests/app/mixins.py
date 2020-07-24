@@ -5,6 +5,11 @@ from wagtail.images import get_image_model_string
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import TabbedInterface, ObjectList
+from wagtail_seo_preview.panels import (
+    TwitterPreviewPanel,
+    SeoTitlePanel,
+    SeoDescriptionPanel,
+)
 
 
 class TwitterModelMixin(Page):
@@ -26,9 +31,14 @@ class TwitterModelMixin(Page):
     )
 
     promote_panels = [
-        FieldPanel("twitter_title"),
-        FieldPanel("twitter_description"),
-        FieldPanel("twitter_image"),
+        TwitterPreviewPanel(
+            [
+                SeoTitlePanel("twitter_title"),
+                SeoDescriptionPanel("twitter_description"),
+                FieldPanel("twitter_image"),
+            ],
+            heading="Twitter",
+        )
     ]
 
     edit_handler = TabbedInterface(
