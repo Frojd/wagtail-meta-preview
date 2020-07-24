@@ -1,6 +1,6 @@
 from wagtail.core.models import Page
-from wagtail_seo_preview.mixins import TwitterModelMixin, FacebookModelMixin, SeoModelMixin
 from wagtail.admin.edit_handlers import FieldPanel
+from .mixins import TwitterModelMixin, FacebookModelMixin, SeoModelMixin
 
 
 class TwitterPage(TwitterModelMixin, Page):
