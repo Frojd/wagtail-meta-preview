@@ -1,0 +1,119 @@
+.seo-preview {
+    display: flex;
+}
+.seo-preview fieldset,
+.seo-preview .seo-preview-box {
+    width: 50%;
+    padding: 2em;
+    padding-top: 52px;
+}
+
+.seo-preview-box-container {
+    position: relative;
+    width: 506px;
+    padding: 12px 12px 8px 54px;
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+}
+
+.seo-twitter-author {
+	position: relative;
+    margin-right: 75px;
+    margin-bottom: 10px;
+}
+
+.seo-twitter-avatar {
+    position: absolute;
+    top: 3px;
+    left: -42px;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+	background-color: #f1f1f1;
+}
+
+.seo-twitter-author-name {
+	float: left;
+    margin-right: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+}
+
+.seo-twitter-author-handle {
+	float: left;
+	padding: 0;
+    margin-top: 2px;
+    margin-left: 2px;
+    font-size: 12px;
+    color: #999;
+}
+
+.seo-twitter-text {
+	clear: both;
+    font-size: 14px;
+    color: #555;
+}
+
+.seo-twitter-preview {
+	margin: 0 10px;
+	border-radius: .85714em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E1E8ED;
+    box-sizing: border-box;
+    color: inherit!important;
+    max-width: 800px;
+    overflow: hidden;
+	display: flex;
+    min-height: 90px;
+    margin-top: .32333em;
+}
+
+.seo-twitter-preview-image {
+    background-color: #f1f1f1;
+    min-width: 90px;
+    width: 10%;
+}
+
+.seo-twitter-preview-content {
+    overflow: hidden;
+    padding: .75em;
+    width: 90%;
+}
+
+.seo-twitter-preview-content .seo-preview-box-title {
+    max-height: 1.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
+    margin: 0 0 .15em;
+    font-weight: bold;
+}
+
+.seo-twitter-preview-content .seo-preview-box-description {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.3em;
+    max-height: 3.9em;
+    margin-top: .32333em;
+}
+
+.seo-twitter-preview-link {
+    text-transform: lowercase;
+    color: #8899A6;
+    max-height: 1.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: .32333em;
+}

@@ -1,15 +1,35 @@
-<fieldset class="seo-preview">
-    <legend>{{ self.heading }}</legend>
-    <ul class="fields">
-        {% for child in self.children %}
-        <li class="{{ child.classes|join:" " }}">{{ child.render_as_field }}</li>
-        {% endfor %}
-    </ul>
-    <div class="seo-preview-box">
-        <div class="seo-preview-box-container">
-            <div class="seo-preview-box-image"></div>
-            <h2 class="seo-preview-box-title"></h2>
-            <div class="seo-preview-box-description"></div>
+<div class="seo-preview">
+    <fieldset>
+        <legend>{{ self.heading }}</legend>
+        <ul class="fields">
+            {% for child in self.children %}
+            <li class="{{ child.classes|join:" " }}">{{ child.render_as_field }}</li>
+            {% endfor %}
+        </ul>
+    </fieldset>
+    {% if is_twitter %}
+        <div class="seo-preview-box">
+            <div class="seo-preview-box-container">
+                <div class="seo-twitter-author">
+                    <div class="seo-twitter-avatar"></div>
+                    <div class="seo-twitter-author-name">Twitter User</div>
+                    <div class="seo-twitter-author-handle">@some_twitter_user</div>
+                </div>
+                <div class="seo-twitter-text">
+					Look at this awesome article!
+                </div>
+
+                <div class="seo-twitter-preview">
+                    <div class="seo-twitter-preview-image"></div>
+                    <div class="seo-twitter-preview-content">
+                        <h2 class="seo-preview-box-title"></h2>
+                        <div class="seo-preview-box-description"></div>
+                        <div class="seo-twitter-preview-link">site.com</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</fieldset>
+    {% elif is_facebook %}
+    {% else %}
+    {% endif %}
+</div>
