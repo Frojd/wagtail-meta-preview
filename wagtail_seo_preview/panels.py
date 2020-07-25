@@ -22,9 +22,15 @@ class TwitterPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_seo_preview/preview_panel.html"
 
     def render(self):
-        return mark_safe(
-            render_to_string(self.template, {"self": self, "is_twitter": True})
-        )
+        if self.instance:
+            defaults = {
+                "default_title": self.instance.twitter_title or self.instance.title,
+                "default_description": self.instance.twitter_description,
+            }
+
+        context = {"self": self, "is_twitter": True, **defaults}
+
+        return mark_safe(render_to_string(self.template, context))
 
     def classes(self):
         classes = super().classes()

@@ -13,7 +13,11 @@ class TestSeoPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         self.root_page = Page.objects.first()
 
         self.twitter_page = self.root_page.add_child(
-            instance=TwitterPage(title="Twitter Page")
+            instance=TwitterPage(
+                title="Twitter Page",
+                twitter_title="Epic Twitter Title",
+                twitter_description="Epic Twitter Description",
+            )
         )
 
         self.login()
@@ -38,4 +42,10 @@ class TestSeoPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         self.assertContains(response, "twitter-preview-panel")
         self.assertContains(response, "seo-preview-title")
         self.assertContains(response, "seo-preview-description")
-        self.assertContains(response, '<fieldset class="seo-preview">')
+        self.assertContains(response, '<div class="seo-preview">')
+
+    def test_default_values(self):
+        edit_page = reverse("wagtailadmin_pages:edit", args=(self.twitter_page.id,))
+        response = self.client.get(edit_page)
+        self.assertContains(response, 'title">Epic Twitter Title</h2>')
+        self.assertContains(response, 'description">Epic Twitter Description</div>')
