@@ -24,7 +24,7 @@ The default fallback for the SeoTitlePanel is the current instance's (if it has 
 title field.
 There is no default fallback for the SeoDescriptionPanel.
 
-It is possible to tweak the fallbacks by overriding the `SEO_PREVIEW_DEFAULTS` setting.
+It is possible to tweak the fallbacks by overriding the `X_PREVIEW_X_FALLBACK` setting.
 
 ```python
 # some_page.py
@@ -35,10 +35,57 @@ class SomePage(Page):
 
 # settings.py
 
-SEO_PREVIEW_DEFAULTS = {
-    "twitter_fallback_fields": {
-        "title": "og_title",
-        "description": "preamble"
-    }
-}
+TWITTER_PREVIEW_TITLE_FALLBACK = "utils.get_twitter_title"
+TWITTER_PREVIEW_DESCRIPTION_FALLBACK = "utils.get_twitter_description"
+
+# utils.py
+
+def get_twitter_title(instance):
+    return instance.og_title or instance.title
+
+def get_twitter_description(instance):
+    return instance.description
 ```
+
+### Preview Panels
+
+There are currently three preview panels, `TwitterPreviewPanel`, `FacebookPreviewPanel` and `GooglePreviewPanel`.
+
+They are all used in the same way:
+```python
+# Example with the Twitter Panel
+from wagtail_seo_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
+
+
+class SomePage(page):
+    a_title = models.CharField()
+    a_description = models.TextField()
+
+    panels = [
+        TwitterPreviewPanel([
+            SeoTitlePanel("a_title"),
+            SeoDescriptionPanel("a_description"),
+        ])
+    ]
+
+```
+
+### Settings
+
+Sometimes if the fields are empty, you still want them to be populated. E.g. Twitter will still
+use the page's `<title>` field if there is no `og:title` or `og:twitter` present. If you have rules setup for this. Maybe something like this:
+
+```html
+<meta rel="twitter:title" value="{% firstof page.twitter_title page.og_title page.title %}"
+```
+
+We still want the preview panel to be able to handle the same logic.
+
+Therefore we have:
+
+- `TWITTER_PREVIEW_TITLE_FALLBACK`
+- `TWITTER_PREVIEW_DESCRIPTION_FALLBACK`
+- `FACEBOOK_PREVIEW_TITLE_FALLBACK`
+- `FACEBOOK_PREVIEW_DESCRIPTION_FALLBACK`
+- `META_PREVIEW_TITLE_FALLBACK`
+- `META_PREVIEW_DESCRIPTION_FALLBACK`
