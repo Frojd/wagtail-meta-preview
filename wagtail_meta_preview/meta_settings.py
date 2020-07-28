@@ -1,0 +1,14 @@
+from django.conf import settings
+
+META_PREVIEW_TWITTER_TITLE_FALLBACK = getattr(
+    settings, "META_PREVIEW_TWITTER_TITLE_FALLBACK", "title"
+)
+META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = getattr(
+    settings, "META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK", ""
+)
+META_PREVIEW_TWITTER_TITLE_FIELD = getattr(
+    settings, "META_PREVIEW_TWITTER_TITLE_FIELD", "twitter_title"
+)
+META_PREVIEW_TWITTER_DESCRIPTION_FIELD = getattr(
+    settings, "META_PREVIEW_TWITTER_DESCRIPTION_FIELD", "twitter_description"
+)

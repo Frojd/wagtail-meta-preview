@@ -2,7 +2,7 @@
 
 ## Todo
 
-- Change fallback settings to TWITTER_META_FIELD_FALLBACKS
+- Change fallback settings to TWITTER_TITLE_META_FIELD_FALLBACKS
 
 ## Panels
 
@@ -28,7 +28,7 @@ The default fallback for the MetaTitlePanel is the current instance's (if it has
 title field.
 There is no default fallback for the MetaDescriptionPanel.
 
-It is possible to tweak the fallbacks by overriding the `X_PREVIEW_X_FALLBACK` setting.
+It is possible to tweak the fallbacks by overriding the `META_PREVIEW_X_Y_FALLBACK` setting.
 
 ```python
 # some_page.py
@@ -36,20 +36,24 @@ It is possible to tweak the fallbacks by overriding the `X_PREVIEW_X_FALLBACK` s
 class SomePage(Page):
     og_title = models.CharField()
     preamble = models.TextField()
+    twitter_title = models.CharField()
+    twitter_description = models.CharField()
+
+    panels = [
+        TwitterPreviewPanel([
+            MetaTitlePanel("twitter_title"),
+            MetaDescriptionPanel("twitter_description"),
+        ])
+    ]
 
 # settings.py
 
-TWITTER_PREVIEW_TITLE_FALLBACK_FIELD = "og_title,title"
-TWITTER_PREVIEW_DESCRIPTION_FALLBACK = "preamble"
-
-# utils.py
-
-def get_twitter_title(instance):
-    return instance.og_title or instance.title
-
-def get_twitter_description(instance):
-    return instance.description
+META_PREVIEW_TWITTER_TITLE_FALLBACK = "og_title,title"
+META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = "preamble"
 ```
+
+If the `twitter_title` is empty here the preview will show the value of `og_title` and if that field
+is empty, the value of `title` will be shown.
 
 ### Preview Panels
 
@@ -85,11 +89,12 @@ use the page's `<title>` field if there is no `og:title` or `og:twitter` present
 
 We still want the preview panel to be able to handle the same logic.
 
-Therefore we have:
+Therefore we have (with defaults):
 
-- `TWITTER_PREVIEW_TITLE_FALLBACK_FIELD`
-- `TWITTER_PREVIEW_DESCRIPTION_FALLBACK_FIELD`
-- `FACEBOOK_PREVIEW_TITLE_FALLBACK_FIELD`
-- `FACEBOOK_PREVIEW_DESCRIPTION_FALLBACK_FIELD`
-- `META_PREVIEW_TITLE_FALLBACK_FIELD`
-- `META_PREVIEW_DESCRIPTION_FALLBACK_FIELD`
+```python
+# Twitter specific
+META_PREVIEW_TWITTER_TITLE_FALLBACK = "title"
+META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = ""
+META_PREVIEW_TWITTER_TITLE_FIELD = "twitter_title"
+META_PREVIEW_TWITTER_DESCRIPTION_FIELD = "twitter_description"
+```
