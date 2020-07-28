@@ -5,7 +5,7 @@ from wagtail.images import get_image_model_string
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import TabbedInterface, ObjectList
-from wagtail_seo_preview.panels import (
+from wagtail_meta_preview.panels import (
     TwitterPreviewPanel,
     SeoTitlePanel,
     SeoDescriptionPanel,

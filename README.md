@@ -1,4 +1,9 @@
-# wagtial seo preview
+# wagtial meta preview
+
+## Todo
+
+- Rename to meta preview
+- Change fallback settings to TWITTER_META_FIELD_FALLBACKS
 
 ## Panels
 
@@ -8,7 +13,7 @@ The panels `SeoTitlePanel` and `SeoDescriptionPanel` are two general panels that
 in conjunction with different kinds of `PreviewPanel`. E.g:
 
 ```python
-from wagtail_seo_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
+from wagtail_meta_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
 
 
 panels = [
@@ -35,8 +40,8 @@ class SomePage(Page):
 
 # settings.py
 
-TWITTER_PREVIEW_TITLE_FALLBACK = "utils.get_twitter_title"
-TWITTER_PREVIEW_DESCRIPTION_FALLBACK = "utils.get_twitter_description"
+TWITTER_PREVIEW_TITLE_FALLBACK_FIELD = "og_title,title"
+TWITTER_PREVIEW_DESCRIPTION_FALLBACK = "preamble"
 
 # utils.py
 
@@ -54,7 +59,7 @@ There are currently three preview panels, `TwitterPreviewPanel`, `FacebookPrevie
 They are all used in the same way:
 ```python
 # Example with the Twitter Panel
-from wagtail_seo_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
+from wagtail_meta_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
 
 
 class SomePage(page):
@@ -83,9 +88,9 @@ We still want the preview panel to be able to handle the same logic.
 
 Therefore we have:
 
-- `TWITTER_PREVIEW_TITLE_FALLBACK`
-- `TWITTER_PREVIEW_DESCRIPTION_FALLBACK`
-- `FACEBOOK_PREVIEW_TITLE_FALLBACK`
-- `FACEBOOK_PREVIEW_DESCRIPTION_FALLBACK`
-- `META_PREVIEW_TITLE_FALLBACK`
-- `META_PREVIEW_DESCRIPTION_FALLBACK`
+- `TWITTER_PREVIEW_TITLE_FALLBACK_FIELD`
+- `TWITTER_PREVIEW_DESCRIPTION_FALLBACK_FIELD`
+- `FACEBOOK_PREVIEW_TITLE_FALLBACK_FIELD`
+- `FACEBOOK_PREVIEW_DESCRIPTION_FALLBACK_FIELD`
+- `META_PREVIEW_TITLE_FALLBACK_FIELD`
+- `META_PREVIEW_DESCRIPTION_FALLBACK_FIELD`

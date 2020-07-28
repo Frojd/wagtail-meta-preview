@@ -1,14 +1,14 @@
-.seo-preview {
+.meta-preview {
     display: flex;
 }
-.seo-preview fieldset,
-.seo-preview .seo-preview-box {
+.meta-preview fieldset,
+.meta-preview .meta-preview-box {
     width: 50%;
     padding: 2em;
     padding-top: 52px;
 }
 
-.seo-preview-box-container {
+.meta-preview-box-container {
     position: relative;
     width: 506px;
     padding: 12px 12px 8px 54px;
@@ -18,13 +18,13 @@
     border-radius: 5px;
 }
 
-.seo-twitter-author {
+.meta-twitter-author {
 	position: relative;
     margin-right: 75px;
     margin-bottom: 10px;
 }
 
-.seo-twitter-avatar {
+.meta-twitter-avatar {
     position: absolute;
     top: 3px;
     left: -42px;
@@ -34,7 +34,7 @@
 	background-color: #f1f1f1;
 }
 
-.seo-twitter-author-name {
+.meta-twitter-author-name {
 	float: left;
     margin-right: 4px;
     font-size: 14px;
@@ -42,7 +42,7 @@
     color: #333;
 }
 
-.seo-twitter-author-handle {
+.meta-twitter-author-handle {
 	float: left;
 	padding: 0;
     margin-top: 2px;
@@ -51,13 +51,13 @@
     color: #999;
 }
 
-.seo-twitter-text {
+.meta-twitter-text {
 	clear: both;
     font-size: 14px;
     color: #555;
 }
 
-.seo-twitter-preview {
+.meta-twitter-preview {
 	margin: 0 10px;
 	border-radius: .85714em;
     border-width: 1px;
@@ -72,19 +72,19 @@
     margin-top: .32333em;
 }
 
-.seo-twitter-preview-image {
+.meta-twitter-preview-image {
     background-color: #f1f1f1;
     min-width: 90px;
     width: 10%;
 }
 
-.seo-twitter-preview-content {
+.meta-twitter-preview-content {
     overflow: hidden;
     padding: .75em;
     width: 90%;
 }
 
-.seo-twitter-preview-content .seo-preview-box-title {
+.meta-twitter-preview-content .meta-preview-box-title {
     max-height: 1.3em;
     white-space: nowrap;
     overflow: hidden;
@@ -94,7 +94,7 @@
     font-weight: bold;
 }
 
-.seo-twitter-preview-content .seo-preview-box-description {
+.meta-twitter-preview-content .meta-preview-box-description {
     display: block;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -108,7 +108,7 @@
     margin-top: .32333em;
 }
 
-.seo-twitter-preview-link {
+.meta-twitter-preview-link {
     text-transform: lowercase;
     color: #8899A6;
     max-height: 1.3em;

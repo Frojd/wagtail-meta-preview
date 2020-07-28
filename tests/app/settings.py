@@ -10,7 +10,7 @@ DEBUG = True
 
 TIME_ZONE = "Europe/Stockholm"
 
-WAGTAIL_SITE_NAME = "Wagtail SEO Preview"
+WAGTAIL_SITE_NAME = "Wagtail Meta Preview"
 
 DATABASES = {
     "default": {
@@ -31,7 +31,7 @@ USE_TZ = True
 LANGUAGE_CODE = "en"
 
 INSTALLED_APPS = [
-    "wagtail_seo_preview",
+    "wagtail_meta_preview",
     "tests.app",
     "taggit",
     "django.contrib.contenttypes",

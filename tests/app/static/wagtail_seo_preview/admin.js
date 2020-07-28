@@ -3,23 +3,27 @@ document.addEventListener("DOMContentLoaded", function () {
     // const isTwitter = elem.classList.contains("twitter-preview-panel");
     // const isFacebook = elem.classList.contains("facebook-preview-panel");
     // const isGoogle = !isTwitter && !isFacebook;
-    const titleInput = elem.querySelector(".seo-preview-title input");
+    const titleInput = elem.querySelector(".meta-preview-title input");
 
     const descriptionInput =
-      elem.querySelector(".seo-preview-description input") ||
-      elem.querySelector(".seo-preview-description textarea");
+      elem.querySelector(".meta-preview-description input") ||
+      elem.querySelector(".meta-preview-description textarea");
 
     titleInput.addEventListener("keyup", function (e) {
-      elem.querySelector(".seo-preview-box-title").innerHTML = e.target.value;
+      let value = e.target.value;
+      if (!value) {
+        value = document.querySelector("#id_title").value;
+      }
+      elem.querySelector(".meta-preview-box-title").innerHTML = value;
     });
 
     descriptionInput.addEventListener("keyup", function (e) {
-      elem.querySelector(".seo-preview-box-description").innerHTML =
+      elem.querySelector(".meta-preview-box-description").innerHTML =
         e.target.value;
     });
   };
 
-  document.querySelectorAll(".seo-preview-panel").forEach(function (elem) {
+  document.querySelectorAll(".meta-preview-panel").forEach(function (elem) {
     initPreview(elem);
   });
 });

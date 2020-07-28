@@ -40,9 +40,9 @@ class TestSeoPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, "twitter-preview-panel")
-        self.assertContains(response, "seo-preview-title")
-        self.assertContains(response, "seo-preview-description")
-        self.assertContains(response, '<div class="seo-preview">')
+        self.assertContains(response, "meta-preview-title")
+        self.assertContains(response, "meta-preview-description")
+        self.assertContains(response, '<div class="meta-preview">')
 
     def test_default_values(self):
         edit_page = reverse("wagtailadmin_pages:edit", args=(self.twitter_page.id,))

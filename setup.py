@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import find_packages, setup
 
-with open("wagtail_seo_preview/version.py", "r") as f:
+with open("wagtail_meta_preview/version.py", "r") as f:
     version = None
     exec(f.read())
 
@@ -11,9 +11,9 @@ with open("README.md", "r") as f:
 testing_extras = ["black"]
 
 setup(
-    name="wagtail-seo-preview",
+    name="wagtail-meta-preview",
     version=version,
-    description="Add preview panels for SEO data to wagtail",
+    description="Add preview panels for meta data to wagtail",
     long_description=readme,
     author="Andreas Bernacca",
     author_email="ante.bernacca@gmail.com",
