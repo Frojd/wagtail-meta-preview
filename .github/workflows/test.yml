@@ -20,5 +20,5 @@ jobs:
           ls -la
           python -m pip install --upgrade pip
           pip install wheel
-          pip install -e .[testing]
+          pip install .[testing]
           python runtests.py
