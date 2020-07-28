@@ -4,6 +4,7 @@ from wagtail.admin.edit_handlers import BaseCompositeEditHandler
 from wagtail.admin.edit_handlers import FieldPanel
 
 from . import meta_settings
+from . import utils
 
 
 class MetaTitlePanel(FieldPanel):
@@ -24,37 +25,7 @@ class TwitterPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
     def get_defaults(self):
-        title_fallback_fields = meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK
-        description_fallback_fields = (
-            meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK
-        )
-        title = getattr(self.instance, meta_settings.META_PREVIEW_TWITTER_TITLE_FIELD)
-        description = getattr(
-            self.instance, meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELD
-        )
-
-        if not title and self.instance:
-            try:
-                titles = title_fallback_fields.split(",")
-                titles = filter(lambda x: hasattr(self.instance, x), titles)
-                title = next(titles)
-            except IndexError:
-                pass
-
-        if not description and self.instance:
-            try:
-                descriptions = title_fallback_fields.split(",")
-                descriptions = filter(lambda x: hasattr(self.instance, x), descriptions)
-                description = next(descriptions)
-            except IndexError:
-                pass
-
-        return {
-            "title_fallback_fields": title_fallback_fields,
-            "description_fallback_fields": description_fallback_fields,
-            "default_title": title,
-            "default_description": description,
-        }
+        return utils.get_twitter_defaults(self.instance)
 
     def render(self):
         defaults = self.get_defaults()
