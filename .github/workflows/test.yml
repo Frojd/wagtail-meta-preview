@@ -19,5 +19,6 @@ jobs:
           echo $PWD
           ls -la
           python -m pip install --upgrade pip
+          pip install wheels
           pip install -e .
           python runtests.py
