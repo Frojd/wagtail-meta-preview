@@ -5,14 +5,14 @@ from wagtail.admin.edit_handlers import BaseCompositeEditHandler
 from wagtail.admin.edit_handlers import FieldPanel
 
 
-class SeoTitlePanel(FieldPanel):
+class MetaTitlePanel(FieldPanel):
     def classes(self):
         classes = super().classes()
         classes.append("meta-preview-title")
         return classes
 
 
-class SeoDescriptionPanel(FieldPanel):
+class MetaDescriptionPanel(FieldPanel):
     def classes(self):
         classes = super().classes()
         classes.append("meta-preview-description")

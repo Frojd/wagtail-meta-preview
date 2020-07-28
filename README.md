@@ -8,25 +8,25 @@
 
 ### General panels
 
-The panels `SeoTitlePanel` and `SeoDescriptionPanel` are two general panels that can be used
+The panels `MetaTitlePanel` and `MetaDescriptionPanel` are two general panels that can be used
 in conjunction with different kinds of `PreviewPanel`. E.g:
 
 ```python
-from wagtail_meta_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
+from wagtail_meta_preview.panels import MetaTitlePanel, MetaDescriptionPanel, TwitterPreviewPanel
 
 
 panels = [
     TwitterPreviewPanel([
-        SeoTitlePanel("twitter_title"),
-        SeoDescriptionPanel("twitter_description"),
+        MetaTitlePanel("twitter_title"),
+        MetaDescriptionPanel("twitter_description"),
     ])
 ]
 ```
 
 The PreviewPanels behave just like a `MultiFieldPanel`
-The default fallback for the SeoTitlePanel is the current instance's (if it has been created)
+The default fallback for the MetaTitlePanel is the current instance's (if it has been created)
 title field.
-There is no default fallback for the SeoDescriptionPanel.
+There is no default fallback for the MetaDescriptionPanel.
 
 It is possible to tweak the fallbacks by overriding the `X_PREVIEW_X_FALLBACK` setting.
 
@@ -58,7 +58,7 @@ There are currently three preview panels, `TwitterPreviewPanel`, `FacebookPrevie
 They are all used in the same way:
 ```python
 # Example with the Twitter Panel
-from wagtail_meta_preview.panels import SeoTitlePanel, SeoDescriptionPanel, TwitterPreviewPanel
+from wagtail_meta_preview.panels import MetaTitlePanel, MetaDescriptionPanel, TwitterPreviewPanel
 
 
 class SomePage(page):
@@ -67,8 +67,8 @@ class SomePage(page):
 
     panels = [
         TwitterPreviewPanel([
-            SeoTitlePanel("a_title"),
-            SeoDescriptionPanel("a_description"),
+            MetaTitlePanel("a_title"),
+            MetaDescriptionPanel("a_description"),
         ])
     ]
 

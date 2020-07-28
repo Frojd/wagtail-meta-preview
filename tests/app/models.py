@@ -1,6 +1,6 @@
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel
-from .mixins import TwitterModelMixin, FacebookModelMixin, SeoModelMixin
+from .mixins import TwitterModelMixin, FacebookModelMixin, MetaModelMixin
 
 
 class TwitterPage(TwitterModelMixin, Page):
@@ -11,5 +11,5 @@ class FacebookPage(FacebookModelMixin, Page):
     pass
 
 
-class SeoPage(SeoModelMixin, Page):
+class MetaPage(MetaModelMixin, Page):
     pass

@@ -7,8 +7,8 @@ from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import TabbedInterface, ObjectList
 from wagtail_meta_preview.panels import (
     TwitterPreviewPanel,
-    SeoTitlePanel,
-    SeoDescriptionPanel,
+    MetaTitlePanel,
+    MetaDescriptionPanel,
 )
 
 
@@ -33,8 +33,8 @@ class TwitterModelMixin(Page):
     promote_panels = [
         TwitterPreviewPanel(
             [
-                SeoTitlePanel("twitter_title"),
-                SeoDescriptionPanel("twitter_description"),
+                MetaTitlePanel("twitter_title"),
+                MetaDescriptionPanel("twitter_description"),
                 FieldPanel("twitter_image"),
             ],
             heading="Twitter",
@@ -87,7 +87,7 @@ class FacebookModelMixin(Page):
         abstract = True
 
 
-class SeoModelMixin(TwitterModelMixin, FacebookModelMixin):
+class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     promote_panels = [
         FieldPanel("twitter_title"),
         FieldPanel("twitter_description"),

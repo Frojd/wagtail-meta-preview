@@ -8,7 +8,7 @@ from tests.app.models import TwitterPage
 
 
 @override_settings(ALLOWED_HOSTS=["*"])
-class TestSeoPreviewTwitterAdminView(TestCase, WagtailTestUtils):
+class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
     def setUp(self):
         self.root_page = Page.objects.first()
 
