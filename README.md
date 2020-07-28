@@ -2,7 +2,6 @@
 
 ## Todo
 
-- Rename to meta preview
 - Change fallback settings to TWITTER_META_FIELD_FALLBACKS
 
 ## Panels
