@@ -2,7 +2,7 @@ from django.conf import settings
 from . import meta_settings
 
 
-def get_twitter_defaults(instance):
+def get_twitter_defaults(instance=None):
     twitter_field = getattr(
         settings,
         "META_PREVIEW_TWITTER_TITLE_FIELD",
@@ -37,16 +37,20 @@ def get_twitter_defaults(instance):
         titles = title_fallback_fields.split(",")
         titles = list(filter(lambda x: hasattr(instance, x), titles))
         title_field = titles[0] if titles else "title"
-        title = getattr(instance, title_field)
+        title = getattr(instance, title_field, "")
+    elif not instance:
+        title = ""
 
     if not description and instance:
         descriptions = description_fallback_fields.split(",")
         descriptions = list(filter(lambda x: hasattr(instance, x), descriptions))
         description = getattr(instance, descriptions[0]) if descriptions else ""
+    elif not instance:
+        description = ""
 
     return {
         "title_fallback_fields": title_fallback_fields,
         "description_fallback_fields": description_fallback_fields,
-        "default_title": title or instance.title,
+        "default_title": title or instance.title if instance else title,
         "default_description": description,
     }

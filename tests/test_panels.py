@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.test import TestCase, override_settings
 from django.urls import reverse
 
@@ -6,6 +7,7 @@ from wagtail.core.models import Page
 
 from tests.app.models import TwitterPage
 from wagtail_meta_preview.utils import get_twitter_defaults
+from wagtail_meta_preview import meta_settings
 
 
 class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
@@ -110,3 +112,25 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
                 get_twitter_defaults(self.twitter_page)["default_description"],
                 self.twitter_page.twitter_description,
             )
+
+    def test_twitter_default_without_instance(self):
+        title_fallback_fields = getattr(
+            settings,
+            "META_PREVIEW_TWITTER_TITLE_FALLBACK",
+            meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
+        )
+        description_fallback_fields = getattr(
+            settings,
+            "META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK",
+            meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
+        )
+
+        self.assertEqual(
+            get_twitter_defaults(),
+            {
+                "title_fallback_fields": title_fallback_fields,
+                "description_fallback_fields": description_fallback_fields,
+                "default_title": "",
+                "default_description": "",
+            },
+        )
