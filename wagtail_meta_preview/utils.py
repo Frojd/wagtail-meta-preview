@@ -42,7 +42,6 @@ def get_twitter_defaults(instance):
     if not description and instance:
         descriptions = description_fallback_fields.split(",")
         descriptions = list(filter(lambda x: hasattr(instance, x), descriptions))
-        description_field = list(descriptions)[0]
         description = getattr(instance, descriptions[0]) if descriptions else ""
 
     return {

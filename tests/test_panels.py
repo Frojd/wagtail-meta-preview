@@ -24,7 +24,7 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
             )
         )
 
-    def test_twitter_fallback_titles(self):
+    def test_twitter_default_fallback_titles(self):
         self.twitter_page.twitter_title = ""
         self.twitter_page.save()
 
@@ -66,4 +66,47 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
             self.assertEqual(
                 get_twitter_defaults(self.twitter_page)["default_title"],
                 self.twitter_page.twitter_title,
+            )
+
+    def test_twitter_default_fallback_descriptions(self):
+        self.twitter_page.twitter_description = ""
+        self.twitter_page.save()
+
+        with override_settings(META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK=""):
+            self.assertEqual(
+                get_twitter_defaults(self.twitter_page)["default_description"], "",
+            )
+
+        with override_settings(
+            META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK="og_description,another_description"
+        ):
+            self.assertEqual(
+                get_twitter_defaults(self.twitter_page)["default_description"],
+                self.twitter_page.og_description,
+            )
+
+        with override_settings(
+            META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK="another_description,og_description"
+        ):
+            self.assertEqual(
+                get_twitter_defaults(self.twitter_page)["default_description"],
+                self.twitter_page.another_description,
+            )
+
+        with override_settings(
+            META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK="non_existant_field,another_description,og_description"
+        ):
+            self.assertEqual(
+                get_twitter_defaults(self.twitter_page)["default_description"],
+                self.twitter_page.another_description,
+            )
+
+        self.twitter_page.twitter_description = "New twitter description"
+        self.twitter_page.save()
+        with override_settings(
+            META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK="non_existant_field,another_description,og_description"
+        ):
+            self.assertEqual(
+                get_twitter_defaults(self.twitter_page)["default_description"],
+                self.twitter_page.twitter_description,
             )
