@@ -13,7 +13,12 @@ var ChangeTracker = function (elem) {
   });
 };
 
-// Just pass an element to the function to start tracking
+// TODO: Don't hardcode /admin/
+const fetchImage = async function (id) {
+  const resp = await fetch("/admin/get-img-rendition/" + id + "/");
+  const text = await resp.text();
+  return text;
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   const setupEvents = function (elem, type) {
@@ -45,21 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const setupImageEvents = function (elem) {
-    // const clearers = document.querySelectorAll(".image-chooser .action-clear");
-    // for (let clearer of clearers) {
-    //   clearer.addEventListener("click", function (e) {
-    //     const currentId =
-    //       e.target.parentElement.parentElement.parentElement.parentElement.id;
-    //     // const img = findClosestDefaultImage()
-    //     // changeImage(img)
-    //   });
-    // }
-
     const choosers = document.querySelectorAll(".image-chooser + input");
     for (let chooser of choosers) {
       ChangeTracker(chooser);
-      chooser.addEventListener("change", function (e) {
-        // TODO: This should ideally fetch the image via API to get the correct rendition.
+      chooser.addEventListener("change", async function (e) {
         const twitterImage = elem.querySelector("input[type=hidden]");
         const imageFields = window.twitter_image_fields.split(",");
 
@@ -67,9 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
           for (let field of imageFields) {
             const val = document.querySelector("#id_" + field).value;
             if (val) {
-              const img = document.querySelector(
-                "#id_" + field + "-chooser .preview-image img"
-              ).src;
+              const img = await fetchImage(val);
               document.querySelector(".meta-twitter-preview-image").style =
                 'background-image: url("' + img + '")';
               break;
@@ -78,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           document.querySelector(".meta-twitter-preview-image").style =
             'background-image: url("' +
-            elem.querySelector(".preview-image img").src +
+            (await fetchImage(twitterImage.value)) +
             '")';
         }
       });
