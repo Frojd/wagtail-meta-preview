@@ -122,7 +122,7 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         description_fallback_fields = getattr(
             settings,
             "META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK",
-            meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
+            meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK,
         )
 
         self.assertEqual(
