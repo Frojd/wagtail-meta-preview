@@ -2,6 +2,7 @@
 
 ## Todo
 
+- Make images work
 - Make Facebook panels
 - Make Google panels
 - Make multi preview panels
