@@ -124,13 +124,20 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
             "META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK",
             meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK,
         )
+        image_fallback_fields = getattr(
+            settings,
+            "META_PREVIEW_TWITTER_IMAGE_FALLBACK",
+            meta_settings.META_PREVIEW_TWITTER_IMAGE_FALLBACK,
+        )
 
         self.assertEqual(
             get_twitter_defaults(),
             {
                 "title_fallback_fields": title_fallback_fields,
                 "description_fallback_fields": description_fallback_fields,
+                "image_fallback_fields": image_fallback_fields,
                 "default_title": "",
                 "default_description": "",
+                "default_image": "",
             },
         )

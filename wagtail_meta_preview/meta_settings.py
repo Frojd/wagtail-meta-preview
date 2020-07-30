@@ -50,9 +50,13 @@ def get_twitter_settings(instance=None):
     )
 
     image = ""
-    image_instance = getattr(instance, image_field)
-    if instance and image_instance:
-        image = image_instance.get_rendition(IMAGE_DEFAULT_SIZE).url
+    if instance:
+        image_instance = getattr(instance, image_field)
+        image = (
+            image_instance.get_rendition(IMAGE_DEFAULT_SIZE).url
+            if image_instance
+            else ""
+        )
 
     return {
         "title": title,
