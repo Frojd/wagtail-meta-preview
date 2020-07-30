@@ -103,3 +103,8 @@ META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = ""
 META_PREVIEW_TWITTER_TITLE_FIELD = "twitter_title"
 META_PREVIEW_TWITTER_DESCRIPTION_FIELD = "twitter_description"
 ```
+
+## Development
+
+The easiest way is to clone this repo, cd into it and just `docker-compose up`, this should
+start a server on http://localhost:8080/admin/ with a couple of page types to test with.
