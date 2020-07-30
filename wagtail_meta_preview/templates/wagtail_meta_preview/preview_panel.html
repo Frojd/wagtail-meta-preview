@@ -1,6 +1,7 @@
 <script>
     window.twitter_title_fields = "{{ title_fallback_fields }}";
     window.twitter_description_fields = "{{ description_fallback_fields }}";
+    window.twitter_image_fields = "{{ image_fallback_fields }}";
 </script>
 
 <div class="meta-preview">
@@ -25,7 +26,8 @@
                 </div>
 
                 <div class="meta-twitter-preview">
-                    <div class="meta-twitter-preview-image"></div>
+                    <div class="meta-twitter-preview-image" style="background-image: url('{{ default_image}}')">
+                    </div>
                     <div class="meta-twitter-preview-content">
                         <h2 class="meta-preview-box-title">{{ default_title }}</h2>
                         <div class="meta-preview-box-description">{{ default_description }}</div>

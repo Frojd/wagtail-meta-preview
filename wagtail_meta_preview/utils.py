@@ -2,36 +2,45 @@ from django.conf import settings
 from . import meta_settings
 
 
-def get_twitter_defaults(instance=None):
-    twitter_field = getattr(
-        settings,
-        "META_PREVIEW_TWITTER_TITLE_FIELD",
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELD,
-    )
-    description_field = getattr(
-        settings,
-        "META_PREVIEW_TWITTER_DESCRIPTION_FIELD",
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELD,
+def get_fields(instance=None):
+    twitter_settings = meta_settings.get_twitter_settings(instance)
+
+    title_field = twitter_settings["title_field"]
+    description_field = twitter_settings["description_field"]
+
+    title_fallback_fields = twitter_settings["title_fallbacks"]
+    description_fallback_fields = twitter_settings["description_fallbacks"]
+    image_fallback_fields = twitter_settings["image_fallbacks"]
+
+    title = twitter_settings["title"]
+    description = twitter_settings["description"]
+
+    image = twitter_settings["image"]
+
+    return (
+        title_field,
+        description_field,
+        title_fallback_fields,
+        description_fallback_fields,
+        image_fallback_fields,
+        title,
+        description,
+        image,
     )
 
-    title_fallback_fields = getattr(
-        settings,
-        "META_PREVIEW_TWITTER_TITLE_FALLBACK",
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
-    )
-    description_fallback_fields = getattr(
-        settings,
-        "META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK",
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK,
-    )
-    title = getattr(
-        instance, twitter_field, meta_settings.META_PREVIEW_TWITTER_TITLE_FIELD,
-    )
-    description = getattr(
-        instance,
+
+def get_twitter_defaults(instance=None):
+
+    (
+        title_field,
         description_field,
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELD,
-    )
+        title_fallback_fields,
+        description_fallback_fields,
+        image_fallback_fields,
+        title,
+        description,
+        image,
+    ) = get_fields(instance)
 
     if not title and instance:
         titles = title_fallback_fields.split(",")
@@ -51,6 +60,8 @@ def get_twitter_defaults(instance=None):
     return {
         "title_fallback_fields": title_fallback_fields,
         "description_fallback_fields": description_fallback_fields,
+        "image_fallback_fields": image_fallback_fields,
         "default_title": title or instance.title if instance else title,
         "default_description": description,
+        "default_image": image,
     }
