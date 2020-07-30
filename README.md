@@ -8,6 +8,7 @@
 - Make multi preview panels
 - Make panels work without explicit fields, e.g. a twitter preview
   should be possible without having explicit "twitter_title" and "twitter_description" fields
+- Mobile adjustments
 
 ## Panels
 
