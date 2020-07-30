@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const choosers = document.querySelectorAll(".image-chooser + input");
     for (let chooser of choosers) {
       ChangeTracker(chooser);
-      chooser.addEventListener("change", async function (e) {
+      chooser.addEventListener("change", async function () {
         const twitterImage = elem.querySelector("input[type=hidden]");
         const imageFields = window.twitter_image_fields.split(",");
 
