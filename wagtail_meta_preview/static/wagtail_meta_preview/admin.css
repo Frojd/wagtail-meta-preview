@@ -10,7 +10,6 @@
 
 .meta-preview-box-container {
     position: relative;
-    width: 506px;
     padding: 12px 12px 8px 54px;
     margin: 0 auto;
     text-align: left;
@@ -67,15 +66,18 @@
     color: inherit!important;
     max-width: 800px;
     overflow: hidden;
-	display: flex;
+	/* display: flex; */
     min-height: 90px;
     margin-top: .32333em;
+    margin-bottom: 1em;
 }
 
 .meta-twitter-preview-image {
     background-color: #f1f1f1;
-    min-width: 90px;
-    width: 10%;
+    width: 100%;
+    clear: both;
+    float: left;
+    height: 399px;
     background-size: cover;
     background-position: center center;
 }
@@ -83,17 +85,20 @@
 .meta-twitter-preview-content {
     overflow: hidden;
     padding: .75em;
-    width: 90%;
+    float:left;
+    clear: both;
+    width: 100%;
 }
 
-.meta-twitter-preview-content .meta-preview-box-title {
+.meta-twitter-preview-content h2.meta-preview-box-title {
     max-height: 1.3em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 0 0 .15em;
     font-weight: bold;
+    text-transform: none;
 }
 
 .meta-twitter-preview-content .meta-preview-box-description {
