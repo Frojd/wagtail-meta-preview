@@ -3,7 +3,6 @@ from django.template.loader import render_to_string
 from wagtail.admin.edit_handlers import BaseCompositeEditHandler
 from wagtail.admin.edit_handlers import FieldPanel
 
-from . import meta_settings
 from . import utils
 
 

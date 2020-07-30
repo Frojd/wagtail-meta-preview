@@ -22,7 +22,7 @@ def get_twitter_defaults(instance=None):
     description_fallback_fields = getattr(
         settings,
         "META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK",
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK,
     )
     title = getattr(
         instance, twitter_field, meta_settings.META_PREVIEW_TWITTER_TITLE_FIELD,

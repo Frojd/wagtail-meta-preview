@@ -1,3 +1,8 @@
+<script>
+    window.twitter_title_fields = "{{ title_fallback_fields }}";
+    window.twitter_description_fields = "{{ description_fallback_fields }}";
+</script>
+
 <div class="meta-preview">
     <fieldset>
         <legend>{{ self.heading }}</legend>
@@ -8,7 +13,7 @@
         </ul>
     </fieldset>
     {% if is_twitter %}
-        <div class="meta-preview-box">
+        <div class="meta-preview-box" aria-hidden="true">
             <div class="meta-preview-box-container">
                 <div class="meta-twitter-author">
                     <div class="meta-twitter-avatar"></div>

@@ -83,3 +83,5 @@ TEMPLATES = [
         },
     },
 ]
+
+META_PREVIEW_TWITTER_TITLE_FALLBACK = "og_title,title"

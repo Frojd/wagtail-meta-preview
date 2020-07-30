@@ -31,6 +31,10 @@ class TwitterModelMixin(Page):
     )
 
     promote_panels = [
+        FieldPanel("og_title"),
+        FieldPanel("og_description"),
+        FieldPanel("another_title"),
+        FieldPanel("another_description"),
         TwitterPreviewPanel(
             [
                 MetaTitlePanel("twitter_title"),
@@ -38,7 +42,7 @@ class TwitterModelMixin(Page):
                 FieldPanel("twitter_image"),
             ],
             heading="Twitter",
-        )
+        ),
     ]
 
     edit_handler = TabbedInterface(
