@@ -73,9 +73,13 @@ class FacebookPreviewPanel(BaseCompositeEditHandler):
         return utils.get_facebook_defaults(self.instance)
 
     def render(self):
-        defaults = self.get_defaults()
+        facebook_settings = utils.FacebookSettings(self.instance)
 
-        context = {"self": self, "is_facebook": True, **defaults}
+        context = {
+            "self": self,
+            "is_facebook": True,
+            **facebook_settings.get_defaults(),
+        }
 
         return mark_safe(render_to_string(self.template, context))
 

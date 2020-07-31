@@ -16,29 +16,9 @@
     </fieldset>
     {% endif %}
     {% if is_twitter %}
-        <div class="meta-preview-box" aria-hidden="true">
-            <div class="meta-preview-box-container">
-                <div class="meta-twitter-author">
-                    <div class="meta-twitter-avatar"></div>
-                    <div class="meta-twitter-author-name">Twitter User</div>
-                    <div class="meta-twitter-author-handle">@some_twitter_user</div>
-                </div>
-                <div class="meta-twitter-text">
-					Look at this awesome article!
-                </div>
-
-                <div class="meta-twitter-preview">
-                    <div class="meta-twitter-preview-image" style="background-image: url('{{ default_image}}')">
-                    </div>
-                    <div class="meta-twitter-preview-content">
-                        <h2 class="meta-preview-box-title">{{ default_title }}</h2>
-                        <div class="meta-preview-box-description">{{ default_description }}</div>
-                        <div class="meta-twitter-preview-link">site.com</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include "wagtail_meta_preview/_twitter.html" %}
     {% elif is_facebook %}
+        {% include "wagtail_meta_preview/_facebook.html" %}
     {% else %}
     {% endif %}
 </div>
