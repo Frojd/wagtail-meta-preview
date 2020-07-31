@@ -5,7 +5,6 @@
 - Make images use focal points
 - Make Facebook panels
 - Make Google panels
-- Make multi preview panels
 - Mobile adjustments
 
 ## Panels
