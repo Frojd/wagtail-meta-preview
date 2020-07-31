@@ -21,7 +21,8 @@ class TwitterPage(TwitterModelMixin, Page):
 
 
 class FacebookPage(FacebookModelMixin, Page):
-    pass
+    another_title = models.CharField(blank=True, max_length=100)
+    another_description = models.CharField(blank=True, max_length=100)
 
 
 class MetaPage(MetaModelMixin, Page):

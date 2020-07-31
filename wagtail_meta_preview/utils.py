@@ -1,4 +1,3 @@
-from django.conf import settings
 from . import meta_settings
 
 
