@@ -15,16 +15,18 @@ def get_focal(img):
     return {"x": "{:.2%}".format(background_x), "y": "{:.2%}".format(background_y)}
 
 
-class TwitterSettings:
+class BaseSettings:
     def __init__(self, instance=None):
         self.instance = instance
 
     def get_title(self):
-        title_field = meta_settings.META_PREVIEW_TWITTER_TITLE_FIELD
+        title_field = getattr(meta_settings, f"META_PREVIEW_{self.type}_TITLE_FIELD")
         title = getattr(self.instance, title_field, "")
 
         if not title and self.instance:
-            titles = meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK.split(",")
+            titles = getattr(
+                meta_settings, f"META_PREVIEW_{self.type}_TITLE_FALLBACK"
+            ).split(",")
             titles = list(filter(lambda x: hasattr(self.instance, x), titles))
             title_field = titles[0] if titles else "title"
             title = getattr(self.instance, title_field, "")
@@ -32,13 +34,15 @@ class TwitterSettings:
         return title or (self.instance.title if self.instance else "")
 
     def get_description(self):
-        description_field = meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELD
+        description_field = getattr(
+            meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FIELD"
+        )
         description = getattr(self.instance, description_field, "")
 
         if not description and self.instance:
-            descriptions = meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK.split(
-                ","
-            )
+            descriptions = getattr(
+                meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FALLBACK"
+            ).split(",")
             descriptions = list(
                 filter(lambda x: hasattr(self.instance, x), descriptions)
             )
@@ -53,7 +57,8 @@ class TwitterSettings:
 
         if self.instance:
             image_instance = getattr(
-                self.instance, meta_settings.META_PREVIEW_TWITTER_IMAGE_FIELD
+                self.instance,
+                getattr(meta_settings, f"META_PREVIEW_{self.type}_IMAGE_FIELD"),
             )
             image = (
                 image_instance.get_rendition(meta_settings.IMAGE_DEFAULT_SIZE).url
@@ -69,14 +74,28 @@ class TwitterSettings:
         image = self.get_image()
 
         return {
-            "title_fallback_fields": meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
-            "description_fallback_fields": meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK,
-            "image_fallback_fields": meta_settings.META_PREVIEW_TWITTER_IMAGE_FALLBACK,
+            "title_fallback_fields": getattr(
+                meta_settings, f"META_PREVIEW_{self.type}_TITLE_FALLBACK"
+            ),
+            "description_fallback_fields": getattr(
+                meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FALLBACK"
+            ),
+            "image_fallback_fields": getattr(
+                meta_settings, f"META_PREVIEW_{self.type}_IMAGE_FALLBACK"
+            ),
             "default_title": title,
             "default_description": description,
             "default_image": image,
         }
 
 
-def get_facebook_defaults(instance=None):
-    return {}
+class TwitterSettings(BaseSettings):
+    def __init__(self, instance=None):
+        self.type = "TWITTER"
+        super().__init__(instance)
+
+
+class FacebookSettings(BaseSettings):
+    def __init__(self, instance=None):
+        self.type = "FACEBOOK"
+        super().__init__(instance)
