@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images import get_image_model_string
 from .mixins import TwitterModelMixin, FacebookModelMixin, MetaModelMixin
 

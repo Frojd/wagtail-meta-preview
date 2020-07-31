@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const fields = type === "title" ? titleFields : descriptionFields;
 
     const handleChange = function () {
-      let value = inputField.value;
+      let value = inputField && inputField.value;
       if (!value) {
         for (let i = 0; i < fields.length; i++) {
-          let otherValue = document.querySelector("#id_" + fields[i]).value;
-          if (otherValue) {
-            value = otherValue;
+          let otherField = document.querySelector("#id_" + fields[i]);
+          if (otherField && otherField.value) {
+            value = otherField.value;
             break;
           }
         }
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       elem.querySelector(".meta-preview-box-" + type).innerHTML = value;
     };
 
-    inputField.addEventListener("keyup", handleChange);
+    inputField && inputField.addEventListener("keyup", handleChange);
     for (let i = 0; i < fields.length; i++) {
       document
         .querySelector("#id_" + fields[i])

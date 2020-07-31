@@ -5,6 +5,7 @@
 </script>
 
 <div class="meta-preview">
+    {% if not is_single %}
     <fieldset>
         <legend>{{ self.heading }}</legend>
         <ul class="fields">
@@ -13,6 +14,7 @@
             {% endfor %}
         </ul>
     </fieldset>
+    {% endif %}
     {% if is_twitter %}
         <div class="meta-preview-box" aria-hidden="true">
             <div class="meta-preview-box-container">

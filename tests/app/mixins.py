@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from wagtail.images import get_image_model_string
 from wagtail.admin.edit_handlers import FieldPanel
@@ -7,6 +6,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import TabbedInterface, ObjectList
 from wagtail_meta_preview.panels import (
+    TwitterPreviewPanelSingle,
     TwitterPreviewPanel,
     MetaTitlePanel,
     MetaDescriptionPanel,
@@ -95,6 +95,7 @@ class FacebookModelMixin(Page):
 
 class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     promote_panels = [
+        TwitterPreviewPanelSingle(heading="Twitter Preview"),
         FieldPanel("twitter_title"),
         FieldPanel("twitter_description"),
         FieldPanel("twitter_image"),
