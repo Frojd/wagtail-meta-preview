@@ -8,6 +8,7 @@ from wagtail.admin.edit_handlers import TabbedInterface, ObjectList
 from wagtail_meta_preview.panels import (
     TwitterPreviewPanelSingle,
     TwitterPreviewPanel,
+    FacebookPreviewPanel,
     MetaTitlePanel,
     MetaDescriptionPanel,
 )
@@ -77,9 +78,14 @@ class FacebookModelMixin(Page):
     )
 
     promote_panels = [
-        FieldPanel("og_title"),
-        FieldPanel("og_description"),
-        FieldPanel("og_image"),
+        FacebookPreviewPanel(
+            [
+                MetaTitlePanel("og_title"),
+                MetaDescriptionPanel("og_description"),
+                ImageChooserPanel("og_image"),
+            ],
+            heading="Facebook",
+        ),
     ]
 
     edit_handler = TabbedInterface(

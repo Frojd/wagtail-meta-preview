@@ -15,66 +15,68 @@ def get_focal(img):
     return {"x": "{:.2%}".format(background_x), "y": "{:.2%}".format(background_y)}
 
 
-def get_fields(instance=None):
-    twitter_settings = meta_settings.get_twitter_settings(instance)
+class TwitterSettings:
+    def __init__(self, instance=None):
+        self.instance = instance
 
-    title_field = twitter_settings["title_field"]
-    description_field = twitter_settings["description_field"]
+    def get_title(self):
+        title_field = meta_settings.META_PREVIEW_TWITTER_TITLE_FIELD
+        title = getattr(self.instance, title_field, "")
 
-    title_fallback_fields = twitter_settings["title_fallbacks"]
-    description_fallback_fields = twitter_settings["description_fallbacks"]
-    image_fallback_fields = twitter_settings["image_fallbacks"]
+        if not title and self.instance:
+            titles = meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK.split(",")
+            titles = list(filter(lambda x: hasattr(self.instance, x), titles))
+            title_field = titles[0] if titles else "title"
+            title = getattr(self.instance, title_field, "")
 
-    title = twitter_settings["title"]
-    description = twitter_settings["description"]
+        return title or (self.instance.title if self.instance else "")
 
-    image = twitter_settings["image"]
+    def get_description(self):
+        description_field = meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELD
+        description = getattr(self.instance, description_field, "")
 
-    return (
-        title_field,
-        description_field,
-        title_fallback_fields,
-        description_fallback_fields,
-        image_fallback_fields,
-        title,
-        description,
-        image,
-    )
+        if not description and self.instance:
+            descriptions = meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK.split(
+                ","
+            )
+            descriptions = list(
+                filter(lambda x: hasattr(self.instance, x), descriptions)
+            )
+            description = (
+                getattr(self.instance, descriptions[0]) if descriptions else ""
+            )
+
+        return description
+
+    def get_image(self):
+        image = ""
+
+        if self.instance:
+            image_instance = getattr(
+                self.instance, meta_settings.META_PREVIEW_TWITTER_IMAGE_FIELD
+            )
+            image = (
+                image_instance.get_rendition(meta_settings.IMAGE_DEFAULT_SIZE).url
+                if image_instance
+                else ""
+            )
+
+        return image
+
+    def get_defaults(self):
+        title = self.get_title()
+        description = self.get_description()
+        image = self.get_image()
+
+        return {
+            "title_fallback_fields": meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK,
+            "description_fallback_fields": meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK,
+            "image_fallback_fields": meta_settings.META_PREVIEW_TWITTER_IMAGE_FALLBACK,
+            "default_title": title,
+            "default_description": description,
+            "default_image": image,
+        }
 
 
-def get_twitter_defaults(instance=None):
-
-    (
-        title_field,
-        description_field,
-        title_fallback_fields,
-        description_fallback_fields,
-        image_fallback_fields,
-        title,
-        description,
-        image,
-    ) = get_fields(instance)
-
-    if not title and instance:
-        titles = title_fallback_fields.split(",")
-        titles = list(filter(lambda x: hasattr(instance, x), titles))
-        title_field = titles[0] if titles else "title"
-        title = getattr(instance, title_field, "")
-    elif not instance:
-        title = ""
-
-    if not description and instance:
-        descriptions = description_fallback_fields.split(",")
-        descriptions = list(filter(lambda x: hasattr(instance, x), descriptions))
-        description = getattr(instance, descriptions[0]) if descriptions else ""
-    elif not instance:
-        description = ""
-
-    return {
-        "title_fallback_fields": title_fallback_fields,
-        "description_fallback_fields": description_fallback_fields,
-        "image_fallback_fields": image_fallback_fields,
-        "default_title": title or instance.title if instance else title,
-        "default_description": description,
-        "default_image": image,
-    }
+def get_facebook_defaults(instance=None):
+    return {}

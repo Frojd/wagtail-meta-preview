@@ -39,7 +39,8 @@ class TwitterPreviewPanelSingle(EditHandler):
     def render(self):
         context = {"self": self, "is_twitter": True, "is_single": True}
 
-        context.update(utils.get_twitter_defaults(self.instance))
+        twitter_settings = utils.TwitterSettings(self.instance)
+        context.update(twitter_settings.get_defaults())
 
         return mark_safe(render_to_string(self.template, context))
 
@@ -52,17 +53,33 @@ class TwitterPreviewPanelSingle(EditHandler):
 class TwitterPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
-    def get_defaults(self):
-        return utils.get_twitter_defaults(self.instance)
-
     def render(self):
-        defaults = self.get_defaults()
+        twitter_settings = utils.TwitterSettings(self.instance)
 
-        context = {"self": self, "is_twitter": True, **defaults}
+        context = {"self": self, "is_twitter": True, **twitter_settings.get_defaults()}
 
         return mark_safe(render_to_string(self.template, context))
 
     def classes(self):
         classes = super().classes()
         classes.extend(["multi-field", "meta-preview-panel", "twitter-preview-panel"])
+        return classes
+
+
+class FacebookPreviewPanel(BaseCompositeEditHandler):
+    template = "wagtail_meta_preview/preview_panel.html"
+
+    def get_defaults(self):
+        return utils.get_facebook_defaults(self.instance)
+
+    def render(self):
+        defaults = self.get_defaults()
+
+        context = {"self": self, "is_facebook": True, **defaults}
+
+        return mark_safe(render_to_string(self.template, context))
+
+    def classes(self):
+        classes = super().classes()
+        classes.extend(["multi-field", "meta-preview-panel", "facebook-preview-panel"])
         return classes
