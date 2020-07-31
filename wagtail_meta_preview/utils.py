@@ -2,6 +2,19 @@ from django.conf import settings
 from . import meta_settings
 
 
+def get_focal(img):
+    # Default focal point values
+    background_x = 0.5
+    background_y = 0.5
+
+    if img.focal_point_width:
+        # Get point relative to image size, make sure it isn't more than 1
+        background_x = min(round(img.focal_point_x / img.width, 4), 1)
+        background_y = min(round(img.focal_point_y / img.height, 4), 1)
+
+    return {"x": "{:.2%}".format(background_x), "y": "{:.2%}".format(background_y)}
+
+
 def get_fields(instance=None):
     twitter_settings = meta_settings.get_twitter_settings(instance)
 

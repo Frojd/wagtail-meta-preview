@@ -16,8 +16,8 @@ var ChangeTracker = function (elem) {
 // TODO: Don't hardcode /admin/
 const fetchImage = async function (id) {
   const resp = await fetch("/admin/get-img-rendition/" + id + "/");
-  const text = await resp.text();
-  return text;
+  const json = await resp.json();
+  return json;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (val) {
               const img = await fetchImage(val);
               document.querySelector(".meta-twitter-preview-image").style =
-                'background-image: url("' + img + '")';
+                `background-image: url('${img.src}'); background-position: ${img.focal.x} ${img.focal.y}`;
               break;
             }
           }
