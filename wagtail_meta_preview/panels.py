@@ -71,9 +71,6 @@ class TwitterPreviewPanel(BaseCompositeEditHandler):
 class FacebookPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
-    def get_defaults(self):
-        return utils.get_facebook_defaults(self.instance)
-
     def render(self):
         facebook_settings = utils.FacebookSettings(self.instance)
 
