@@ -29,7 +29,6 @@
 .meta-preview-box-container {
     position: relative;
     padding: 12px 12px 8px 54px;
-    margin: 0 auto;
     text-align: left;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
@@ -77,7 +76,6 @@
 }
 
 .meta-twitter-preview {
-	margin: 0 10px;
 	border-radius: .85714em;
     border-width: 1px;
     border-style: solid;
@@ -88,7 +86,7 @@
     overflow: hidden;
 	/* display: flex; */
     min-height: 90px;
-    margin-top: .32333em;
+    margin-top: 1em;
     margin-bottom: 1em;
 }
 
@@ -151,7 +149,6 @@
     display: flex;
 	position: relative;
     margin-right: 75px;
-    margin-bottom: 10px;
     padding: 8px;
 }
 
@@ -169,9 +166,12 @@
     font-size: 14px;
     color: #333;
 }
-.meta-facebook-author-name a {
+.meta-facebook-link-bold {
     color: #385898;
     font-weight: bold;
+}
+.meta-facebook-link {
+    color: #385898;
 }
 
 .meta-facebook-author-handle {
@@ -194,7 +194,7 @@
 	margin: 0;
     box-sizing: border-box;
     color: inherit!important;
-    max-width: 800px;
+    max-width: 550px;
     overflow: hidden;
 	/* display: flex; */
     min-height: 90px;
@@ -224,6 +224,7 @@
 .meta-facebook-preview-content h2.meta-preview-box-title {
     max-height: 1.3em;
     white-space: nowrap;
+    color: #1d2129;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.2em;
@@ -264,9 +265,9 @@
 .facebook-preview-panel .meta-preview-box-container {
     position: relative;
     padding: 0;
-    margin: 0 auto;
     text-align: left;
     border-radius: 0;
+    max-width: 550px;
 }
 
 /* Google */
@@ -343,7 +344,6 @@
 .google-preview-panel .meta-preview-box-container {
     position: relative;
     padding: 0;
-    margin: 0 auto;
     text-align: left;
     border-radius: 0;
     border: none;
