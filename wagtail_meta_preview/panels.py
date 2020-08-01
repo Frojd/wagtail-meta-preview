@@ -123,18 +123,12 @@ class GooglePreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
     def render(self):
-        title = ""
-        description = ""
-
-        if self.instance:
-            title = self.instance.seo_title or self.instance.title
-            description = self.instance.search_description
+        google_settings = utils.GoogleSettings(self.instance)
 
         context = {
             "self": self,
             "is_google": True,
-            "default_title": title,
-            "default_description": description,
+            **google_settings.get_defaults(),
         }
 
         return mark_safe(render_to_string(self.template, context))

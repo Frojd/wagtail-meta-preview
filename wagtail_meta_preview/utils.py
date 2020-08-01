@@ -52,6 +52,9 @@ class BaseSettings:
         return description
 
     def get_image(self):
+        if self.type == "GOOGLE":
+            return ""
+
         image = ""
 
         if self.instance:
@@ -80,7 +83,7 @@ class BaseSettings:
                 meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FALLBACK"
             ),
             "image_fallback_fields": getattr(
-                meta_settings, f"META_PREVIEW_{self.type}_IMAGE_FALLBACK"
+                meta_settings, f"META_PREVIEW_{self.type}_IMAGE_FALLBACK", ""
             ),
             "default_title": title,
             "default_description": description,
@@ -97,4 +100,10 @@ class TwitterSettings(BaseSettings):
 class FacebookSettings(BaseSettings):
     def __init__(self, instance=None):
         self.type = "FACEBOOK"
+        super().__init__(instance)
+
+
+class GoogleSettings(BaseSettings):
+    def __init__(self, instance=None):
+        self.type = "GOOGLE"
         super().__init__(instance)
