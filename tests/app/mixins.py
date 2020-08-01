@@ -9,6 +9,7 @@ from wagtail_meta_preview.panels import (
     TwitterPreviewPanelSingle,
     TwitterPreviewPanel,
     FacebookPreviewPanel,
+    FacebookPreviewPanelSingle,
     MetaTitlePanel,
     MetaDescriptionPanel,
 )
@@ -102,6 +103,7 @@ class FacebookModelMixin(Page):
 class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     promote_panels = [
         TwitterPreviewPanelSingle(heading="Twitter Preview"),
+        FacebookPreviewPanelSingle(heading="Facebook Preview"),
         FieldPanel("twitter_title"),
         FieldPanel("twitter_description"),
         FieldPanel("twitter_image"),
