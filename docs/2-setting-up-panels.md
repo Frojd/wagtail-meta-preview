@@ -8,6 +8,8 @@ This application provides 8 panels:
 
 ## Preview panels
 
+Here's how to setup `FacebookPreviewPanel` with some og-fields:
+
 ```python
 from wagtail.images import get_image_model_string
 from wagtail.core.models import Page
@@ -34,10 +36,34 @@ class SomePage(Page):
             FieldPanel("og_title"),
             FieldPanel("og_description"),
             ImageChooserPanel("og_image"),
-        ])
+        ], heading="Facebook")
     ]
 ```
 
 This sets up a facebook preview panel with the fields left of the preview:
 
 ![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-example.PNG)
+
+If you'd rather separate the preview from the fields it's possible to use the `SingleFacebookPreviewPanel`:
+
+```python
+    panels = [
+        MultiFieldPanel([
+            FieldPanel("og_title"),
+            FieldPanel("og_description"),
+            ImageChooserPanel("og_image"),
+        ], heading="Facebook"),
+        FacebookPreviewPanelSingle(heading="Facebook Preview")
+    ]
+```
+
+Which will look like this:
+
+![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-single-example.PNG)
+
+
+## Next steps
+* Settings
+
+## Or go back:
+* Installation
