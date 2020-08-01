@@ -9,7 +9,6 @@
 
 ### To get IE 11 support:
 - Drop use of fetch
-- Drop use of template strings
 
 ## Panels
 

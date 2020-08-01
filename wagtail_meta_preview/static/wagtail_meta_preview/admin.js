@@ -17,14 +17,13 @@ var ChangeTracker = function (elem) {
 const fetchImage = async function (id) {
   const resp = await fetch("/admin/get-img-rendition/" + id + "/");
   const json = await resp.json();
-  console.log(json);
   return json;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
   const setupEvents = function (elem, field, type) {
-    const titleFields = window[`${type}_title_fields`].split(",");
-    const descriptionFields = window[`${type}_description_fields`].split(",");
+    const titleFields = window[type + "_title_fields"].split(",");
+    const descriptionFields = window[type + "_description_fields"].split(",");
     const inputField = elem.querySelector(".meta-preview-" + field + " input");
     const fields = field === "title" ? titleFields : descriptionFields;
 
@@ -56,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
       ChangeTracker(chooser);
       chooser.addEventListener("change", async function (e) {
         const imageInput = elem.querySelector("input[type=hidden]");
-        const imageFields = window[`${type}_image_fields`].split(",");
+        const imageFields = window[type + "_image_fields"].split(",");
 
         if (imageInput.id === e.target.id) {
           const img = await fetchImage(imageInput.value);
-          document.querySelector(`.meta-${type}-preview-image`).style =
+          document.querySelector(".meta-" + type + "-preview-image").style =
             'background-image: url("' + img.src + '")';
           return;
         }
@@ -70,9 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const val = document.querySelector("#id_" + field).value;
             if (val) {
               const img = await fetchImage(val);
-              document.querySelector(
-                `.meta-${type}-preview-image`
-              ).style = `background-image: url('${img.src}'); background-position: ${img.focal.x} ${img.focal.y}`;
+              document.querySelector(".meta-" + type + "-preview-image").style =
+                "background-image: url(" +
+                img.src +
+                "); background-position: " +
+                img.focal.x +
+                " " +
+                img.focal.y;
               break;
             }
           }
