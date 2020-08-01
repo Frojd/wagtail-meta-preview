@@ -58,8 +58,6 @@ class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, "twitter-preview-panel")
-        self.assertContains(response, "meta-preview-title")
-        self.assertContains(response, "meta-preview-description")
         self.assertContains(response, '<div class="meta-preview">')
 
     def test_twitter_default_values(self):
@@ -74,8 +72,6 @@ class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, "facebook-preview-panel")
-        self.assertContains(response, "meta-preview-title")
-        self.assertContains(response, "meta-preview-description")
         self.assertContains(response, '<div class="meta-preview">')
 
     def test_facebook_default_values(self):

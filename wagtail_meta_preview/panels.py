@@ -1,23 +1,8 @@
 from django.utils.safestring import mark_safe
 from django.template.loader import render_to_string
 from wagtail.admin.edit_handlers import BaseCompositeEditHandler, EditHandler
-from wagtail.admin.edit_handlers import FieldPanel
 
 from . import utils
-
-
-class MetaTitlePanel(FieldPanel):
-    def classes(self):
-        classes = super().classes()
-        classes.append("meta-preview-title")
-        return classes
-
-
-class MetaDescriptionPanel(FieldPanel):
-    def classes(self):
-        classes = super().classes()
-        classes.append("meta-preview-description")
-        return classes
 
 
 class SinglePanelEditHandler(EditHandler):
