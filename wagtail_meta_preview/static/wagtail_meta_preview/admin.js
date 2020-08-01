@@ -13,11 +13,25 @@ var ChangeTracker = function (elem) {
   });
 };
 
-// TODO: Don't hardcode /admin/
-const fetchImage = async function (id) {
-  const resp = await fetch("/admin/get-img-rendition/" + id + "/");
-  const json = await resp.json();
-  return json;
+const fetchImage = function (id, cb) {
+  const xhr = new XMLHttpRequest();
+  let val;
+  xhr.onreadystatechange = function () {
+    // Only run if the request is complete
+    if (xhr.readyState !== 4) return;
+
+    // Process our return data
+    if (xhr.status >= 200 && xhr.status < 300) {
+      // What do when the request is successful
+      cb(JSON.parse(xhr.responseText));
+    }
+  };
+
+  // TODO: Don't hardcode /admin/
+  xhr.open("GET", "/admin/get-img-rendition/" + id + "/");
+  xhr.send();
+
+  return val;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -53,14 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const choosers = document.querySelectorAll(".image-chooser + input");
     for (let chooser of choosers) {
       ChangeTracker(chooser);
-      chooser.addEventListener("change", async function (e) {
+      chooser.addEventListener("change", function (e) {
         const imageInput = elem.querySelector("input[type=hidden]");
         const imageFields = window[type + "_image_fields"].split(",");
 
         if (imageInput.id === e.target.id) {
-          const img = await fetchImage(imageInput.value);
-          document.querySelector(".meta-" + type + "-preview-image").style =
-            'background-image: url("' + img.src + '")';
+          fetchImage(imageInput.value, function (img) {
+            document.querySelector(".meta-" + type + "-preview-image").style =
+              'background-image: url("' + img.src + '")';
+          });
           return;
         }
 
@@ -68,14 +83,17 @@ document.addEventListener("DOMContentLoaded", function () {
           for (let field of imageFields) {
             const val = document.querySelector("#id_" + field).value;
             if (val) {
-              const img = await fetchImage(val);
-              document.querySelector(".meta-" + type + "-preview-image").style =
-                "background-image: url(" +
-                img.src +
-                "); background-position: " +
-                img.focal.x +
-                " " +
-                img.focal.y;
+              fetchImage(imageInput.value, function (img) {
+                document.querySelector(
+                  ".meta-" + type + "-preview-image"
+                ).style =
+                  "background-image: url(" +
+                  img.src +
+                  "); background-position: " +
+                  img.focal.x +
+                  " " +
+                  img.focal.y;
+              });
               break;
             }
           }
