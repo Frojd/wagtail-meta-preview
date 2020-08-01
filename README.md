@@ -11,6 +11,9 @@
 - Drop use of fetch
 - Drop use of template strings
 
+### To get < Python 3.6 support:
+- Drop use of f-strings
+
 ## Panels
 
 ### General panels
