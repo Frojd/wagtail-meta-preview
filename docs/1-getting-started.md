@@ -20,3 +20,4 @@ INSTALLED_APPS = [
 ## Next steps
 
 * Setting up panels
+* Settings

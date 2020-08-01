@@ -4,6 +4,7 @@
 
 ## Todo
 
+- Single panels doesn't update correctly (refactor js)
 - Add example gifs/images
 
 ## Panels
