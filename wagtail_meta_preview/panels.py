@@ -108,8 +108,8 @@ class FacebookPreviewPanelSingle(EditHandler):
     def render(self):
         context = {"self": self, "is_facebook": True, "is_single": True}
 
-        twitter_settings = utils.TwitterSettings(self.instance)
-        context.update(twitter_settings.get_defaults())
+        facebook_settings = utils.FacebookSettings(self.instance)
+        context.update(facebook_settings.get_defaults())
 
         return mark_safe(render_to_string(self.template, context))
 
@@ -136,4 +136,34 @@ class GooglePreviewPanel(BaseCompositeEditHandler):
     def classes(self):
         classes = super().classes()
         classes.extend(["multi-field", "meta-preview-panel", "google-preview-panel"])
+        return classes
+
+
+class GooglePreviewPanelSingle(EditHandler):
+    def __init__(
+        self,
+        template="wagtail_meta_preview/preview_panel.html",
+        heading="",
+        classname="",
+    ):
+        super().__init__(heading=heading, classname=classname)
+        self.template = template
+
+    def clone_kwargs(self):
+        kwargs = super().clone_kwargs()
+        del kwargs["help_text"]
+        kwargs.update(template=self.template,)
+        return kwargs
+
+    def render(self):
+        context = {"self": self, "is_google": True, "is_single": True}
+
+        google_settings = utils.GoogleSettings(self.instance)
+        context.update(google_settings.get_defaults())
+
+        return mark_safe(render_to_string(self.template, context))
+
+    def classes(self):
+        classes = super().classes()
+        classes.extend(["meta-preview-panel", "google-preview-panel"])
         return classes

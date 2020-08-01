@@ -2,7 +2,6 @@
 
 ## Todo
 
-- Make Google panels
 - Mobile adjustments
 - Relax requirements a bit (right now uses f-strings and doesn't support IE11)
 
