@@ -20,7 +20,7 @@ class MetaDescriptionPanel(FieldPanel):
         return classes
 
 
-class TwitterPreviewPanelSingle(EditHandler):
+class SinglePanel(EditHandler):
     def __init__(
         self,
         template="wagtail_meta_preview/preview_panel.html",
@@ -36,6 +36,8 @@ class TwitterPreviewPanelSingle(EditHandler):
         kwargs.update(template=self.template,)
         return kwargs
 
+
+class TwitterPreviewPanelSingle(SinglePanel):
     def render(self):
         context = {"self": self, "is_twitter": True, "is_single": True}
 
@@ -89,22 +91,7 @@ class FacebookPreviewPanel(BaseCompositeEditHandler):
         return classes
 
 
-class FacebookPreviewPanelSingle(EditHandler):
-    def __init__(
-        self,
-        template="wagtail_meta_preview/preview_panel.html",
-        heading="",
-        classname="",
-    ):
-        super().__init__(heading=heading, classname=classname)
-        self.template = template
-
-    def clone_kwargs(self):
-        kwargs = super().clone_kwargs()
-        del kwargs["help_text"]
-        kwargs.update(template=self.template,)
-        return kwargs
-
+class FacebookPreviewPanelSingle(SinglePanel):
     def render(self):
         context = {"self": self, "is_facebook": True, "is_single": True}
 
@@ -139,22 +126,7 @@ class GooglePreviewPanel(BaseCompositeEditHandler):
         return classes
 
 
-class GooglePreviewPanelSingle(EditHandler):
-    def __init__(
-        self,
-        template="wagtail_meta_preview/preview_panel.html",
-        heading="",
-        classname="",
-    ):
-        super().__init__(heading=heading, classname=classname)
-        self.template = template
-
-    def clone_kwargs(self):
-        kwargs = super().clone_kwargs()
-        del kwargs["help_text"]
-        kwargs.update(template=self.template,)
-        return kwargs
-
+class GooglePreviewPanelSingle(SinglePanel):
     def render(self):
         context = {"self": self, "is_google": True, "is_single": True}
 
