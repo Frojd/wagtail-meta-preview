@@ -8,6 +8,24 @@
     padding-top: 52px;
 }
 
+@media screen and (max-width: 992px) {
+    .meta-preview {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .meta-preview--single {
+        width: 100%;
+    }
+
+    .meta-preview fieldset,
+    .meta-preview .meta-preview-box {
+        width: 100%;
+        padding: 2em;
+        padding-top: 52px;
+    }
+}
+
 .meta-preview-box-container {
     position: relative;
     padding: 12px 12px 8px 54px;
