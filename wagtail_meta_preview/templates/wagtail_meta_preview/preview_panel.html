@@ -1,7 +1,14 @@
 <script>
-    window.twitter_title_fields = "{{ title_fallback_fields }}";
-    window.twitter_description_fields = "{{ description_fallback_fields }}";
-    window.twitter_image_fields = "{{ image_fallback_fields }}";
+    {% if is_twitter %}
+        window.twitter_title_fields = "{{ title_fallback_fields }}";
+        window.twitter_description_fields = "{{ description_fallback_fields }}";
+        window.twitter_image_fields = "{{ image_fallback_fields }}";
+    {% elif is_facebook %}
+        window.facebook_title_fields = "{{ title_fallback_fields }}";
+        window.facebook_description_fields = "{{ description_fallback_fields }}";
+        window.facebook_image_fields = "{{ image_fallback_fields }}";
+    {% else %}
+    {% endif %}
 </script>
 
 <div class="meta-preview">

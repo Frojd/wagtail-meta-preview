@@ -17,15 +17,16 @@ var ChangeTracker = function (elem) {
 const fetchImage = async function (id) {
   const resp = await fetch("/admin/get-img-rendition/" + id + "/");
   const json = await resp.json();
+  console.log(json);
   return json;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  const setupEvents = function (elem, type) {
-    const titleFields = window.twitter_title_fields.split(",");
-    const descriptionFields = window.twitter_description_fields.split(",");
-    const inputField = elem.querySelector(".meta-preview-" + type + " input");
-    const fields = type === "title" ? titleFields : descriptionFields;
+  const setupEvents = function (elem, field, type) {
+    const titleFields = window[`${type}_title_fields`].split(",");
+    const descriptionFields = window[`${type}_description_fields`].split(",");
+    const inputField = elem.querySelector(".meta-preview-" + field + " input");
+    const fields = field === "title" ? titleFields : descriptionFields;
 
     const handleChange = function () {
       let value = inputField && inputField.value;
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-      elem.querySelector(".meta-preview-box-" + type).innerHTML = value;
+      elem.querySelector(".meta-preview-box-" + field).innerHTML = value;
     };
 
     inputField && inputField.addEventListener("keyup", handleChange);
@@ -49,42 +50,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const setupImageEvents = function (elem) {
+  const setupImageEvents = function (elem, type) {
     const choosers = document.querySelectorAll(".image-chooser + input");
     for (let chooser of choosers) {
       ChangeTracker(chooser);
-      chooser.addEventListener("change", async function () {
-        const twitterImage = elem.querySelector("input[type=hidden]");
-        const imageFields = window.twitter_image_fields.split(",");
+      chooser.addEventListener("change", async function (e) {
+        const imageInput = elem.querySelector("input[type=hidden]");
+        const imageFields = window[`${type}_image_fields`].split(",");
 
-        if (!twitterImage.value) {
+        if (imageInput.id === e.target.id) {
+          const img = await fetchImage(imageInput.value);
+          document.querySelector(`.meta-${type}-preview-image`).style =
+            'background-image: url("' + img.src + '")';
+          return;
+        }
+
+        if (!imageInput.value) {
           for (let field of imageFields) {
             const val = document.querySelector("#id_" + field).value;
             if (val) {
               const img = await fetchImage(val);
-              document.querySelector(".meta-twitter-preview-image").style =
-                `background-image: url('${img.src}'); background-position: ${img.focal.x} ${img.focal.y}`;
+              document.querySelector(
+                `.meta-${type}-preview-image`
+              ).style = `background-image: url('${img.src}'); background-position: ${img.focal.x} ${img.focal.y}`;
               break;
             }
           }
-        } else {
-          document.querySelector(".meta-twitter-preview-image").style =
-            'background-image: url("' +
-            (await fetchImage(twitterImage.value)) +
-            '")';
         }
       });
     }
   };
 
   const initPreview = function (elem) {
-    // const isTwitter = elem.classList.contains("twitter-preview-panel");
-    // const isFacebook = elem.classList.contains("facebook-preview-panel");
+    const isTwitter = elem.classList.contains("twitter-preview-panel");
+    const isFacebook = elem.classList.contains("facebook-preview-panel");
     // const isGoogle = !isTwitter && !isFacebook;
 
-    setupEvents(elem, "title");
-    setupEvents(elem, "description");
-    setupImageEvents(elem);
+    let type;
+    if (isTwitter) {
+      type = "twitter";
+    } else if (isFacebook) {
+      type = "facebook";
+    }
+
+    setupEvents(elem, "title", type);
+    setupEvents(elem, "description", type);
+    setupImageEvents(elem, type);
   };
 
   document.querySelectorAll(".meta-preview-panel").forEach(function (elem) {
