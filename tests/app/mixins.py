@@ -11,6 +11,7 @@ from wagtail_meta_preview.panels import (
     FacebookPreviewPanel,
     FacebookPreviewPanelSingle,
     GooglePreviewPanel,
+    GooglePreviewPanelSingle,
     MetaTitlePanel,
     MetaDescriptionPanel,
 )
@@ -105,6 +106,7 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     promote_panels = [
         TwitterPreviewPanelSingle(heading="Twitter Preview"),
         FacebookPreviewPanelSingle(heading="Facebook Preview"),
+        GooglePreviewPanelSingle(heading="Google Preview"),
         GooglePreviewPanel(
             [FieldPanel("seo_title"), FieldPanel("search_description"),],
             heading="Google",
