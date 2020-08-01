@@ -7,6 +7,10 @@
 - Add example gifs/images
 - Relax requirements a bit (right now uses f-strings and doesn't support IE11)
 
+### To get IE 11 support:
+- Drop use of fetch
+- Drop use of template strings
+
 ## Panels
 
 ### General panels
