@@ -5,14 +5,11 @@
 ## Todo
 
 - Add example gifs/images
-- Relax requirements a bit (right now uses f-strings and doesn't support IE11)
+- Relax requirements a bit (Doesn't support IE11)
 
 ### To get IE 11 support:
 - Drop use of fetch
 - Drop use of template strings
-
-### To get < Python 3.6 support:
-- Drop use of f-strings
 
 ## Panels
 
