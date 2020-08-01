@@ -1,4 +1,4 @@
-name: CI (pip)
+name: wagtail-meta-preview
 on: [push]
 
 jobs:

@@ -1,3 +1,5 @@
+![wagtail-meta-preview](https://github.com/rinti/wagtail-meta-preview/workflows/wagtail-meta-preview/badge.svg)
+
 # wagtial meta preview
 
 ## Todo
