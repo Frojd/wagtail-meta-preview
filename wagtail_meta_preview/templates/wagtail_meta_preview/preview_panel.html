@@ -13,7 +13,7 @@
     {% endif %}
 </script>
 
-<div class="meta-preview {% if is_single %}meta-preview--single{% endif %}">
+<div class="meta-preview{% if is_single %} meta-preview--single{% endif %}">
     {% if not is_single %}
     <fieldset>
         <legend>{{ self.heading }}</legend>

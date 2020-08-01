@@ -83,3 +83,10 @@ class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
         response = self.client.get(edit_page)
         self.assertContains(response, 'title">Epic Facebook Title</h2>')
         self.assertContains(response, 'description">Epic Facebook Description</div>')
+
+    def test_single_panel_markup(self):
+        add_page = reverse(
+            "wagtailadmin_pages:add", args=("app", "metapage", self.root_page.id)
+        )
+        response = self.client.get(add_page)
+        self.assertContains(response, '<div class="meta-preview meta-preview--single">')
