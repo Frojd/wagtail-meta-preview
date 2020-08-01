@@ -19,12 +19,14 @@ class BaseSettings:
         self.instance = instance
 
     def get_title(self):
-        title_field = getattr(meta_settings, f"META_PREVIEW_{self.type}_TITLE_FIELD")
+        title_field = getattr(
+            meta_settings, "META_PREVIEW_{}_TITLE_FIELD".format(self.type)
+        )
         title = getattr(self.instance, title_field, "")
 
         if not title and self.instance:
             titles = getattr(
-                meta_settings, f"META_PREVIEW_{self.type}_TITLE_FALLBACK"
+                meta_settings, "META_PREVIEW_{}_TITLE_FALLBACK".format(self.type)
             ).split(",")
             titles = list(filter(lambda x: hasattr(self.instance, x), titles))
             title_field = titles[0] if titles else "title"
@@ -34,13 +36,13 @@ class BaseSettings:
 
     def get_description(self):
         description_field = getattr(
-            meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FIELD"
+            meta_settings, "META_PREVIEW_{}_DESCRIPTION_FIELD".format(self.type)
         )
         description = getattr(self.instance, description_field, "")
 
         if not description and self.instance:
             descriptions = getattr(
-                meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FALLBACK"
+                meta_settings, "META_PREVIEW_{}_DESCRIPTION_FALLBACK".format(self.type)
             ).split(",")
             descriptions = list(
                 filter(lambda x: hasattr(self.instance, x), descriptions)
@@ -60,7 +62,7 @@ class BaseSettings:
         if self.instance:
             image_instance = getattr(
                 self.instance,
-                getattr(meta_settings, f"META_PREVIEW_{self.type}_IMAGE_FIELD"),
+                getattr(meta_settings, "META_PREVIEW_{}_IMAGE_FIELD".format(self.type)),
             )
             image = (
                 image_instance.get_rendition(meta_settings.IMAGE_DEFAULT_SIZE).url
@@ -77,13 +79,13 @@ class BaseSettings:
 
         return {
             "title_fallback_fields": getattr(
-                meta_settings, f"META_PREVIEW_{self.type}_TITLE_FALLBACK"
+                meta_settings, "META_PREVIEW_{}_TITLE_FALLBACK".format(self.type)
             ),
             "description_fallback_fields": getattr(
-                meta_settings, f"META_PREVIEW_{self.type}_DESCRIPTION_FALLBACK"
+                meta_settings, "META_PREVIEW_{}_DESCRIPTION_FALLBACK".format(self.type)
             ),
             "image_fallback_fields": getattr(
-                meta_settings, f"META_PREVIEW_{self.type}_IMAGE_FALLBACK", ""
+                meta_settings, "META_PREVIEW_{}_IMAGE_FALLBACK".format(self.type), ""
             ),
             "default_title": title,
             "default_description": description,
