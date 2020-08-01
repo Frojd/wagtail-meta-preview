@@ -10,6 +10,7 @@ from wagtail_meta_preview.panels import (
     TwitterPreviewPanel,
     FacebookPreviewPanel,
     FacebookPreviewPanelSingle,
+    GooglePreviewPanel,
     MetaTitlePanel,
     MetaDescriptionPanel,
 )
@@ -104,6 +105,10 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     promote_panels = [
         TwitterPreviewPanelSingle(heading="Twitter Preview"),
         FacebookPreviewPanelSingle(heading="Facebook Preview"),
+        GooglePreviewPanel(
+            [FieldPanel("seo_title"), FieldPanel("search_description"),],
+            heading="Google",
+        ),
         FieldPanel("twitter_title"),
         FieldPanel("twitter_description"),
         FieldPanel("twitter_image"),
@@ -115,7 +120,7 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     edit_handler = TabbedInterface(
         [
             ObjectList(Page.content_panels, heading="Content"),
-            ObjectList(Page.promote_panels + promote_panels, heading="Promote"),
+            ObjectList(promote_panels, heading="Promote"),
         ]
     )
 

@@ -250,3 +250,83 @@
     text-align: left;
     border-radius: 0;
 }
+
+/* Google */
+
+.meta-google-text {
+	clear: both;
+    font-size: 14px;
+    color: #555;
+    padding: 8px;
+}
+
+.meta-google-preview {
+	margin: 0;
+    box-sizing: border-box;
+    color: inherit!important;
+    max-width: 800px;
+    overflow: hidden;
+	/* display: flex; */
+    min-height: 90px;
+    margin-top: .32333em;
+    margin-bottom: 0;
+}
+
+.meta-google-preview-content {
+    overflow: hidden;
+    padding: 8px;
+    float:left;
+    clear: both;
+    width: 100%;
+}
+
+.meta-google-preview-content h2.meta-preview-box-title {
+    font-family: arial,sans-serif;
+    max-height: 1.3em;
+    color: #1a0dab;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.3em;
+    margin: 0 0 .15em;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.meta-google-preview-content .meta-preview-box-description {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1em;
+    font-family: arial ,sans-serif;
+    line-height: 1.3em;
+    font-weight: 400;
+    margin-top: .32333em;
+}
+
+.meta-google-preview-link {
+    text-transform: lowercase;
+    color: #000;
+    max-height: 1.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: .32333em;
+}
+
+/* General google overrides */
+
+.google-preview-panel .meta-preview .meta-preview-box {
+    width: 50%;
+    padding-top: 52px;
+}
+
+.google-preview-panel .meta-preview-box-container {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    text-align: left;
+    border-radius: 0;
+    border: none;
+}

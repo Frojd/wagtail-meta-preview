@@ -84,18 +84,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const initPreview = function (elem) {
     const isTwitter = elem.classList.contains("twitter-preview-panel");
     const isFacebook = elem.classList.contains("facebook-preview-panel");
-    // const isGoogle = !isTwitter && !isFacebook;
+    const isGoogle = !isTwitter && !isFacebook;
 
     let type;
     if (isTwitter) {
       type = "twitter";
     } else if (isFacebook) {
       type = "facebook";
+    } else if (isGoogle) {
+      type = "google";
     }
 
     setupEvents(elem, "title", type);
     setupEvents(elem, "description", type);
-    setupImageEvents(elem, type);
+    if (!isGoogle) {
+      setupImageEvents(elem, type);
+    }
   };
 
   document.querySelectorAll(".meta-preview-panel").forEach(function (elem) {

@@ -8,6 +8,8 @@
         window.facebook_description_fields = "{{ description_fallback_fields }}";
         window.facebook_image_fields = "{{ image_fallback_fields }}";
     {% else %}
+        window.google_title_fields = "seo_title,title";
+        window.google_description_fields = "search_description";
     {% endif %}
 </script>
 
@@ -27,5 +29,6 @@
     {% elif is_facebook %}
         {% include "wagtail_meta_preview/_facebook.html" %}
     {% else %}
+        {% include "wagtail_meta_preview/_google.html" %}
     {% endif %}
 </div>

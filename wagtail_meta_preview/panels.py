@@ -117,3 +117,29 @@ class FacebookPreviewPanelSingle(EditHandler):
         classes = super().classes()
         classes.extend(["meta-preview-panel", "facebook-preview-panel"])
         return classes
+
+
+class GooglePreviewPanel(BaseCompositeEditHandler):
+    template = "wagtail_meta_preview/preview_panel.html"
+
+    def render(self):
+        title = ""
+        description = ""
+
+        if self.instance:
+            title = self.instance.seo_title or self.instance.title
+            description = self.instance.search_description
+
+        context = {
+            "self": self,
+            "is_google": True,
+            "default_title": title,
+            "default_description": description,
+        }
+
+        return mark_safe(render_to_string(self.template, context))
+
+    def classes(self):
+        classes = super().classes()
+        classes.extend(["multi-field", "meta-preview-panel", "google-preview-panel"])
+        return classes
