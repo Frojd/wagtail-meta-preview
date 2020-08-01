@@ -19,7 +19,7 @@ def get_test_image_file(filename="test.png", colour="white", size=(640, 480)):
 
 class TestUtils(TestCase, WagtailTestUtils):
     def setUp(self):
-        self.image = Image.objects.create(
+        self.image = Image(
             title="Test image", file=get_test_image_file(colour="white"),
         )
 
