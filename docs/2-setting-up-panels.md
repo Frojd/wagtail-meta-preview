@@ -76,4 +76,4 @@ So if you have a field that is named e.g. `open_graph_title` you have to change 
 * [Settings](./3-settings.md)
 
 ## Or go back:
-* [Getting started](./1-getting-starged.md)
+* [Getting started](./1-getting-started.md)
