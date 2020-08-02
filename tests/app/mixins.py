@@ -10,12 +10,12 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
 )
 from wagtail_meta_preview.panels import (
-    TwitterPreviewPanelSingle,
     TwitterPreviewPanel,
+    TwitterFieldPreviewPanel,
     FacebookPreviewPanel,
-    FacebookPreviewPanelSingle,
+    FacebookFieldPreviewPanel,
     GooglePreviewPanel,
-    GooglePreviewPanelSingle,
+    GoogleFieldPreviewPanel,
 )
 
 
@@ -43,7 +43,7 @@ class TwitterModelMixin(Page):
         ImageChooserPanel("og_image"),
         FieldPanel("another_title"),
         FieldPanel("another_description"),
-        TwitterPreviewPanel(
+        TwitterFieldPreviewPanel(
             [
                 FieldPanel("twitter_title"),
                 FieldPanel("twitter_description"),
@@ -91,7 +91,7 @@ class FacebookModelMixin(Page):
             ],
             heading="Facebook",
         ),
-        FacebookPreviewPanelSingle(heading="Facebook Preview"),
+        FacebookPreviewPanel(heading="Facebook Preview"),
     ]
 
     edit_handler = TabbedInterface(
@@ -107,10 +107,10 @@ class FacebookModelMixin(Page):
 
 class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     promote_panels = [
-        TwitterPreviewPanelSingle(heading="Twitter Preview"),
-        FacebookPreviewPanelSingle(heading="Facebook Preview"),
-        GooglePreviewPanelSingle(heading="Google Preview"),
-        GooglePreviewPanel(
+        TwitterPreviewPanel(heading="Twitter Preview"),
+        FacebookPreviewPanel(heading="Facebook Preview"),
+        GooglePreviewPanel(heading="Google Preview"),
+        GoogleFieldPreviewPanel(
             [FieldPanel("seo_title"), FieldPanel("search_description"),],
             heading="Google",
         ),

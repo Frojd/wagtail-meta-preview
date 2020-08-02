@@ -5,7 +5,7 @@ from wagtail.admin.edit_handlers import BaseCompositeEditHandler, EditHandler
 from . import utils
 
 
-class SinglePanelEditHandler(EditHandler):
+class PreviewPanelEditHandler(EditHandler):
     def __init__(
         self,
         template="wagtail_meta_preview/preview_panel.html",
@@ -22,7 +22,7 @@ class SinglePanelEditHandler(EditHandler):
         return kwargs
 
 
-class TwitterPreviewPanelSingle(SinglePanelEditHandler):
+class TwitterPreviewPanel(PreviewPanelEditHandler):
     def render(self):
         context = {"self": self, "is_twitter": True, "is_single": True}
 
@@ -37,7 +37,7 @@ class TwitterPreviewPanelSingle(SinglePanelEditHandler):
         return classes
 
 
-class TwitterPreviewPanel(BaseCompositeEditHandler):
+class TwitterFieldPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
     def render(self):
@@ -53,7 +53,7 @@ class TwitterPreviewPanel(BaseCompositeEditHandler):
         return classes
 
 
-class FacebookPreviewPanel(BaseCompositeEditHandler):
+class FacebookFieldPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
     def render(self):
@@ -73,7 +73,7 @@ class FacebookPreviewPanel(BaseCompositeEditHandler):
         return classes
 
 
-class FacebookPreviewPanelSingle(SinglePanelEditHandler):
+class FacebookPreviewPanel(PreviewPanelEditHandler):
     def render(self):
         context = {"self": self, "is_facebook": True, "is_single": True}
 
@@ -88,7 +88,7 @@ class FacebookPreviewPanelSingle(SinglePanelEditHandler):
         return classes
 
 
-class GooglePreviewPanel(BaseCompositeEditHandler):
+class GoogleFieldPreviewPanel(BaseCompositeEditHandler):
     template = "wagtail_meta_preview/preview_panel.html"
 
     def render(self):
@@ -108,7 +108,7 @@ class GooglePreviewPanel(BaseCompositeEditHandler):
         return classes
 
 
-class GooglePreviewPanelSingle(SinglePanelEditHandler):
+class GooglePreviewPanel(PreviewPanelEditHandler):
     def render(self):
         context = {"self": self, "is_google": True, "is_single": True}
 
