@@ -293,7 +293,6 @@
 
 .meta-google-preview-content {
     overflow: hidden;
-    padding: 8px;
     float:left;
     clear: both;
     width: 100%;
@@ -307,14 +306,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.3em;
-    margin: 0 0 .15em;
+    margin: .3em 0 .15em;
     font-weight: 400;
     text-transform: none;
 }
 
 .meta-google-preview-content .meta-preview-box-description {
     display: block;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.1em;
