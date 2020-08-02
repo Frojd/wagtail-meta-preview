@@ -4,7 +4,6 @@ This application provides 8 panels:
 - `FacebookPreviewPanel` and `SingleFacebookPreviewPanel`
 - `GooglePreviewPanel` and `SingleGooglePreviewPanel`
 - `TwitterPreviewPanel` and `SingleTwitterPreviewPanel`
-- `MetaTitlePanel` and `MetaDescriptionPanel`
 
 ## Preview panels
 
