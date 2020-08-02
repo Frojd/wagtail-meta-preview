@@ -130,8 +130,8 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
     ]
 
     promote_panels = [
-        TwitterPreviewPanel(heading="Twitter Preview"),
         FacebookPreviewPanel(heading="Facebook Preview"),
+        TwitterPreviewPanel(heading="Twitter Preview"),
         GooglePreviewPanel(heading="Google Preview"),
     ]
 
