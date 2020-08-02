@@ -42,26 +42,37 @@ const fetchImage = function (id, cb) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const setupEvents = function (elem, field, type) {
-    const titleFields = window[type + "_title_fields"].split(",");
-    const descriptionFields = window[type + "_description_fields"].split(",");
-    const inputField = elem.querySelector(".meta-preview-" + field + " input");
-    const fields = field === "title" ? titleFields : descriptionFields;
+    const titleMapping = {
+      twitter: window.twitter_title_fields,
+      facebook: window.facebook_title_fields,
+      google: window.google_title_fields,
+    };
+    const descriptionMapping = {
+      twitter: window.twitter_description_fields,
+      facebook: window.facebook_description_fields,
+      google: window.google_description_fields,
+    };
+
+    const titleFields = titleMapping[type].split(",");
+    const descriptionFields = descriptionMapping[type].split(",");
+
+    let fields = titleFields;
+    if (field === "description") {
+      fields = descriptionFields;
+    }
 
     const handleChange = function () {
-      let value = inputField && inputField.value;
-      if (!value) {
-        for (let i = 0; i < fields.length; i++) {
-          let otherField = document.querySelector("#id_" + fields[i]);
-          if (otherField && otherField.value) {
-            value = otherField.value;
-            break;
-          }
+      let value;
+      for (let i = 0; i < fields.length; i++) {
+        const field = document.querySelector("#id_" + fields[i]);
+        if (field && field.value) {
+          value = field.value;
+          break;
         }
       }
       elem.querySelector(".meta-preview-box-" + field).innerHTML = value;
     };
 
-    inputField && inputField.addEventListener("keyup", handleChange);
     for (let i = 0; i < fields.length; i++) {
       document
         .querySelector("#id_" + fields[i])
@@ -90,9 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const val = document.querySelector("#id_" + field).value;
             if (val) {
               fetchImage(imageInput.value, function (img) {
-                document.querySelector(
-                    classMappingPreviewImage[type]
-                ).style =
+                document.querySelector(classMappingPreviewImage[type]).style =
                   "background-image: url(" +
                   img.src +
                   "); background-position: " +
