@@ -92,13 +92,15 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         const imageFields = imageMapping[type].split(",");
 
+        let val;
+        const previews = document.querySelectorAll(
+          classMappingPreviewImage[type]
+        );
+
         for (let field of imageFields) {
-          const val = document.querySelector("#id_" + field).value;
+          val = document.querySelector("#id_" + field).value;
           if (val) {
             fetchImage(val, function (img) {
-              const previews = document.querySelectorAll(
-                classMappingPreviewImage[type]
-              );
               for (let preview of previews) {
                 preview.style =
                   "background-image: url(" +
@@ -111,6 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             break;
           }
+        }
+        if (!val) {
+            for(let preview of previews) {
+                preview.style = ''
+            }
         }
       });
     }
