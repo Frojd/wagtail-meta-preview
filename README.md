@@ -2,6 +2,8 @@
 
 # wagtial meta preview
 
+![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-example.PNG)
+
 ## Documentation
 
 - [Getting started](./docs/1-getting-started.md)
