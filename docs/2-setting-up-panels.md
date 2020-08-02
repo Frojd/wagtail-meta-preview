@@ -65,11 +65,12 @@ Which will look like this:
 
 Settings decides which fields will be used when showing titles/descriptions/images. For facebook
 title the default settings says to first look in the `og_title`, then in the `seo_title`, then in the `title`:
+
 `META_PREVIEW_FACEBOOK_TITLE_FIELDS = "og_title,seo_title,title"`
 
 So if you have a field that is named e.g. `open_graph_title` you have to change the setting to:
-`META_PREVIEW_FACEBOOK_TITLE_FIELDS = "open_graph_title,seo_title,title"`
 
+`META_PREVIEW_FACEBOOK_TITLE_FIELDS = "open_graph_title,seo_title,title"`
 
 ## Next steps
 * Settings
