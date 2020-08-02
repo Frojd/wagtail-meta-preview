@@ -2,6 +2,9 @@
 
 # wagtail meta preview
 
+Wagtail Meta Preview provides panels for previewing Facebook sharing, Twitter sharing and Google search results in the Wagtail admin.
+Example of how the Facebook share looks like:
+
 ![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-example.PNG)
 
 ## Documentation
