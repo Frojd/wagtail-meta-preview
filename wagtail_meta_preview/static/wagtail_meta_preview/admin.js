@@ -85,32 +85,26 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let chooser of choosers) {
       ChangeTracker(chooser);
       chooser.addEventListener("change", function (e) {
-        const imageInput = elem.querySelector("input[type=hidden]");
-        const imageFields = window[type + "_image_fields"].split(",");
+        const imageMapping = {
+          twitter: window.twitter_image_fields,
+          facebook: window.facebook_image_fields,
+          google: window.google_image_fields,
+        };
+        const imageFields = imageMapping[type].split(",");
 
-        if (imageInput.id === e.target.id) {
-          fetchImage(imageInput.value, function (img) {
-            document.querySelector(classMappingPreviewImage[type]).style =
-              'background-image: url("' + img.src + '")';
-          });
-          return;
-        }
-
-        if (!imageInput.value) {
-          for (let field of imageFields) {
-            const val = document.querySelector("#id_" + field).value;
-            if (val) {
-              fetchImage(imageInput.value, function (img) {
-                document.querySelector(classMappingPreviewImage[type]).style =
-                  "background-image: url(" +
-                  img.src +
-                  "); background-position: " +
-                  img.focal.x +
-                  " " +
-                  img.focal.y;
-              });
-              break;
-            }
+        for (let field of imageFields) {
+          const val = document.querySelector("#id_" + field).value;
+          if (val) {
+            fetchImage(val, function (img) {
+              document.querySelector(classMappingPreviewImage[type]).style =
+                "background-image: url(" +
+                img.src +
+                "); background-position: " +
+                img.focal.x +
+                " " +
+                img.focal.y;
+            });
+            break;
           }
         }
       });
