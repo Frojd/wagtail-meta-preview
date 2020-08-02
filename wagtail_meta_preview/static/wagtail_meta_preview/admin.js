@@ -1,3 +1,9 @@
+const classMappingPreviewImage = {
+  twitter: ".meta-twitter-preview-image",
+  facebook: ".meta-facebook-preview-image",
+  google: ".meta-google-preview-image",
+};
+
 // We need to be able to track hidden inputs changing, hence the MutationObserver
 const MutationObserver =
   window.MutationObserver || window.WebKitMutationObserver;
@@ -73,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (imageInput.id === e.target.id) {
           fetchImage(imageInput.value, function (img) {
-            document.querySelector(".meta-" + type + "-preview-image").style =
+            document.querySelector(classMappingPreviewImage[type]).style =
               'background-image: url("' + img.src + '")';
           });
           return;
@@ -85,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (val) {
               fetchImage(imageInput.value, function (img) {
                 document.querySelector(
-                  ".meta-" + type + "-preview-image"
+                    classMappingPreviewImage[type]
                 ).style =
                   "background-image: url(" +
                   img.src +
