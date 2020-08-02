@@ -41,3 +41,7 @@ META_PREVIEW_TWITTER_TITLE_FIELDS = "og_title"
 
 The image size is determined by `META_PREVIEW_IMAGE_DEFAULT_SIZE`
 which as a default value of `fill-1200x628`
+
+## Previous docs:
+* [Getting started](./1-getting-started.md)
+* [Setting up panels](./2-setting-up-panels.md)
