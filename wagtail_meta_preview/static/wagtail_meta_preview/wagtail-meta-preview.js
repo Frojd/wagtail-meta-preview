@@ -20,6 +20,7 @@ var ChangeTracker = function (elem) {
 };
 
 const fetchImage = function (id, cb) {
+  const baseAdminUrl = document.querySelector("a.logo").getAttribute('href');
   const xhr = new XMLHttpRequest();
   let val;
   xhr.onreadystatechange = function () {
@@ -33,8 +34,7 @@ const fetchImage = function (id, cb) {
     }
   };
 
-  // TODO: Don't hardcode /admin/
-  xhr.open("GET", "/admin/get-img-rendition/" + id + "/");
+  xhr.open("GET", baseAdminUrl + "get-img-rendition/" + id + "/");
   xhr.send();
 
   return val;
@@ -115,9 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
         if (!val) {
-            for(let preview of previews) {
-                preview.style = ''
-            }
+          for (let preview of previews) {
+            preview.style = "";
+          }
         }
       });
     }
