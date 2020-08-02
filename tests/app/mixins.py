@@ -116,10 +116,10 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
         ),
         FieldPanel("twitter_title"),
         FieldPanel("twitter_description"),
-        FieldPanel("twitter_image"),
+        ImageChooserPanel("twitter_image"),
         FieldPanel("og_title"),
         FieldPanel("og_description"),
-        FieldPanel("og_image"),
+        ImageChooserPanel("og_image"),
     ]
 
     edit_handler = TabbedInterface(
