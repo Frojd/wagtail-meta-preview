@@ -49,7 +49,7 @@ class BaseSettings:
         except StopIteration:
             return ""
 
-        return getattr(self.instance, title_field, "")
+        return getattr(self.instance, title_field) or ""
 
     def get_description(self):
         if not self.instance:
@@ -66,7 +66,7 @@ class BaseSettings:
         except StopIteration:
             return ""
 
-        return getattr(self.instance, description_field, "")
+        return getattr(self.instance, description_field) or ""
 
     def get_image(self):
         if not self.instance or self.type == "GOOGLE":

@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
         }
       }
-      elem.querySelector(".meta-preview-box-" + field).innerHTML = value;
+      elem.querySelector(".meta-preview-box-" + field).innerHTML = value || '';
     };
 
     for (let i = 0; i < fields.length; i++) {
