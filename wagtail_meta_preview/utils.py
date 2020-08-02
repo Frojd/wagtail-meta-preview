@@ -82,7 +82,9 @@ class BaseSettings:
             image_field = next(existing_image_fields)
             image_instance = getattr(self.instance, image_field, "")
             image_url = (
-                image_instance.get_rendition(meta_settings.IMAGE_DEFAULT_SIZE).url
+                image_instance.get_rendition(
+                    meta_settings.META_PREVIEW_IMAGE_DEFAULT_SIZE
+                ).url
                 if image_instance
                 else ""
             )

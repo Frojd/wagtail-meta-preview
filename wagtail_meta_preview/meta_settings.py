@@ -1,6 +1,8 @@
 from django.conf import settings
 
-IMAGE_DEFAULT_SIZE = "fill-1200x628"
+META_PREVIEW_IMAGE_DEFAULT_SIZE = getattr(
+    settings, "META_PREVIEW_IMAGE_DEFAULT_SIZE", "fill-1200x628"
+)
 
 META_PREVIEW_TWITTER_TITLE_FIELDS = getattr(
     settings,
