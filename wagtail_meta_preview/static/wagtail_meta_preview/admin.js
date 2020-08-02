@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
         }
       }
-      elem.querySelector(".meta-preview-box-" + field).innerHTML = value || '';
+      elem.querySelector(".meta-preview-box-" + field).innerHTML = value || "";
     };
 
     for (let i = 0; i < fields.length; i++) {
@@ -96,13 +96,18 @@ document.addEventListener("DOMContentLoaded", function () {
           const val = document.querySelector("#id_" + field).value;
           if (val) {
             fetchImage(val, function (img) {
-              document.querySelector(classMappingPreviewImage[type]).style =
-                "background-image: url(" +
-                img.src +
-                "); background-position: " +
-                img.focal.x +
-                " " +
-                img.focal.y;
+              const previews = document.querySelectorAll(
+                classMappingPreviewImage[type]
+              );
+              for (let preview of previews) {
+                preview.style =
+                  "background-image: url(" +
+                  img.src +
+                  "); background-position: " +
+                  img.focal.x +
+                  " " +
+                  img.focal.y;
+              }
             });
             break;
           }
