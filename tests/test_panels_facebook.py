@@ -79,7 +79,7 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
         )
         self.assertEqual(
             facebook_settings.get_defaults()["default_description"],
-            self.facebook_page.og_description,
+            self.facebook_page.another_description,
         )
 
         meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (

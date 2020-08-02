@@ -18,7 +18,8 @@ def global_admin_css():
 def global_admin_js():
     """Add /static/css/custom.js to the admin."""
     return format_html(
-        '<script src="{}"></script>', versioned_static("wagtail_meta_preview/wagtail-meta-preview.js"),
+        '<script src="{}"></script>',
+        versioned_static("wagtail_meta_preview/wagtail-meta-preview.js"),
     )
 
 

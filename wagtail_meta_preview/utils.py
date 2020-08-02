@@ -42,7 +42,8 @@ class BaseSettings:
             meta_settings, self.TITLE_SETTING_NAME_DICT[self.type]
         ).split(",")
         existing_title_fields = filter(
-            lambda x: hasattr(self.instance, x), title_fields
+            lambda x: hasattr(self.instance, x) and getattr(self.instance, x),
+            title_fields,
         )
         try:
             title_field = next(existing_title_fields)
@@ -59,7 +60,8 @@ class BaseSettings:
             meta_settings, self.DESCRIPTION_SETTING_NAME_DICT[self.type]
         ).split(",")
         existing_description_fields = filter(
-            lambda x: hasattr(self.instance, x), description_fields
+            lambda x: hasattr(self.instance, x) and getattr(self.instance, x),
+            description_fields,
         )
         try:
             description_field = next(existing_description_fields)
@@ -76,7 +78,8 @@ class BaseSettings:
             meta_settings, self.IMAGE_SETTING_NAME_DICT[self.type]
         ).split(",")
         existing_image_fields = filter(
-            lambda x: hasattr(self.instance, x), image_fields
+            lambda x: hasattr(self.instance, x) and getattr(self.instance, x),
+            image_fields,
         )
         try:
             image_field = next(existing_image_fields)
