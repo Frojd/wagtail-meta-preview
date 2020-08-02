@@ -18,6 +18,5 @@ INSTALLED_APPS = [
 ```
 
 ## Next steps
-
-* Setting up panels
-* Settings
+* [Setting up panels](./2-setting-up-panels.md)
+* [Settings](./3-settings.md)

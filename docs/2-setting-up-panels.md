@@ -73,7 +73,7 @@ So if you have a field that is named e.g. `open_graph_title` you have to change 
 `META_PREVIEW_FACEBOOK_TITLE_FIELDS = "open_graph_title,seo_title,title"`
 
 ## Next steps
-* Settings
+* [Settings](./3-settings.md)
 
 ## Or go back:
-* Installation
+* [Getting started](./1-getting-starged.md)
