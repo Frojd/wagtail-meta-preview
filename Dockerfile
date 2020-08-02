@@ -19,7 +19,7 @@ RUN apt-get update \
         gettext libpq-dev build-essential \
         --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-RUN pip install black coverage psycopg2-binary~=2.8.0  -e .
+RUN pip install psycopg2-binary~=2.8.0  -e .[testing]
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["runserver"]

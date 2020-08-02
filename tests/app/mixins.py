@@ -106,26 +106,40 @@ class FacebookModelMixin(Page):
 
 
 class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
-    promote_panels = [
-        TwitterPreviewPanel(heading="Twitter Preview"),
-        FacebookPreviewPanel(heading="Facebook Preview"),
-        GooglePreviewPanel(heading="Google Preview"),
+    promote_panels_fields = [
+        FacebookFieldPreviewPanel(
+            [
+                FieldPanel("og_title"),
+                FieldPanel("og_description"),
+                ImageChooserPanel("og_image"),
+            ],
+            heading="Facebook",
+        ),
+        TwitterFieldPreviewPanel(
+            [
+                FieldPanel("twitter_title"),
+                FieldPanel("twitter_description"),
+                ImageChooserPanel("twitter_image"),
+            ],
+            heading="Twitter",
+        ),
         GoogleFieldPreviewPanel(
             [FieldPanel("seo_title"), FieldPanel("search_description"),],
             heading="Google",
         ),
-        FieldPanel("twitter_title"),
-        FieldPanel("twitter_description"),
-        ImageChooserPanel("twitter_image"),
-        FieldPanel("og_title"),
-        FieldPanel("og_description"),
-        ImageChooserPanel("og_image"),
+    ]
+
+    promote_panels = [
+        TwitterPreviewPanel(heading="Twitter Preview"),
+        FacebookPreviewPanel(heading="Facebook Preview"),
+        GooglePreviewPanel(heading="Google Preview"),
     ]
 
     edit_handler = TabbedInterface(
         [
             ObjectList(Page.content_panels, heading="Content"),
-            ObjectList(promote_panels, heading="Promote"),
+            ObjectList(promote_panels_fields, heading="Previews with fields"),
+            ObjectList(promote_panels, heading="Previews without fields"),
         ]
     )
 
