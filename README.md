@@ -2,10 +2,6 @@
 
 # wagtial meta preview
 
-## Todo
-
-- Finalize docs
-
 ## Documentation
 
 - [Getting started](./docs/1-getting-started.md)
