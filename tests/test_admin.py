@@ -72,7 +72,7 @@ class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, "facebook-preview-panel")
-        self.assertContains(response, '<div class="meta-preview">')
+        self.assertContains(response, '<div class="meta-preview meta-preview--single">')
 
     def test_facebook_default_values(self):
         edit_page = reverse("wagtailadmin_pages:edit", args=(self.facebook_page.id,))

@@ -31,24 +31,24 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         self.twitter_page.save()
         twitter_settings = TwitterSettings(self.twitter_page)
 
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK = ""
+        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = ""
         self.assertEqual(
-            twitter_settings.get_defaults()["default_title"], self.twitter_page.title,
+            twitter_settings.get_defaults()["default_title"], "",
         )
 
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK = "og_title,another_title"
+        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = "og_title,another_title"
         self.assertEqual(
             twitter_settings.get_defaults()["default_title"],
             self.twitter_page.og_title,
         )
 
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK = "another_title,og_title"
+        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = "another_title,og_title"
         self.assertEqual(
             twitter_settings.get_defaults()["default_title"],
             self.twitter_page.another_title,
         )
 
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK = (
+        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = (
             "non_existant_field,another_title,og_title"
         )
         self.assertEqual(
@@ -58,12 +58,12 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
 
         self.twitter_page.twitter_title = "New twitter title"
         self.twitter_page.save()
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK = (
+        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = (
             "non_existant_field,another_title,og_title"
         )
         self.assertEqual(
             twitter_settings.get_defaults()["default_title"],
-            self.twitter_page.twitter_title,
+            self.twitter_page.another_title,
         )
 
     def test_twitter_default_fallback_descriptions(self):
@@ -71,12 +71,12 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         self.twitter_page.save()
         twitter_settings = TwitterSettings(self.twitter_page)
 
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = ""
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = ""
         self.assertEqual(
             twitter_settings.get_defaults()["default_description"], "",
         )
 
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = (
             "og_description,another_description"
         )
         self.assertEqual(
@@ -84,7 +84,7 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
             self.twitter_page.og_description,
         )
 
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = (
             "another_description,og_description"
         )
         self.assertEqual(
@@ -92,7 +92,7 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
             self.twitter_page.another_description,
         )
 
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = (
             "non_existant_field,another_description,og_description"
         )
         self.assertEqual(
@@ -103,20 +103,20 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
         self.twitter_page.twitter_description = "New twitter description"
         self.twitter_page.save()
 
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = (
             "non_existant_field,another_description,og_description"
         )
         self.assertEqual(
             twitter_settings.get_defaults()["default_description"],
-            self.twitter_page.twitter_description,
+            self.twitter_page.another_description,
         )
 
     def test_twitter_default_without_instance(self):
         twitter_settings = TwitterSettings()
 
-        meta_settings.META_PREVIEW_TWITTER_TITLE_FALLBACK = "title"
-        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FALLBACK = "search_description"
-        meta_settings.META_PREVIEW_TWITTER_IMAGE_FALLBACK = ""
+        meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = "title"
+        meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = "search_description"
+        meta_settings.META_PREVIEW_TWITTER_IMAGE_FIELDS = ""
 
         self.assertEqual(
             twitter_settings.get_defaults(),

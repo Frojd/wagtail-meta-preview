@@ -15,62 +15,80 @@ def get_focal(img):
 
 
 class BaseSettings:
+    TITLE_SETTING_NAME_DICT = {
+        "GOOGLE": "META_PREVIEW_GOOGLE_TITLE_FIELDS",
+        "TWITTER": "META_PREVIEW_TWITTER_TITLE_FIELDS",
+        "FACEBOOK": "META_PREVIEW_FACEBOOK_TITLE_FIELDS",
+    }
+    DESCRIPTION_SETTING_NAME_DICT = {
+        "GOOGLE": "META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS",
+        "TWITTER": "META_PREVIEW_TWITTER_DESCRIPTION_FIELDS",
+        "FACEBOOK": "META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS",
+    }
+    IMAGE_SETTING_NAME_DICT = {
+        "GOOGLE": "",
+        "TWITTER": "META_PREVIEW_TWITTER_IMAGE_FIELDS",
+        "FACEBOOK": "META_PREVIEW_FACEBOOK_IMAGE_FIELDS",
+    }
+
     def __init__(self, instance=None):
         self.instance = instance
 
     def get_title(self):
-        title_field = getattr(
-            meta_settings, "META_PREVIEW_{}_TITLE_FIELD".format(self.type)
-        )
-        title = getattr(self.instance, title_field, "")
-
-        if not title and self.instance:
-            titles = getattr(
-                meta_settings, "META_PREVIEW_{}_TITLE_FALLBACK".format(self.type)
-            ).split(",")
-            titles = list(filter(lambda x: hasattr(self.instance, x), titles))
-            title_field = titles[0] if titles else "title"
-            title = getattr(self.instance, title_field, "")
-
-        return title or (self.instance.title if self.instance else "")
-
-    def get_description(self):
-        description_field = getattr(
-            meta_settings, "META_PREVIEW_{}_DESCRIPTION_FIELD".format(self.type)
-        )
-        description = getattr(self.instance, description_field, "")
-
-        if not description and self.instance:
-            descriptions = getattr(
-                meta_settings, "META_PREVIEW_{}_DESCRIPTION_FALLBACK".format(self.type)
-            ).split(",")
-            descriptions = list(
-                filter(lambda x: hasattr(self.instance, x), descriptions)
-            )
-            description = (
-                getattr(self.instance, descriptions[0]) if descriptions else ""
-            )
-
-        return description
-
-    def get_image(self):
-        if self.type == "GOOGLE":
+        if not self.instance:
             return ""
 
-        image = ""
+        title_fields = getattr(
+            meta_settings, self.TITLE_SETTING_NAME_DICT[self.type]
+        ).split(",")
+        existing_title_fields = filter(
+            lambda x: hasattr(self.instance, x), title_fields
+        )
+        try:
+            title_field = next(existing_title_fields)
+        except StopIteration:
+            return ""
 
-        if self.instance:
-            image_instance = getattr(
-                self.instance,
-                getattr(meta_settings, "META_PREVIEW_{}_IMAGE_FIELD".format(self.type)),
-            )
-            image = (
+        return getattr(self.instance, title_field, "")
+
+    def get_description(self):
+        if not self.instance:
+            return ""
+
+        description_fields = getattr(
+            meta_settings, self.DESCRIPTION_SETTING_NAME_DICT[self.type]
+        ).split(",")
+        existing_description_fields = filter(
+            lambda x: hasattr(self.instance, x), description_fields
+        )
+        try:
+            description_field = next(existing_description_fields)
+        except StopIteration:
+            return ""
+
+        return getattr(self.instance, description_field, "")
+
+    def get_image(self):
+        if not self.instance or self.type == "GOOGLE":
+            return ""
+
+        image_fields = getattr(
+            meta_settings, self.IMAGE_SETTING_NAME_DICT[self.type]
+        ).split(",")
+        existing_image_fields = filter(
+            lambda x: hasattr(self.instance, x), image_fields
+        )
+        try:
+            image_field = next(existing_image_fields)
+            image_instance = getattr(self.instance, image_field, "")
+            image_url = (
                 image_instance.get_rendition(meta_settings.IMAGE_DEFAULT_SIZE).url
                 if image_instance
                 else ""
             )
-
-        return image
+            return image_url
+        except StopIteration:
+            return ""
 
     def get_defaults(self):
         title = self.get_title()
@@ -79,13 +97,13 @@ class BaseSettings:
 
         return {
             "title_fallback_fields": getattr(
-                meta_settings, "META_PREVIEW_{}_TITLE_FALLBACK".format(self.type)
+                meta_settings, self.TITLE_SETTING_NAME_DICT[self.type]
             ),
             "description_fallback_fields": getattr(
-                meta_settings, "META_PREVIEW_{}_DESCRIPTION_FALLBACK".format(self.type)
+                meta_settings, self.DESCRIPTION_SETTING_NAME_DICT[self.type]
             ),
             "image_fallback_fields": getattr(
-                meta_settings, "META_PREVIEW_{}_IMAGE_FALLBACK".format(self.type), ""
+                meta_settings, self.IMAGE_SETTING_NAME_DICT[self.type], ""
             ),
             "default_title": title,
             "default_description": description,

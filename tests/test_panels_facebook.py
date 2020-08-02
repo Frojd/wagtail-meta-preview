@@ -30,23 +30,23 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
 
         facebook_settings = FacebookSettings(self.facebook_page)
 
-        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FALLBACK = ""
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = ""
         self.assertEqual(
-            facebook_settings.get_defaults()["default_title"], self.facebook_page.title,
+            facebook_settings.get_defaults()["default_title"], "",
         )
 
-        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FALLBACK = "another_title"
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = "another_title"
         self.assertEqual(
             facebook_settings.get_defaults()["default_title"],
             self.facebook_page.another_title,
         )
 
-        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FALLBACK = "title,another_title"
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = "title,another_title"
         self.assertEqual(
             facebook_settings.get_defaults()["default_title"], self.facebook_page.title,
         )
 
-        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FALLBACK = (
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = (
             "non_existant_field,another_title,og_title"
         )
         self.assertEqual(
@@ -56,12 +56,12 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
 
         self.facebook_page.og_title = "New facebook title"
         self.facebook_page.save()
-        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FALLBACK = (
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = (
             "non_existant_field,another_title,og_title"
         )
         self.assertEqual(
             facebook_settings.get_defaults()["default_title"],
-            self.facebook_page.og_title,
+            self.facebook_page.another_title,
         )
 
     def test_facebook_default_fallback_descriptions(self):
@@ -69,12 +69,12 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
         self.facebook_page.save()
         facebook_settings = FacebookSettings(self.facebook_page)
 
-        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FALLBACK = ""
+        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = ""
         self.assertEqual(
             facebook_settings.get_defaults()["default_description"], "",
         )
 
-        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (
             "og_description,another_description"
         )
         self.assertEqual(
@@ -82,7 +82,7 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
             self.facebook_page.og_description,
         )
 
-        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (
             "another_description,og_description"
         )
         self.assertEqual(
@@ -90,7 +90,7 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
             self.facebook_page.another_description,
         )
 
-        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (
             "non_existant_field,another_description,og_description"
         )
         self.assertEqual(
@@ -101,27 +101,29 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
         self.facebook_page.og_description = "New facebook description"
         self.facebook_page.save()
 
-        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FALLBACK = (
+        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (
             "non_existant_field,another_description,og_description"
         )
         self.assertEqual(
             facebook_settings.get_defaults()["default_description"],
-            self.facebook_page.og_description,
+            self.facebook_page.another_description,
         )
 
     def test_facebook_default_without_instance(self):
         facebook_settings = FacebookSettings()
 
-        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FALLBACK = "title"
-        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FALLBACK = "search_description"
-        meta_settings.META_PREVIEW_FACEBOOK_IMAGE_FALLBACK = ""
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = "og_title,seo_title,title"
+        meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (
+            "og_description,search_description"
+        )
+        meta_settings.META_PREVIEW_FACEBOOK_IMAGE_FIELDS = "og_image"
 
         self.assertEqual(
             facebook_settings.get_defaults(),
             {
-                "title_fallback_fields": "title",
-                "description_fallback_fields": "search_description",
-                "image_fallback_fields": "",
+                "title_fallback_fields": "og_title,seo_title,title",
+                "description_fallback_fields": "og_description,search_description",
+                "image_fallback_fields": "og_image",
                 "default_title": "",
                 "default_description": "",
                 "default_image": "",

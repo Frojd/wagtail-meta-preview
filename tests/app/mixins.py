@@ -3,7 +3,12 @@ from django.utils.translation import gettext_lazy as _
 from wagtail.images import get_image_model_string
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import TabbedInterface, ObjectList, FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import (
+    TabbedInterface,
+    ObjectList,
+    FieldPanel,
+    MultiFieldPanel,
+)
 from wagtail_meta_preview.panels import (
     TwitterPreviewPanelSingle,
     TwitterPreviewPanel,
@@ -78,11 +83,14 @@ class FacebookModelMixin(Page):
     )
 
     promote_panels = [
-        MultiFieldPanel([
-            FieldPanel("og_title"),
-            FieldPanel("og_description"),
-            ImageChooserPanel("og_image"),
-        ], heading="Facebook"),
+        MultiFieldPanel(
+            [
+                FieldPanel("og_title"),
+                FieldPanel("og_description"),
+                ImageChooserPanel("og_image"),
+            ],
+            heading="Facebook",
+        ),
         FacebookPreviewPanelSingle(heading="Facebook Preview"),
     ]
 
