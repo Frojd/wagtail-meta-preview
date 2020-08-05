@@ -1,6 +1,4 @@
-from django.conf import settings
-from django.test import TestCase, override_settings
-from django.urls import reverse
+from django.test import TestCase
 
 from wagtail.tests.utils import WagtailTestUtils
 from wagtail.core.models import Page

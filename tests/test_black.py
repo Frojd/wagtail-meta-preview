@@ -1,8 +1,6 @@
 from pathlib import Path
 import subprocess
-import sys
 
-import black
 from django.test import TestCase
 
 code_root = Path(__file__).parent.parent
