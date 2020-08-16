@@ -17,6 +17,7 @@ setup(
     long_description=readme,
     author="Andreas Bernacca",
     author_email="ante.bernacca@gmail.com",
+    url="https://github.com/rinti/wagtail-meta-preview",
     install_requires=["wagtail>=2.7",],
     extras_require={"testing": testing_extras,},
     setup_requires=["wheel"],
@@ -36,6 +37,8 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Framework :: Django",
+        "Framework :: Wagtail",
+        "Framework :: Wagtail :: 2",
         "License :: OSI Approved :: MIT License",
     ],
 )
