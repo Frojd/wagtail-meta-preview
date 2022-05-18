@@ -15,12 +15,16 @@ META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = getattr(
     "twitter_description,og_description,search_description",
 )
 META_PREVIEW_TWITTER_IMAGE_FIELDS = getattr(
-    settings, "META_PREVIEW_TWITTER_IMAGE_FIELDS", "twitter_image,og_image",
+    settings,
+    "META_PREVIEW_TWITTER_IMAGE_FIELDS",
+    "twitter_image,og_image",
 )
 
 
 META_PREVIEW_FACEBOOK_TITLE_FIELDS = getattr(
-    settings, "META_PREVIEW_FACEBOOK_TITLE_FIELDS", "og_title,seo_title,title",
+    settings,
+    "META_PREVIEW_FACEBOOK_TITLE_FIELDS",
+    "og_title,seo_title,title",
 )
 META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = getattr(
     settings,
@@ -28,13 +32,19 @@ META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = getattr(
     "og_description,search_description",
 )
 META_PREVIEW_FACEBOOK_IMAGE_FIELDS = getattr(
-    settings, "META_PREVIEW_FACEBOOK_IMAGE_FIELDS", "og_image",
+    settings,
+    "META_PREVIEW_FACEBOOK_IMAGE_FIELDS",
+    "og_image",
 )
 
 
 META_PREVIEW_GOOGLE_TITLE_FIELDS = getattr(
-    settings, "META_PREVIEW_GOOGLE_TITLE_FIELDS", "seo_title,title",
+    settings,
+    "META_PREVIEW_GOOGLE_TITLE_FIELDS",
+    "seo_title,title",
 )
 META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS = getattr(
-    settings, "META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS", "search_description",
+    settings,
+    "META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS",
+    "search_description",
 )
