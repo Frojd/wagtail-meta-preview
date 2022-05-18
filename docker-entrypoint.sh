@@ -14,12 +14,12 @@ wait_for_db () {
 
 setup_django () {
     echo Running migrations
-    django-admin.py migrate --noinput
+    django-admin migrate --noinput
 
-    django-admin.py createsuperuser --no-input --username admin --email admin@email.test
+    django-admin createsuperuser --no-input --username admin --email admin@email.test
 
     echo Create cache table
-    django-admin.py createcachetable
+    django-admin createcachetable
 }
 
 case "$CMD" in
@@ -27,7 +27,7 @@ case "$CMD" in
         wait_for_db
         setup_django
 
-        exec django-admin.py runserver 0.0.0.0:8080
+        exec django-admin runserver 0.0.0.0:8080
         ;;
 
     "typecheck" )
