@@ -39,7 +39,6 @@ setup(
         "Framework :: Django",
         "Framework :: Wagtail",
         "Framework :: Wagtail :: 2",
-        "Framework :: Wagtail :: 3",
         "License :: OSI Approved :: MIT License",
     ],
 )
