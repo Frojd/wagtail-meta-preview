@@ -9,9 +9,10 @@ class PreviewPanelEditHandler(EditHandler):
     def __init__(
         self,
         template="wagtail_meta_preview/preview_panel.html",
-        **kwargs,
+        heading="",
+        classname="",
     ):
-        super().__init__(**kwargs)
+        super().__init__(heading=heading, classname=classname)
         self.template = template
 
     def clone_kwargs(self):
