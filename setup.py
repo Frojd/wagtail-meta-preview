@@ -15,6 +15,7 @@ setup(
     version=version,
     description="Add preview panels for meta data to wagtail",
     long_description=readme,
+    long_description_content_type=='text/markdown',
     author="Andreas Bernacca",
     author_email="ante.bernacca@gmail.com",
     url="https://github.com/rinti/wagtail-meta-preview",
