@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from wagtail.tests.utils import WagtailTestUtils
-from wagtail.core.models import Page
+from wagtail.test.utils import WagtailTestUtils
+from wagtail.models import Page
 
 from tests.app.models import TwitterPage
 from wagtail_meta_preview.utils import TwitterSettings
@@ -31,7 +31,8 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = ""
         self.assertEqual(
-            twitter_settings.get_defaults()["default_title"], "",
+            twitter_settings.get_defaults()["default_title"],
+            "",
         )
 
         meta_settings.META_PREVIEW_TWITTER_TITLE_FIELDS = "og_title,another_title"
@@ -71,7 +72,8 @@ class TestMetaPreviewTwitterAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = ""
         self.assertEqual(
-            twitter_settings.get_defaults()["default_description"], "",
+            twitter_settings.get_defaults()["default_description"],
+            "",
         )
 
         meta_settings.META_PREVIEW_TWITTER_DESCRIPTION_FIELDS = (

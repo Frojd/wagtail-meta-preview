@@ -2,8 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.images import get_image_model_string
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import (
+from wagtail.models import Page
+from wagtail.admin.panels import (
     TabbedInterface,
     ObjectList,
     FieldPanel,
@@ -21,11 +21,17 @@ from wagtail_meta_preview.panels import (
 
 class TwitterModelMixin(Page):
     twitter_title = models.CharField(
-        max_length=70, blank=True, null=True, verbose_name=_("Twitter title"),
+        max_length=70,
+        blank=True,
+        null=True,
+        verbose_name=_("Twitter title"),
     )
 
     twitter_description = models.CharField(
-        max_length=200, blank=True, null=True, verbose_name=_("Twitter description"),
+        max_length=200,
+        blank=True,
+        null=True,
+        verbose_name=_("Twitter description"),
     )
 
     twitter_image = models.ForeignKey(
@@ -66,11 +72,17 @@ class TwitterModelMixin(Page):
 
 class FacebookModelMixin(Page):
     og_title = models.CharField(
-        max_length=95, blank=True, null=True, verbose_name=_("Facebook title"),
+        max_length=95,
+        blank=True,
+        null=True,
+        verbose_name=_("Facebook title"),
     )
 
     og_description = models.CharField(
-        max_length=250, blank=True, null=True, verbose_name=_("Facebook description"),
+        max_length=250,
+        blank=True,
+        null=True,
+        verbose_name=_("Facebook description"),
     )
 
     og_image = models.ForeignKey(
@@ -124,7 +136,10 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
             heading="Twitter",
         ),
         GoogleFieldPreviewPanel(
-            [FieldPanel("seo_title"), FieldPanel("search_description"),],
+            [
+                FieldPanel("seo_title"),
+                FieldPanel("search_description"),
+            ],
             heading="Google",
         ),
     ]

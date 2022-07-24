@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from wagtail.tests.utils import WagtailTestUtils
-from wagtail.core.models import Page
+from wagtail.test.utils import WagtailTestUtils
+from wagtail.models import Page
 
 from tests.app.models import FacebookPage
 from wagtail_meta_preview.utils import FacebookSettings
@@ -30,7 +30,8 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = ""
         self.assertEqual(
-            facebook_settings.get_defaults()["default_title"], "",
+            facebook_settings.get_defaults()["default_title"],
+            "",
         )
 
         meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = "another_title"
@@ -41,7 +42,8 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = "title,another_title"
         self.assertEqual(
-            facebook_settings.get_defaults()["default_title"], self.facebook_page.title,
+            facebook_settings.get_defaults()["default_title"],
+            self.facebook_page.title,
         )
 
         meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = (
@@ -69,7 +71,8 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = ""
         self.assertEqual(
-            facebook_settings.get_defaults()["default_description"], "",
+            facebook_settings.get_defaults()["default_description"],
+            "",
         )
 
         meta_settings.META_PREVIEW_FACEBOOK_DESCRIPTION_FIELDS = (

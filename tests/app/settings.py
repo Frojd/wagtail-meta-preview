@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.core",
+    "wagtail",
 ]
 
 ROOT_URLCONF = "tests.app.urls"
@@ -63,7 +63,6 @@ MIDDLEWARE = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "wagtail.core.middleware.SiteMiddleware",
 )
 
 TEMPLATES = [
@@ -86,3 +85,5 @@ TEMPLATES = [
 
 META_PREVIEW_TWITTER_TITLE_FALLBACK = "og_title,title"
 META_PREVIEW_TWITTER_IMAGE_FALLBACK = "og_image"
+
+WAGTAILADMIN_BASE_URL = "http://localhost"

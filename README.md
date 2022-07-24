@@ -3,6 +3,12 @@
 
 # wagtail meta preview
 
+## Current supported versions
+
+Wagtail Meta Preview >= 2 requires Django 4 and Wagtail 3
+
+## Preview
+
 Wagtail Meta Preview provides panels for previewing Facebook sharing, Twitter sharing and Google search results in the Wagtail admin.
 Example of how the Facebook share looks like:
 

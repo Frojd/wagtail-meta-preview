@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from wagtail.tests.utils import WagtailTestUtils
-from wagtail.core.models import Page
+from wagtail.test.utils import WagtailTestUtils
+from wagtail.models import Page
 
 from tests.app.models import MetaPage
 from wagtail_meta_preview.utils import GoogleSettings
@@ -30,12 +30,14 @@ class TestMetaPreviewGoogleAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_GOOGLE_TITLE_FIELDS = ""
         self.assertEqual(
-            google_settings.get_defaults()["default_title"], "",
+            google_settings.get_defaults()["default_title"],
+            "",
         )
 
         meta_settings.META_PREVIEW_GOOGLE_TITLE_FIELDS = "title,another_title"
         self.assertEqual(
-            google_settings.get_defaults()["default_title"], self.google_page.title,
+            google_settings.get_defaults()["default_title"],
+            self.google_page.title,
         )
 
         self.google_page.og_title = "New google title"
@@ -44,7 +46,8 @@ class TestMetaPreviewGoogleAdminView(TestCase, WagtailTestUtils):
             "non_existant_field,another_title,og_title"
         )
         self.assertEqual(
-            google_settings.get_defaults()["default_title"], self.google_page.og_title,
+            google_settings.get_defaults()["default_title"],
+            self.google_page.og_title,
         )
 
     def test_google_default_fallback_descriptions(self):
@@ -54,7 +57,8 @@ class TestMetaPreviewGoogleAdminView(TestCase, WagtailTestUtils):
 
         meta_settings.META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS = ""
         self.assertEqual(
-            google_settings.get_defaults()["default_description"], "",
+            google_settings.get_defaults()["default_description"],
+            "",
         )
 
         meta_settings.META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS = (

@@ -12,7 +12,7 @@ class TestBlack(TestCase):
             [
                 "black",
                 "--exclude",
-                "/(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|migrations)/",
+                "/(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|venv|_build|buck-out|build|dist|migrations)/",
                 "--check",
                 str(code_root),
             ],

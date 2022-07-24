@@ -1,13 +1,13 @@
 import wagtail.admin.urls
-import wagtail.core.urls
+import wagtail.urls
 from django.conf import settings
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r"^admin/", include(wagtail.admin.urls)),
-    url(r"", include(wagtail.core.urls)),
+    path("admin/", include(wagtail.admin.urls)),
+    path("", include(wagtail.urls)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

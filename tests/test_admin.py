@@ -1,8 +1,8 @@
 from django.test import TestCase, override_settings
 from django.urls import reverse
 
-from wagtail.tests.utils import WagtailTestUtils
-from wagtail.core.models import Page
+from wagtail.test.utils import WagtailTestUtils
+from wagtail.models import Page
 
 from tests.app.models import TwitterPage, FacebookPage
 
