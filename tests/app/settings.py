@@ -83,7 +83,4 @@ TEMPLATES = [
     },
 ]
 
-META_PREVIEW_TWITTER_TITLE_FALLBACK = "og_title,title"
-META_PREVIEW_TWITTER_IMAGE_FALLBACK = "og_image"
-
 WAGTAILADMIN_BASE_URL = "http://localhost"
