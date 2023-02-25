@@ -2,7 +2,7 @@ name: wagtail-meta-preview
 on: [push]
 
 jobs:
-  build:
+  test:
     strategy:
       matrix:
         python-version: [3.7, 3.8]
@@ -19,4 +19,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install wheel
           pip install -e .[testing]
-          python runtests.py
+
+  lint-black:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          src: "."
+          version: "22.3.0"
