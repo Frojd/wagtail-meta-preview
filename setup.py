@@ -19,7 +19,7 @@ setup(
     author="Andreas Bernacca",
     author_email="ante.bernacca@gmail.com",
     url="https://github.com/rinti/wagtail-meta-preview",
-    install_requires=["wagtail>=3.0.0", "django>=4.0.0"],
+    install_requires=["wagtail>=3.0.0"],
     extras_require={
         "testing": testing_extras,
     },
