@@ -1,10 +1,9 @@
 from django.test import TestCase, override_settings
 from django.urls import reverse
-
-from wagtail.test.utils import WagtailTestUtils
 from wagtail.models import Page
+from wagtail.test.utils import WagtailTestUtils
 
-from tests.app.models import TwitterPage, FacebookPage
+from tests.app.models import FacebookPage, TwitterPage
 
 
 @override_settings(ALLOWED_HOSTS=["*"])

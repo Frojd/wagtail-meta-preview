@@ -1,7 +1,8 @@
-from django.http import JsonResponse, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
-from wagtail_meta_preview.meta_settings import META_PREVIEW_IMAGE_DEFAULT_SIZE
+from django.http import HttpResponseForbidden, JsonResponse
 from wagtail.images import get_image_model
+
+from wagtail_meta_preview.meta_settings import META_PREVIEW_IMAGE_DEFAULT_SIZE
 from wagtail_meta_preview.utils import get_focal
 
 
