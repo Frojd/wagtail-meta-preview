@@ -2,10 +2,17 @@
 
 ## [Unreleased]
 ### Added
-### Changed
-### Fixed
-### Removed
+- Add Wagtail 5.0 support
+- Add changelog
 
+### Changed
+- Move project to Frojd organization
+
+### Removed
+- Drop unused settings META_PREVIEW_TWITTER_TITLE_FALLBACK and META_PREVIEW_TWITTER_IMAGE_FALLBACK
+
+### Fixed
+- Refactor github actions
 
 ## [2.0.0] - 2023-05-03
 
