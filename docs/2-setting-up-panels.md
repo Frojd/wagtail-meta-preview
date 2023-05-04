@@ -12,8 +12,7 @@ Here's how to setup `FacebookFieldPreviewPanel` with some og-fields:
 ```python
 from wagtail.images import get_image_model_string
 from wagtail.core.models import Page
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.panels import FieldPanel
 
 from wagtail_meta_preview.panels import FacebookFieldPreviewPanel
 
@@ -34,7 +33,7 @@ class SomePage(Page):
         FacebookFieldPreviewPanel([
             FieldPanel("og_title"),
             FieldPanel("og_description"),
-            ImageChooserPanel("og_image"),
+            FieldPanel("og_image"),
         ], heading="Facebook")
     ]
 ```
@@ -50,7 +49,7 @@ If you'd rather separate the preview from the fields it's possible to use the `F
         MultiFieldPanel([
             FieldPanel("og_title"),
             FieldPanel("og_description"),
-            ImageChooserPanel("og_image"),
+            FieldPanel("og_image"),
         ], heading="Facebook"),
         FacebookPreviewPanel(heading="Facebook Preview")
     ]
