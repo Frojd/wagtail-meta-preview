@@ -18,8 +18,8 @@ setup(
     long_description_content_type="text/markdown",
     author="Andreas Bernacca",
     author_email="ante.bernacca@gmail.com",
-    url="https://github.com/rinti/wagtail-meta-preview",
-    install_requires=["wagtail>=3.0.0"],
+    url="https://github.com/Frojd/wagtail-meta-preview",
+    install_requires=["wagtail>=3.0"],
     extras_require={
         "testing": testing_extras,
     },
