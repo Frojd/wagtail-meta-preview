@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.images import get_image_model_string
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.models import Page
 from wagtail.admin.panels import (
     TabbedInterface,
@@ -46,14 +45,14 @@ class TwitterModelMixin(Page):
     promote_panels = [
         FieldPanel("og_title"),
         FieldPanel("og_description"),
-        ImageChooserPanel("og_image"),
+        FieldPanel("og_image"),
         FieldPanel("another_title"),
         FieldPanel("another_description"),
         TwitterFieldPreviewPanel(
             [
                 FieldPanel("twitter_title"),
                 FieldPanel("twitter_description"),
-                ImageChooserPanel("twitter_image"),
+                FieldPanel("twitter_image"),
             ],
             heading="Twitter",
         ),
@@ -99,7 +98,7 @@ class FacebookModelMixin(Page):
             [
                 FieldPanel("og_title"),
                 FieldPanel("og_description"),
-                ImageChooserPanel("og_image"),
+                FieldPanel("og_image"),
             ],
             heading="Facebook",
         ),
@@ -123,7 +122,7 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
             [
                 FieldPanel("og_title"),
                 FieldPanel("og_description"),
-                ImageChooserPanel("og_image"),
+                FieldPanel("og_image"),
             ],
             heading="Facebook",
         ),
@@ -131,7 +130,7 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
             [
                 FieldPanel("twitter_title"),
                 FieldPanel("twitter_description"),
-                ImageChooserPanel("twitter_image"),
+                FieldPanel("twitter_image"),
             ],
             heading="Twitter",
         ),
