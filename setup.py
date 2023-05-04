@@ -36,10 +36,13 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Framework :: Django",
         "Framework :: Wagtail",
         "Framework :: Wagtail :: 3",
         "Framework :: Wagtail :: 4",
+        "Framework :: Wagtail :: 5",
         "License :: OSI Approved :: MIT License",
     ],
 )
