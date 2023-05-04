@@ -1,10 +1,10 @@
 from io import BytesIO
 
 import PIL.Image
-from django.test import TestCase
 from django.core.files.images import ImageFile
-from wagtail.test.utils import WagtailTestUtils
+from django.test import TestCase
 from wagtail.images.models import Image
+from wagtail.test.utils import WagtailTestUtils
 
 from wagtail_meta_preview.utils import get_focal
 

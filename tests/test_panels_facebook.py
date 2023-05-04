@@ -1,11 +1,10 @@
 from django.test import TestCase
-
-from wagtail.test.utils import WagtailTestUtils
 from wagtail.models import Page
+from wagtail.test.utils import WagtailTestUtils
 
 from tests.app.models import FacebookPage
-from wagtail_meta_preview.utils import FacebookSettings
 from wagtail_meta_preview import meta_settings
+from wagtail_meta_preview.utils import FacebookSettings
 
 
 class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):

@@ -1,7 +1,7 @@
 from django.urls import path
 from django.utils.html import format_html
-from wagtail.admin.staticfiles import versioned_static
 from wagtail import hooks
+from wagtail.admin.staticfiles import versioned_static
 
 from .views import get_image_rendition
 

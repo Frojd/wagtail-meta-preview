@@ -1,21 +1,16 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from wagtail.admin.panels import (FieldPanel, MultiFieldPanel, ObjectList,
+                                  TabbedInterface)
 from wagtail.images import get_image_model_string
 from wagtail.models import Page
-from wagtail.admin.panels import (
-    TabbedInterface,
-    ObjectList,
-    FieldPanel,
-    MultiFieldPanel,
-)
-from wagtail_meta_preview.panels import (
-    TwitterPreviewPanel,
-    TwitterFieldPreviewPanel,
-    FacebookPreviewPanel,
-    FacebookFieldPreviewPanel,
-    GooglePreviewPanel,
-    GoogleFieldPreviewPanel,
-)
+
+from wagtail_meta_preview.panels import (FacebookFieldPreviewPanel,
+                                         FacebookPreviewPanel,
+                                         GoogleFieldPreviewPanel,
+                                         GooglePreviewPanel,
+                                         TwitterFieldPreviewPanel,
+                                         TwitterPreviewPanel)
 
 
 class TwitterModelMixin(Page):
