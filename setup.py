@@ -45,4 +45,8 @@ setup(
         "Framework :: Wagtail :: 5",
         "License :: OSI Approved :: MIT License",
     ],
+    project_urls={
+        "Source": "https://github.com/Frojd/wagtail-meta-preview/",
+        "Changelog": "https://github.com/Frojd/wagtail-meta-preview/blob/main/CHANGELOG.md",
+    },
 )
