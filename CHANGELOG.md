@@ -13,6 +13,7 @@
 
 ### Fixed
 - Refactor github actions
+- Add white background to preview boxes (@marteinn)
 
 ## [2.0.0] - 2023-05-03
 
