@@ -30,3 +30,8 @@ start a server on http://localhost:8123/admin/ (user: admin, pw: admin) with a c
 ### Running tests
 
 `docker-compose exec web python runtests.py`
+
+
+## License
+
+Wagtail Meta Preview is released under the [MIT License](http://www.opensource.org/licenses/MIT).
