@@ -6,6 +6,7 @@
 ### Fixed
 - Fix issue with meta preview input field not being rendered
 - Drop redundant section legend in preview
+- Fix issue with meta preview descriptions not showing in dark mode
 
 ### Removed
 

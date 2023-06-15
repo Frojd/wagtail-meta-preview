@@ -132,6 +132,7 @@
     line-height: 1.3em;
     max-height: 3.9em;
     margin-top: .32333em;
+    color: #262626;
 }
 
 .meta-twitter-preview-link {
@@ -244,6 +245,7 @@
     line-height: 1.3em;
     max-height: 3.9em;
     margin-top: .32333em;
+    color: #262626;
 }
 
 .meta-facebook-preview-link {
@@ -324,6 +326,7 @@
     line-height: 1.3em;
     font-weight: 400;
     margin-top: .32333em;
+    color: #262626;
 }
 
 .meta-google-preview-link {
