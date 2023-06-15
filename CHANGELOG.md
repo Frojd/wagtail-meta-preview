@@ -4,6 +4,11 @@
 ### Added
 ### Changed
 ### Fixed
+### Removed
+
+## [3.0.0] - 2023-06-15
+
+### Fixed
 - Fix issue with meta preview input field not being rendered
 - Drop redundant section legend in preview
 - Fix issue with meta preview descriptions not showing in dark mode
