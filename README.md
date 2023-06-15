@@ -5,7 +5,7 @@
 
 ## Current supported versions
 
-Wagtail Meta Preview >= 2 requires Django 4 and Wagtail 3
+Wagtail Meta Preview requires Wagtail 4.1+
 
 ## Preview
 

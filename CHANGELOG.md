@@ -9,6 +9,7 @@
 - Fix issue with meta preview descriptions not showing in dark mode
 
 ### Removed
+- Drop support for Wagtail<4.1
 
 ## [2.0.1] - 2023-05-21
 
