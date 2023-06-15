@@ -5,6 +5,7 @@
 ### Changed
 ### Fixed
 - Fix issue with meta preview input field not being rendered
+- Drop redundant section legend in preview
 
 ### Removed
 
