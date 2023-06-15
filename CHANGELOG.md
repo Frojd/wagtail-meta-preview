@@ -4,6 +4,8 @@
 ### Added
 ### Changed
 ### Fixed
+- Fix issue with meta preview input field not being rendered
+
 ### Removed
 
 ## [2.0.1] - 2023-05-21

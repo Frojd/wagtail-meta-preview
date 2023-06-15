@@ -19,7 +19,8 @@
         <legend>{{ self.heading }}</legend>
         <ul class="fields">
             {% for child in self.children %}
-            <li class="{{ child.classes|join:" " }}">{{ child.render_as_field }}</li>
+
+                {% include "wagtailadmin/shared/field_as_li.html" with field=child.bound_field %}
             {% endfor %}
         </ul>
     </fieldset>
