@@ -5,6 +5,7 @@
 ### Changed
 ### Fixed
 ### Removed
+- Drop support for EOL Python 3.7 (@marteinn)
 
 ## [3.0.0] - 2023-06-15
 
