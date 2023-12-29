@@ -7,6 +7,8 @@
 
 ### Changed
 ### Fixed
+- Upgrade github actions
+
 ### Removed
 - Drop support for EOL Python 3.7 (@marteinn)
 - Drop support for EOL Wagtail 5.1 (@marteinn)
