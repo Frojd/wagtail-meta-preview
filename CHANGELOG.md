@@ -6,6 +6,8 @@
 ### Fixed
 ### Removed
 - Drop support for EOL Python 3.7 (@marteinn)
+- Drop support for EOL Wagtail 5.1 (@marteinn)
+
 
 ## [3.0.0] - 2023-06-15
 
