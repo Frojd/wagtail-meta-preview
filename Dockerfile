@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED=1 \
 COPY . /srv/
 
 RUN apt-get update \
-        && apt-get install -y netcat \
+        && apt-get install -y netcat-traditional \
         binutils libproj-dev \
         gettext libpq-dev build-essential \
         --no-install-recommends && rm -rf /var/lib/apt/lists/*
