@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- Add python 3.12 support (@marteinn)
+
 ### Changed
 ### Fixed
 ### Removed
