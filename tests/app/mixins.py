@@ -154,7 +154,9 @@ class MetaModelMixin(TwitterModelMixin, FacebookModelMixin):
         [
             ObjectList(Page.content_panels, heading="Content"),
             ObjectList(promote_panels_fields, heading="Previews with fields"),
-            ObjectList(promote_panels, heading="Previews without fields"),
+            ObjectList(
+                Page.promote_panels + promote_panels, heading="Previews without fields"
+            ),
         ]
     )
 
