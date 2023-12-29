@@ -38,7 +38,7 @@ jobs:
         with:
           options: "--check --verbose"
           src: "."
-          version: "22.3.0"
+          version: "23.12.1"
 
   lint-isort:
     runs-on: ubuntu-latest
