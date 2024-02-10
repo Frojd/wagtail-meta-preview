@@ -18,8 +18,9 @@
     <fieldset>
         <ul class="fields">
             {% for child in self.children %}
-
-                {% include "wagtailadmin/shared/field_as_li.html" with field=child.bound_field %}
+                <li>
+                    {% include "wagtailadmin/shared/field.html"  with field=child.bound_field %}
+                </li>
             {% endfor %}
         </ul>
     </fieldset>

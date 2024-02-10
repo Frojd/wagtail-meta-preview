@@ -42,6 +42,7 @@ setup(
         "Framework :: Django",
         "Framework :: Wagtail",
         "Framework :: Wagtail :: 5",
+        "Framework :: Wagtail :: 6",
         "License :: OSI Approved :: MIT License",
     ],
     project_urls={
