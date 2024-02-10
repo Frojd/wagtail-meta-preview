@@ -19,7 +19,7 @@ setup(
     author="Andreas Bernacca",
     author_email="ante.bernacca@gmail.com",
     url="https://github.com/Frojd/wagtail-meta-preview",
-    install_requires=["wagtail>=4.1"],
+    install_requires=["wagtail>=5.2"],
     extras_require={
         "testing": testing_extras,
     },
@@ -41,7 +41,6 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Framework :: Django",
         "Framework :: Wagtail",
-        "Framework :: Wagtail :: 4",
         "Framework :: Wagtail :: 5",
         "License :: OSI Approved :: MIT License",
     ],

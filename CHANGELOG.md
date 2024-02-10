@@ -5,6 +5,8 @@
 ### Changed
 ### Fixed
 ### Removed
+- Drop support for EOL Wagtail 4.1 (@marteinn)
+
 
 ## [4.0.0] - 2023-12-29
 
