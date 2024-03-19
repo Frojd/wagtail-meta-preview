@@ -5,6 +5,13 @@
 ### Changed
 ### Fixed
 ### Removed
+
+## [4.1.0] - 2024-02-19
+
+### Added
+- Add Wagtail 6.0 support (@marteinn)
+
+### Removed
 - Drop support for EOL Wagtail 4.1 (@marteinn)
 
 
