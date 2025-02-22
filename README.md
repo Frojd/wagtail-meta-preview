@@ -22,10 +22,13 @@ Example of how the Facebook share looks like:
 
 ## Development
 
-### Dev server
+Requirements:
+- Docker
 
-The easiest way is to clone this repo, cd into it and just `docker-compose up`, this should
-start a server on http://localhost:8123/admin/ (user: admin, pw: admin) with a couple of page types to test with.
+Steps:
+- Run `docker compose up`
+- Open `http://localhost:8123/admin/` in your browser of choice
+- Login using username "admin" and password "admin"
 
 ### Running tests
 

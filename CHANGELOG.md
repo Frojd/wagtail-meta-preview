@@ -5,6 +5,8 @@
 - Add python 3.13 support (@marteinn)
 
 ### Changed
+- Improve developement instructions (@marteinn)
+
 ### Fixed
 - Drop deprecated version from docker-compose (@marteinn)
 - Upgrade postgres image for development (@marteinn)
