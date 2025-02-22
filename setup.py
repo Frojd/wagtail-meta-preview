@@ -8,7 +8,7 @@ with open("wagtail_meta_preview/version.py", "r") as f:
 with open("README.md", "r") as f:
     readme = f.read()
 
-testing_extras = ["black==19.10b0", "coverage==5.2.1"]
+testing_extras = ["black", "coverage"]
 
 setup(
     name="wagtail-meta-preview",

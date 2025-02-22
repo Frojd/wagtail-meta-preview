@@ -19,7 +19,7 @@ RUN apt-get update \
         gettext libpq-dev build-essential \
         --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-RUN pip install psycopg2-binary~=2.8.0  -e .[testing]
+RUN pip install psycopg2-binary~=2.9.0  -e .[testing]
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["runserver"]
