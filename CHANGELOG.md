@@ -6,6 +6,7 @@
 ### Fixed
 - Drop deprecated version from docker-compose (@marteinn)
 - Upgrade postgres image for development (@marteinn)
+- Upgrade development version of python to 3.10 (@marteinn)
 
 ### Removed
 
