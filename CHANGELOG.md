@@ -4,10 +4,11 @@
 ### Added
 ### Changed
 ### Fixed
+- Drop deprecated version from docker-compose (@marteinn)
+
 ### Removed
 
 ## [4.1.0] - 2024-02-19
-
 ### Added
 - Add Wagtail 6.0 support (@marteinn)
 
@@ -16,7 +17,6 @@
 
 
 ## [4.0.0] - 2023-12-29
-
 ### Added
 - Add python 3.12 support (@marteinn)
 - Add Wagtail 5.2 support (@marteinn)
@@ -30,7 +30,6 @@
 
 
 ## [3.0.0] - 2023-06-15
-
 ### Fixed
 - Fix issue with meta preview input field not being rendered
 - Drop redundant section legend in preview
@@ -40,7 +39,6 @@
 - Drop support for Wagtail<4.1
 
 ## [2.0.1] - 2023-05-21
-
 ### Added
 - Add Wagtail 5.0 support
 - Add changelog
@@ -56,7 +54,6 @@
 - Drop unused settings META_PREVIEW_TWITTER_TITLE_FALLBACK and META_PREVIEW_TWITTER_IMAGE_FALLBACK
 
 ## [2.0.0] - 2023-05-03
-
 ### Added
 - Add Wagtail 4.0 support
 
@@ -65,17 +62,14 @@
 - Drop python 3.6 support
 
 ## [1.1.2] - 2022-05-18
-
 ### Fixed
 - Fix invalid package version
 
 ## [1.1.1] - 2022-05-18
-
 ### Fixed
 - Drop invalid classifier
 
 ## [1.1.0] - 2022-05-18
-
 ### Added
 - Add Wagtail 3.0 compatibility
 
@@ -85,19 +79,16 @@
 - Add release CI action
 
 ## [1.0.3] - 2022-08-02
-
 ### Fixed
 - Fix bug where default titles didn't get set correctly
 - Fix admin url in js
 
 ## [1.0.1] - 2020-08-02
-
 ### Fixed
 - Update project manifest
 - Rename admin css/js files
 - Add screenshot example in readme
 
 ## [1.0.0] - 2020-08-02
-
 ### Added
 - Initial release
