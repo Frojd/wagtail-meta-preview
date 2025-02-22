@@ -8,6 +8,7 @@
 - Improve developement instructions (@marteinn)
 
 ### Fixed
+- Fix broken image preview #12 (@marteinn)
 - Drop deprecated version from docker-compose (@marteinn)
 - Upgrade postgres image for development (@marteinn)
 - Upgrade development version of python to 3.10 (@marteinn)

@@ -11,6 +11,8 @@
         window.google_title_fields = "{{ title_fallback_fields }}";
         window.google_description_fields = "{{ description_fallback_fields }}";
     {% endif %}
+
+    window.wmp_base_home_url = "{% url 'wagtailadmin_home' %}";
 </script>
 
 <div class="meta-preview{% if is_single %} meta-preview--single{% endif %}">

@@ -20,7 +20,7 @@ var ChangeTracker = function (elem) {
 };
 
 const fetchImage = function (id, cb) {
-  const baseAdminUrl = document.querySelector("a.logo").getAttribute('href');
+  const baseAdminUrl = window.wmp_base_home_url;
   const xhr = new XMLHttpRequest();
   let val;
   xhr.onreadystatechange = function () {
