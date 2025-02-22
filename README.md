@@ -5,7 +5,7 @@
 
 ## Current supported versions
 
-Wagtail Meta Preview requires Wagtail 4.1+
+Wagtail Meta Preview requires Wagtail 5.2+
 
 ## Preview
 
