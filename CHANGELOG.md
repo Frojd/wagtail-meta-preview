@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Add python 3.13 support (@marteinn)
 ### Changed
 ### Fixed
 - Drop deprecated version from docker-compose (@marteinn)
