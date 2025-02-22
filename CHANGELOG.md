@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - Add python 3.13 support (@marteinn)
+
 ### Changed
 ### Fixed
 - Drop deprecated version from docker-compose (@marteinn)
@@ -11,6 +12,7 @@
 
 ### Removed
 - Drop support for EOL python 3.8 (@marteinn)
+- Drop support for EOL Wagtail 6.0 (@marteinn)
 
 ## [4.1.0] - 2024-02-19
 ### Added

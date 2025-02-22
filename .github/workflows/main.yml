@@ -8,8 +8,9 @@ jobs:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
         wagtail-version:
-          - 5.2.2
-          - 6.0
+          - 5.2.8
+          - 6.3
+          - 6.4
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
