@@ -14,7 +14,7 @@ services:
     environment:
       - DATABASE_HOST=db
   db:
-    image: postgis/postgis:12-2.5
+    image: postgis/postgis:13-3.1-alpine
     expose:
       - "5432"
     environment:

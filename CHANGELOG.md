@@ -5,6 +5,7 @@
 ### Changed
 ### Fixed
 - Drop deprecated version from docker-compose (@marteinn)
+- Upgrade postgres image for development (@marteinn)
 
 ### Removed
 
