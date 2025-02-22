@@ -9,6 +9,7 @@
 - Upgrade development version of python to 3.10 (@marteinn)
 
 ### Removed
+- Drop support for EOL python 3.8 (@marteinn)
 
 ## [4.1.0] - 2024-02-19
 ### Added
