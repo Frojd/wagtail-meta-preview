@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 ### Added
+### Changed
+### Fixed
+### Removed
+
+## [4.2.0] - 2025-02-26
+### Added
 - Add python 3.13 support (@marteinn)
 - Add support for serving default image in preview panel (@marteinn)
 
