@@ -1,12 +1,12 @@
-from django.utils.functional import cached_property
-
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from wagtail.images import get_image_model_string
 from wagtail.models import Page
 
-from .mixins import FacebookModelMixin, MetaModelMixin, TwitterModelMixin
 from wagtail_meta_preview.utils import FacebookSettings
+
+from .mixins import FacebookModelMixin, MetaModelMixin, TwitterModelMixin
 
 
 class TwitterPage(TwitterModelMixin, Page):

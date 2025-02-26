@@ -1,7 +1,7 @@
-from typing import Union, Literal
+from typing import Literal, Union
 
-from django.utils.text import Truncator
 from django.utils.html import strip_tags
+from django.utils.text import Truncator
 
 from . import meta_settings
 
