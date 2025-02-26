@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - Add python 3.13 support (@marteinn)
+- Add support for serving default image in preview panel (@marteinn)
 
 ### Changed
 - Improve developement instructions (@marteinn)

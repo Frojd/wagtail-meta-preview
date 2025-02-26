@@ -36,6 +36,12 @@ class BaseSettings:
         "FACEBOOK": "META_PREVIEW_FACEBOOK_IMAGE_FIELDS",
     }
 
+    DEFAULT_IMAGE_SETTING_NAME_DICT = {
+        "GOOGLE": "",
+        "TWITTER": "META_PREVIEW_TWITTER_DEFAULT_IMAGE",
+        "FACEBOOK": "META_PREVIEW_FACEBOOK_DEFAULT_IMAGE",
+    }
+
     TYPE_GOOGLE = "GOOGLE"
     TYPE_TWITTER = "TWITTER"
     TYPE_FACEBOOK = "FACEBOOK"
@@ -123,7 +129,10 @@ class BaseSettings:
             )
             return image_url
         except StopIteration:
-            return ""
+            default_image = getattr(
+                meta_settings, self.DEFAULT_IMAGE_SETTING_NAME_DICT[self.type]
+            )
+            return default_image
 
     def get_defaults(self):
         title = self.get_title()
