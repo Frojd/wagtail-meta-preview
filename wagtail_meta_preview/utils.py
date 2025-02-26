@@ -1,6 +1,7 @@
 from typing import Union, Literal
 
 from django.utils.text import Truncator
+from django.utils.html import strip_tags
 
 from . import meta_settings
 
@@ -65,6 +66,8 @@ class BaseSettings:
             return ""
 
         value = getattr(self.instance, title_field) or ""
+        value = strip_tags(value)
+
         if self.title_max_chars == -1:
             return value
 
@@ -90,6 +93,8 @@ class BaseSettings:
             return ""
 
         value = getattr(self.instance, description_field) or ""
+        value = strip_tags(value)
+
         if self.description_max_chars == -1:
             return value
 

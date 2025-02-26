@@ -109,3 +109,16 @@ class TestMetaPreviewGoogleAdminView(TestCase, WagtailTestUtils):
 
         self.assertEqual(len(google_settings.get_title()), 70)
         self.assertEqual(len(google_settings.get_description()), 160)
+
+    def test_that_html_tags_are_stripped(self):
+        google_settings = GoogleSettings(self.google_page)
+
+        meta_settings.META_PREVIEW_GOOGLE_TITLE_FIELDS = "seo_title"
+        meta_settings.META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS = "search_description"
+
+        self.google_page.seo_title = "<strong>Hello world</strong> and <em>earth</em>"
+        self.google_page.search_description = "<p>My description</p>"
+        self.google_page.save()
+
+        self.assertEqual(google_settings.get_title(), "Hello world and earth")
+        self.assertEqual(google_settings.get_description(), "My description")

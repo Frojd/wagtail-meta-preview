@@ -8,6 +8,7 @@
 - Improve developement instructions (@marteinn)
 - Make sure title and descriptions are truncated if too long (@marteinn)
 - Strip html tags from preview widget (@marteinn)
+- Strip html tags from get_title/get_description in settings (@marteinn)
 
 ### Fixed
 - Fix broken image preview #12 (@marteinn)
