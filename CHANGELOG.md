@@ -17,6 +17,7 @@
 - Upgrade postgres image for development (@marteinn)
 - Upgrade development version of python to 3.10 (@marteinn)
 - Make sure test app can properly load templates (@marteinn)
+- Fix bug in twitter panel where it used facebook settings (@marteinn)
 
 ### Removed
 - Drop support for EOL python 3.8 (@marteinn)

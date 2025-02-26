@@ -8,7 +8,7 @@ class TwitterPreviewPanel(Panel):
         template_name = "wagtail_meta_preview/preview_panel.html"
 
         def get_context_data(self, parent_context=None):
-            twitter_settings = utils.FacebookSettings(self.instance)
+            twitter_settings = utils.TwitterSettings(self.instance)
 
             context = super().get_context_data(parent_context)
 
