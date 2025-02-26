@@ -129,3 +129,15 @@ class TestMetaPreviewFacebookAdminView(TestCase, WagtailTestUtils):
                 "default_image": "",
             },
         )
+
+    def test_title_and_description_trunctation(self):
+        facebook_settings = FacebookSettings(self.facebook_page)
+
+        meta_settings.META_PREVIEW_FACEBOOK_TITLE_FIELDS = "og_title"
+
+        self.facebook_page.og_title = "This title exeeds the threshold recommended for OG titles and should be capped at max length"
+        self.facebook_page.og_description = "This description is longer then title and represents the og description field, which should be one to two sentence description of your object, property are optional but recommended."
+        self.facebook_page.save()
+
+        self.assertEqual(len(facebook_settings.get_title()), 90)
+        self.assertEqual(len(facebook_settings.get_description()), 160)

@@ -96,3 +96,16 @@ class TestMetaPreviewGoogleAdminView(TestCase, WagtailTestUtils):
                 "default_image": "",
             },
         )
+
+    def test_title_and_description_trunctation(self):
+        google_settings = GoogleSettings(self.google_page)
+
+        meta_settings.META_PREVIEW_GOOGLE_TITLE_FIELDS = "seo_title"
+        meta_settings.META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS = "search_description"
+
+        self.google_page.seo_title = "This title exeeds the threshold recommended for twitter titles and should be capped at max length"
+        self.google_page.search_description = "This text is exactly 200 characters long, designed to convey the idea of counting characters. The goal is to show how we can be precise with word choices, making sure to reach the exact character count! Everything outside this is capped."
+        self.google_page.save()
+
+        self.assertEqual(len(google_settings.get_title()), 70)
+        self.assertEqual(len(google_settings.get_description()), 160)

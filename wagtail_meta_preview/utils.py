@@ -1,3 +1,7 @@
+from typing import Union, Literal
+
+from django.utils.text import Truncator
+
 from . import meta_settings
 
 
@@ -31,10 +35,20 @@ class BaseSettings:
         "FACEBOOK": "META_PREVIEW_FACEBOOK_IMAGE_FIELDS",
     }
 
+    TYPE_GOOGLE = "GOOGLE"
+    TYPE_TWITTER = "TWITTER"
+    TYPE_FACEBOOK = "FACEBOOK"
+
+    TYPE = Literal["GOOGLE", "TWITTER", "FACEBOOK"]
+
+    type: TYPE
+    title_max_chars: int = -1
+    description_max_chars: int = -1
+
     def __init__(self, instance=None):
         self.instance = instance
 
-    def get_title(self):
+    def get_title(self) -> str:
         if not self.instance:
             return ""
 
@@ -50,7 +64,14 @@ class BaseSettings:
         except StopIteration:
             return ""
 
-        return getattr(self.instance, title_field) or ""
+        value = getattr(self.instance, title_field) or ""
+        if self.title_max_chars == -1:
+            return value
+
+        return self._get_truncated_str(value, self.title_max_chars)
+
+    def _get_truncated_str(self, value: str, max_chars) -> str:
+        return Truncator(value).chars(max_chars)
 
     def get_description(self):
         if not self.instance:
@@ -68,7 +89,11 @@ class BaseSettings:
         except StopIteration:
             return ""
 
-        return getattr(self.instance, description_field) or ""
+        value = getattr(self.instance, description_field) or ""
+        if self.description_max_chars == -1:
+            return value
+
+        return self._get_truncated_str(value, self.description_max_chars)
 
     def get_image(self):
         if not self.instance or self.type == "GOOGLE":
@@ -117,18 +142,41 @@ class BaseSettings:
 
 
 class TwitterSettings(BaseSettings):
-    def __init__(self, instance=None):
-        self.type = "TWITTER"
+    def __init__(
+        self,
+        instance=None,
+        title_max_chars: int = 70,
+        description_max_chars: int = 200,
+    ):
+        self.type = self.TYPE_TWITTER
+        self.title_max_chars = title_max_chars
+        self.description_max_chars = description_max_chars
+
         super().__init__(instance)
 
 
 class FacebookSettings(BaseSettings):
-    def __init__(self, instance=None):
-        self.type = "FACEBOOK"
+    def __init__(
+        self,
+        instance=None,
+        title_max_chars: int = 90,
+        description_max_chars: int = 160,
+    ):
+        self.type = self.TYPE_FACEBOOK
+        self.title_max_chars = title_max_chars
+        self.description_max_chars = description_max_chars
+
         super().__init__(instance)
 
 
 class GoogleSettings(BaseSettings):
-    def __init__(self, instance=None):
-        self.type = "GOOGLE"
+    def __init__(
+        self,
+        instance=None,
+        title_max_chars: int = 70,
+        description_max_chars: int = 160,
+    ):
+        self.type = self.TYPE_GOOGLE
+        self.title_max_chars = title_max_chars
+        self.description_max_chars = description_max_chars
         super().__init__(instance)
