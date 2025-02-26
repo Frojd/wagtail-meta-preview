@@ -13,6 +13,7 @@
 - Drop deprecated version from docker-compose (@marteinn)
 - Upgrade postgres image for development (@marteinn)
 - Upgrade development version of python to 3.10 (@marteinn)
+- Make sure test app can properly load templates (@marteinn)
 
 ### Removed
 - Drop support for EOL python 3.8 (@marteinn)
