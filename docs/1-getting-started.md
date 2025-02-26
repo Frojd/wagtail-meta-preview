@@ -1,7 +1,7 @@
 # Getting started with Wagtail Meta Preview
 
 ## Requirements
-* Python 3.5+
+* Python 3.10+
 * Minimum wagtail version is [latest LTS](https://docs.wagtail.io/en/latest/releases/upgrading.html)
 * Frontend works for all modern browsers, including IE 11
 
