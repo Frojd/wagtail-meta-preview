@@ -40,6 +40,8 @@ const fetchImage = function (id, cb) {
   return val;
 };
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const setupEvents = function (elem, field, type) {
     const titleMapping = {
@@ -67,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const field = document.querySelector("#id_" + fields[i]);
         if (field && field.value) {
           value = field.value;
+          value = stripHtmlTags(value);
           break;
         }
       }
@@ -121,6 +124,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+  };
+
+  const stripHtmlTags = function (html) {
+    let tmpDiv = document.createElement("div");
+    tmpDiv.innerHTML = html;
+    return tmpDiv.textContent || tmpDiv.innerText || "";
   };
 
   const initPreview = function (elem) {
