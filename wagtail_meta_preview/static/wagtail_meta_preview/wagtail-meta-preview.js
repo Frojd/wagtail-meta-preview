@@ -77,9 +77,13 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     for (let i = 0; i < fields.length; i++) {
-      document
-        .querySelector("#id_" + fields[i])
-        .addEventListener("keyup", handleChange);
+      const fieldSelector = document.querySelector("#id_" + fields[i])
+      if (!fieldSelector) {
+        console.warn("Missing field '"+field[i]+"' on page");
+        continue
+      }
+
+      fieldSelector.addEventListener("keyup", handleChange);
     }
   };
 

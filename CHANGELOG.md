@@ -3,6 +3,8 @@
 ## [Unreleased]
 ### Added
 ### Changed
+- Raise console warning if admin page field is missing
+
 ### Fixed
 ### Removed
 
