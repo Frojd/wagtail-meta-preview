@@ -6,6 +6,8 @@
 - Raise console warning if admin page field is missing
 
 ### Fixed
+- Make sure html chracters are decoded in BaseSettings.get_title()/get_description()
+
 ### Removed
 
 ## [4.2.0] - 2025-02-26

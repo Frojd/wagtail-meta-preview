@@ -1,4 +1,5 @@
 from typing import Literal, Union
+import html
 
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
@@ -73,6 +74,7 @@ class BaseSettings:
 
         value = getattr(self.instance, title_field) or ""
         value = strip_tags(value)
+        value = html.unescape(value)
 
         if self.title_max_chars == -1:
             return value
@@ -100,6 +102,7 @@ class BaseSettings:
 
         value = getattr(self.instance, description_field) or ""
         value = strip_tags(value)
+        value = html.unescape(value)
 
         if self.description_max_chars == -1:
             return value

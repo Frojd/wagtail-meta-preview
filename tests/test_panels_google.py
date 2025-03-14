@@ -122,3 +122,22 @@ class TestMetaPreviewGoogleAdminView(TestCase, WagtailTestUtils):
 
         self.assertEqual(google_settings.get_title(), "Hello world and earth")
         self.assertEqual(google_settings.get_description(), "My description")
+
+    def test_that_html_chars_are_decoded(self):
+        google_settings = GoogleSettings(self.google_page)
+
+        meta_settings.META_PREVIEW_GOOGLE_TITLE_FIELDS = "seo_title"
+        meta_settings.META_PREVIEW_GOOGLE_DESCRIPTION_FIELDS = "search_description"
+
+        self.google_page.seo_title = "Here you&#x27;ll find everything you need"
+        self.google_page.search_description = (
+            "Here you&#x27;ll find everything you need"
+        )
+        self.google_page.save()
+
+        self.assertEqual(
+            google_settings.get_title(), "Here you'll find everything you need"
+        )
+        self.assertEqual(
+            google_settings.get_description(), "Here you'll find everything you need"
+        )
