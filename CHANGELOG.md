@@ -7,6 +7,7 @@
 
 ### Fixed
 - Make sure html chracters are decoded in BaseSettings.get_title()/get_description()
+- Make sure drafttail field content are read as plaintext
 
 ### Removed
 

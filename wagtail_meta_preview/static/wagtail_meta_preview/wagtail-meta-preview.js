@@ -68,8 +68,17 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let i = 0; i < fields.length; i++) {
         const field = document.querySelector("#id_" + fields[i]);
         if (field && field.value) {
-          value = field.value;
-          value = stripHtmlTags(value);
+          if (field.draftailEditor) {
+            value = field.draftailEditor
+              .getEditorState()
+              .getCurrentContent()
+              .getPlainText();
+            // Drop delimiter added by getPlainText()
+            value = value.split("\n").join("");
+          } else {
+            value = field.value;
+            value = stripHtmlTags(value);
+          }
           break;
         }
       }
