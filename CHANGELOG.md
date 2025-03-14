@@ -3,11 +3,11 @@
 ## [Unreleased]
 ### Added
 ### Changed
-- Raise console warning if admin page field is missing
+- Raise console warning if admin page field is missing #16 (@marteinn)
 
 ### Fixed
-- Make sure html chracters are decoded in BaseSettings.get_title()/get_description()
-- Make sure drafttail field content are read as plaintext
+- Make sure html chracters are decoded in BaseSettings.get_title()/get_description() #17 (@marteinn)
+- Make sure drafttail field content are read as plaintext #18 (@marteinn)
 
 ### Removed
 
