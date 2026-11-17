@@ -96,7 +96,7 @@
     width: 100%;
     clear: both;
     float: left;
-    height: 399px;
+    aspect-ratio: 2 / 1;
     background-size: cover;
     background-position: center center;
 }
@@ -209,7 +209,7 @@
     width: 100%;
     clear: both;
     float: left;
-    height: 399px;
+    aspect-ratio: 1.91 / 1;
     background-size: cover;
     background-position: center center;
 }

@@ -12,6 +12,7 @@
 
 ### Fixed
 - Address Trivy findings in dev Docker setup by running as non root user and moving superuser password out of Dockerfile (@marteinn)
+- Keep Facebook and Twitter preview images at real card aspect ratio regardless of panel width (@marteinn)
 
 ### Removed
 - Remove PostGIS from dev Docker setup and use plain Postgres image (@marteinn)

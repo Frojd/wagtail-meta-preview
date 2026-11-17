@@ -15,7 +15,7 @@ RUN apt-get update \
         gettext libpq-dev build-essential \
         --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-RUN useradd --create-home --uid 1000 app
+RUN useradd --create-home --uid 1000 app && chown app:app /srv
 
 COPY --chown=app:app . /srv/
 
