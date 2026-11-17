@@ -13,6 +13,7 @@ services:
     working_dir: /srv
     environment:
       - DATABASE_HOST=db
+      - DJANGO_SUPERUSER_PASSWORD=admin
   db:
     image: postgres:18-alpine
     expose:

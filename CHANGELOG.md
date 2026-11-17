@@ -11,6 +11,8 @@
 - Replace black and isort with ruff and enable all lint rules except a documented ignore list (@marteinn)
 
 ### Fixed
+- Address Trivy findings in dev Docker setup by running as non root user and moving superuser password out of Dockerfile (@marteinn)
+
 ### Removed
 - Remove PostGIS from dev Docker setup and use plain Postgres image (@marteinn)
 - Drop support for EOL Wagtail versions 5.2, 6.x, 7.0 to 7.3 (@marteinn)
