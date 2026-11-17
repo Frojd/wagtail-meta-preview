@@ -2,9 +2,16 @@
 
 ## [Unreleased]
 ### Added
+- Add Wagtail 7.4, 8.0 and 8.1 support (@marteinn)
+- Add Python 3.14 and 3.15 support (@marteinn)
+
 ### Changed
+- Update GitHub Actions, black, Docker Python image and PostGIS image to latest versions (@marteinn)
+
 ### Fixed
 ### Removed
+- Drop support for EOL Wagtail versions 5.2, 6.x, 7.0 to 7.3 (@marteinn)
+- Drop support for EOL Python versions 3.9 and 3.10 (@marteinn)
 
 ## [4.2.1] - 2025-03-14
 ### Changed
