@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*", "testv*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+env:
+  UV_SYSTEM_PYTHON: "1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        wagtail-version: ["7.4", "8.0", "8.1"]
+        include:
+          - python-version: "3.15"
+            wagtail-version: "8.1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        run: python -m pip install --require-hashes -r requirements/uv.txt
+      # Cache is never restored on tag runs, so release builds cannot be poisoned
+      - if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0 # zizmor: ignore[cache-poisoning]
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-py${{ matrix.python-version }}-wagtail${{ matrix.wagtail-version }}-${{ hashFiles('setup.py') }}
+          restore-keys: |
+            uv-${{ runner.os }}-py${{ matrix.python-version }}-wagtail${{ matrix.wagtail-version }}-
+      - name: Install dependencies
+        run: uv pip install -e ".[testing]" "wagtail~=${{ matrix.wagtail-version }}.0"
+      - name: Run tests
+        run: python runtests.py
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.14"
+      - name: Install uv
+        run: python -m pip install --require-hashes -r requirements/uv.txt
+      - name: Install lint tools
+        run: uv sync --frozen --only-group lint
+      - name: Check formatting
+        run: uv run --frozen --no-sync black --check .
+      - name: Check import order
+        run: uv run --frozen --no-sync isort --check-only .
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Trivy filesystem scan
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          version: v0.76.1
+          scan-type: fs
+          scan-ref: .
+          trivy-config: trivy.yaml
+          scanners: vuln,misconfig,secret
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+          format: table
+
+  security-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.14"
+      - name: Install uv
+        run: python -m pip install --require-hashes -r requirements/uv.txt
+      - name: Install zizmor
+        run: uv sync --frozen --only-group lint
+      - name: Audit GitHub Actions workflows
+        run: uv run --frozen --no-sync zizmor --config zizmor.yml --format github .github/workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  deploy:
+    needs: [test, lint, security, security-actions]
+    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/testv')
+    permissions:
+      contents: read
+      id-token: write
+    uses: $/.github/workflows/deploy.yml

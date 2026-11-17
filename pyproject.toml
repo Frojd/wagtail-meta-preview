@@ -1,0 +1,7 @@
+[dependency-groups]
+uv = ["uv==0.13.5"]
+lint = ["black==26.10.1", "isort==9.0.2", "zizmor==1.32.0"]
+build = ["setuptools", "wheel"]
+
+[tool.isort]
+profile = "black"

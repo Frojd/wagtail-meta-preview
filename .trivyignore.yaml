@@ -1,0 +1,12 @@
+# https://trivy.dev/latest/docs/configuration/filtering/#trivyignoreyaml
+
+misconfigurations:
+  # Dockerfile is only used for local development via docker-compose, never deployed
+  - id: DS-0002
+    paths:
+      - Dockerfile
+
+  # DJANGO_SUPERUSER_PASSWORD=admin is a dummy password for the local dev superuser
+  - id: DS-0031
+    paths:
+      - Dockerfile
