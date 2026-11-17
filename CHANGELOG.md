@@ -6,10 +6,11 @@
 - Add Python 3.14 and 3.15 support (@marteinn)
 
 ### Changed
-- Update GitHub Actions, black, Docker Python image and PostGIS image to latest versions (@marteinn)
+- Update GitHub Actions, black, Docker Python image and Postgres image to latest versions (@marteinn)
 
 ### Fixed
 ### Removed
+- Remove PostGIS from dev Docker setup and use plain Postgres image (@marteinn)
 - Drop support for EOL Wagtail versions 5.2, 6.x, 7.0 to 7.3 (@marteinn)
 - Drop support for EOL Python versions 3.9 and 3.10 (@marteinn)
 
