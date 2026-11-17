@@ -1,5 +1,5 @@
 import html
-from typing import Literal, Union
+from typing import Literal
 
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
@@ -17,7 +17,7 @@ def get_focal(img):
         background_x = min(round(img.focal_point_x / img.width, 4), 1)
         background_y = min(round(img.focal_point_y / img.height, 4), 1)
 
-    return {"x": "{:.2%}".format(background_x), "y": "{:.2%}".format(background_y)}
+    return {"x": f"{background_x:.2%}", "y": f"{background_y:.2%}"}
 
 
 class BaseSettings:
@@ -120,22 +120,19 @@ class BaseSettings:
             lambda x: hasattr(self.instance, x) and getattr(self.instance, x),
             image_fields,
         )
-        try:
-            image_field = next(existing_image_fields)
-            image_instance = getattr(self.instance, image_field, "")
-            image_url = (
-                image_instance.get_rendition(
-                    meta_settings.META_PREVIEW_IMAGE_DEFAULT_SIZE
-                ).url
-                if image_instance
-                else ""
-            )
-            return image_url
-        except StopIteration:
-            default_image = getattr(
+        image_field = next(existing_image_fields, None)
+        if image_field is None:
+            return getattr(
                 meta_settings, self.DEFAULT_IMAGE_SETTING_NAME_DICT[self.type]
             )
-            return default_image
+        image_instance = getattr(self.instance, image_field, "")
+        return (
+            image_instance.get_rendition(
+                meta_settings.META_PREVIEW_IMAGE_DEFAULT_SIZE
+            ).url
+            if image_instance
+            else ""
+        )
 
     def get_defaults(self):
         title = self.get_title()

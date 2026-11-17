@@ -1,4 +1,4 @@
-from tests.app.settings import *  # noqa
+from tests.app.settings import *  # noqa: F403
 
 DATABASES = {
     "default": {
@@ -12,7 +12,7 @@ DATABASES = {
 
 ALLOWED_HOSTS = ["*"]
 
-INSTALLED_APPS += ["wagtail.contrib.styleguide"]
+INSTALLED_APPS += ["django.contrib.postgres", "wagtail.contrib.styleguide"]
 
 LOGGING = {
     "version": 1,

@@ -8,9 +8,9 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "tests.app.settings"
 
 
 def runtests():
-    args, rest = argparse.ArgumentParser().parse_known_args()
+    _, rest = argparse.ArgumentParser().parse_known_args()
 
-    argv = [sys.argv[0], "test"] + rest
+    argv = [sys.argv[0], "test", *rest]
     execute_from_command_line(argv)
 
 

@@ -12,14 +12,12 @@ class TwitterPreviewPanel(Panel):
 
             context = super().get_context_data(parent_context)
 
-            context = {
+            return {
                 **context,
                 "is_twitter": True,
                 "is_single": True,
                 **twitter_settings.get_defaults(),
             }
-
-            return context
 
     def classes(self):
         classes = super().classes()
@@ -36,13 +34,11 @@ class TwitterFieldPreviewPanel(PanelGroup):
 
             context = super().get_context_data(parent_context)
 
-            context = {
+            return {
                 **context,
                 "is_twitter": True,
                 **google_settings.get_defaults(),
             }
-
-            return context
 
     def classes(self):
         classes = super().classes()
@@ -59,13 +55,11 @@ class FacebookFieldPreviewPanel(PanelGroup):
 
             context = super().get_context_data(parent_context)
 
-            context = {
+            return {
                 **context,
                 "is_facebook": True,
                 **facebook_settings.get_defaults(),
             }
-
-            return context
 
     def classes(self):
         classes = super().classes()
@@ -82,14 +76,12 @@ class FacebookPreviewPanel(Panel):
 
             context = super().get_context_data(parent_context)
 
-            context = {
+            return {
                 **context,
                 "is_facebook": True,
                 "is_single": True,
                 **facebook_settings.get_defaults(),
             }
-
-            return context
 
     def classes(self):
         classes = super().classes()
@@ -106,13 +98,11 @@ class GoogleFieldPreviewPanel(PanelGroup):
 
             context = super().get_context_data(parent_context)
 
-            context = {
+            return {
                 **context,
                 "is_google": True,
                 **google_settings.get_defaults(),
             }
-
-            return context
 
     def classes(self):
         classes = super().classes()
@@ -129,14 +119,12 @@ class GooglePreviewPanel(Panel):
 
             context = super().get_context_data(parent_context)
 
-            context = {
+            return {
                 **context,
                 "is_google": True,
                 "is_single": True,
                 **google_settings.get_defaults(),
             }
-
-            return context
 
     def classes(self):
         classes = super().classes()

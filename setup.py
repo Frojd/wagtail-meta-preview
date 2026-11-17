@@ -1,14 +1,13 @@
-#!/usr/bin/env python
+from pathlib import Path
+
 from setuptools import find_packages, setup
 
-with open("wagtail_meta_preview/version.py", "r") as f:
-    version = None
-    exec(f.read())
+version = None
+exec(Path("wagtail_meta_preview/version.py").read_text(encoding="utf-8"))  # noqa: S102
 
-with open("README.md", "r") as f:
-    readme = f.read()
+readme = Path("README.md").read_text(encoding="utf-8")
 
-testing_extras = ["black", "coverage"]
+testing_extras = ["coverage"]
 
 setup(
     name="wagtail-meta-preview",

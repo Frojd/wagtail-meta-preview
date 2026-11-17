@@ -8,6 +8,7 @@
 ### Changed
 - Update GitHub Actions, black, Docker Python image and Postgres image to latest versions (@marteinn)
 - Split CI into ci.yml and deploy.yml with Trivy and zizmor scans, SHA pinned actions, locked tooling and PyPI Trusted Publishing (@marteinn)
+- Replace black and isort with ruff and enable all lint rules except a documented ignore list (@marteinn)
 
 ### Fixed
 ### Removed

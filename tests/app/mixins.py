@@ -23,14 +23,12 @@ class TwitterModelMixin(Page):
     twitter_title = models.CharField(
         max_length=70,
         blank=True,
-        null=True,
         verbose_name=_("Twitter title"),
     )
 
     twitter_description = models.CharField(
         max_length=200,
         blank=True,
-        null=True,
         verbose_name=_("Twitter description"),
     )
 
@@ -74,14 +72,12 @@ class FacebookModelMixin(Page):
     og_title = models.CharField(
         max_length=95,
         blank=True,
-        null=True,
         verbose_name=_("Facebook title"),
     )
 
     og_description = models.CharField(
         max_length=250,
         blank=True,
-        null=True,
         verbose_name=_("Facebook description"),
     )
 
