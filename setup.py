@@ -7,7 +7,7 @@ exec(Path("wagtail_meta_preview/version.py").read_text(encoding="utf-8"))  # noq
 
 readme = Path("README.md").read_text(encoding="utf-8")
 
-testing_extras = ["coverage"]
+testing_extras = ["coverage>=7"]
 
 setup(
     name="wagtail-meta-preview",
@@ -23,9 +23,8 @@ setup(
     extras_require={
         "testing": testing_extras,
     },
-    setup_requires=["wheel"],
     zip_safe=False,
-    license="MIT License",
+    license_expression="MIT",
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     package_data={},
@@ -34,16 +33,19 @@ setup(
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: 3.15",
         "Framework :: Django",
+        "Framework :: Django :: 5.2",
+        "Framework :: Django :: 6.0",
+        "Framework :: Django :: 6.1",
         "Framework :: Wagtail",
         "Framework :: Wagtail :: 7",
         "Framework :: Wagtail :: 8",
-        "License :: OSI Approved :: MIT License",
     ],
     project_urls={
         "Source": "https://github.com/Frojd/wagtail-meta-preview/",

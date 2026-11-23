@@ -1,11 +1,15 @@
-![wagtail-meta-preview](https://github.com/rinti/wagtail-meta-preview/workflows/wagtail-meta-preview/badge.svg)
+[![CI](https://github.com/Frojd/wagtail-meta-preview/actions/workflows/ci.yml/badge.svg)](https://github.com/Frojd/wagtail-meta-preview/actions/workflows/ci.yml)
 [![PyPI version](https://badge.fury.io/py/wagtail-meta-preview.svg)](https://badge.fury.io/py/wagtail-meta-preview)
 
 # wagtail meta preview
 
-## Current supported versions
+## Requirements
 
-Wagtail Meta Preview requires Wagtail 7.4+
+- Python 3.11, 3.12, 3.13, 3.14, 3.15
+- Django 5.2, 6.0, 6.1
+- Wagtail 7.4, 8.0, 8.1
+
+Django 6.0 and 6.1 require Python 3.12 or newer, Wagtail 7.4 supports Django 5.2 and 6.0 only, and Python 3.15 requires Wagtail 8.1 and Django 6.1.3 or newer.
 
 ## Preview
 
