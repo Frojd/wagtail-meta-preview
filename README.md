@@ -24,6 +24,16 @@ Example of how the Facebook share looks like:
 - [Setting up panels](./docs/2-setting-up-panels.md)
 - [Settings](./docs/3-settings.md)
 
+## Translations
+
+The preview panels follow the Wagtail admin language of the logged in user. Swedish is included.
+
+To add a language:
+- Add `-l <code>` to the `messages` target in the `Makefile`
+- Run `make messages`
+- Translate `wagtail_meta_preview/locale/<code>/LC_MESSAGES/django.po`
+- Run `make messages` again and commit both the `.po` and `.mo` files
+
 ## Development
 
 Requirements:
@@ -36,7 +46,9 @@ Steps:
 
 ### Running tests
 
-`docker-compose exec web python runtests.py`
+`make test`
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for code style, CI and how to release.
 
 
 ## License

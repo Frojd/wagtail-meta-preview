@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 21:02+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/wagtail_meta_preview/_facebook.html:3
+msgid "Facebook preview"
+msgstr "Förhandsvisning för Facebook"
+
+#. Translators: Placeholder user name in a fake social media post
+#: templates/wagtail_meta_preview/_facebook.html:8
+msgid "Facebook User"
+msgstr "Facebook-användare"
+
+#. Translators: Placeholder timestamp in a fake social media post
+#: templates/wagtail_meta_preview/_facebook.html:10
+msgid "Yesterday 13:37"
+msgstr "Igår 13:37"
+
+#: templates/wagtail_meta_preview/_facebook.html:11
+#, python-format
+msgid ""
+"<span class=\"meta-facebook-link-bold\">%(user_name)s</span> has shared a "
+"<span class=\"meta-facebook-link\">link</span>"
+msgstr ""
+"<span class=\"meta-facebook-link-bold\">%(user_name)s</span> har delat en "
+"<span class=\"meta-facebook-link\">länk</span>"
+
+#. Translators: Placeholder text in a fake social media post
+#: templates/wagtail_meta_preview/_facebook.html:16
+#: templates/wagtail_meta_preview/_twitter.html:13
+msgid "Look at this awesome article!"
+msgstr "Kolla in den här grymma artikeln!"
+
+#: templates/wagtail_meta_preview/_google.html:3
+msgid "Google preview"
+msgstr "Förhandsvisning för Google"
+
+#: templates/wagtail_meta_preview/_twitter.html:3
+msgid "Twitter preview"
+msgstr "Förhandsvisning för Twitter"
+
+#. Translators: Placeholder user name in a fake social media post
+#: templates/wagtail_meta_preview/_twitter.html:8
+msgid "Twitter User"
+msgstr "Twitter-användare"

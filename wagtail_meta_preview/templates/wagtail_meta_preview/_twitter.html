@@ -1,13 +1,16 @@
+{% load i18n %}
 <div class="meta-preview-box" aria-hidden="true">
-    <h2>Twitter preview</h2>
+    <h2>{% translate "Twitter preview" %}</h2>
     <div class="meta-preview-box-container">
         <div class="meta-twitter-author">
             <div class="meta-twitter-avatar"></div>
-            <div class="meta-twitter-author-name">Twitter User</div>
+            {# Translators: Placeholder user name in a fake social media post #}
+            <div class="meta-twitter-author-name">{% translate "Twitter User" %}</div>
             <div class="meta-twitter-author-handle">@some_twitter_user</div>
         </div>
         <div class="meta-twitter-text">
-            Look at this awesome article!
+            {# Translators: Placeholder text in a fake social media post #}
+            {% translate "Look at this awesome article!" %}
         </div>
 
         <div class="meta-twitter-preview">

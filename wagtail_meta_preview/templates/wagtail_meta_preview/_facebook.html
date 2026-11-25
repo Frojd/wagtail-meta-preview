@@ -1,13 +1,19 @@
+{% load i18n %}
 <div class="meta-preview-box" aria-hidden="true">
-    <h2>Facebook preview</h2>
+    <h2>{% translate "Facebook preview" %}</h2>
     <div class="meta-preview-box-container">
         <div class="meta-facebook-author">
             <div class="meta-facebook-avatar"></div>
-            <div class="meta-facebook-author-name"><span class="meta-facebook-link-bold">Facebook User</span> has shared a <span class="meta-facebook-link">link</span><br><span class="meta-facebeook-time">Yesterday 13:37</span></div>
+            {# Translators: Placeholder user name in a fake social media post #}
+            {% translate "Facebook User" as user_name %}
+            {# Translators: Placeholder timestamp in a fake social media post #}
+            {% translate "Yesterday 13:37" as post_time %}
+            <div class="meta-facebook-author-name">{% blocktranslate trimmed %}<span class="meta-facebook-link-bold">{{ user_name }}</span> has shared a <span class="meta-facebook-link">link</span>{% endblocktranslate %}<br><span class="meta-facebeook-time">{{ post_time }}</span></div>
             <!-- <div class="meta-facebook-author-handle">@some_facebook_user</div> -->
         </div>
         <div class="meta-facebook-text">
-            Look at this awesome article!
+            {# Translators: Placeholder text in a fake social media post #}
+            {% translate "Look at this awesome article!" %}
         </div>
 
         <div class="meta-facebook-preview">

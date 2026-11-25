@@ -3,6 +3,7 @@ from django.urls import reverse
 from wagtail.images.models import Rendition
 from wagtail.models import Page
 from wagtail.test.utils import WagtailTestUtils
+from wagtail.users.models import UserProfile
 
 from tests.app.models import FacebookPage, MetaPage, TwitterPage
 from tests.utils import TempMediaMixin, create_image
@@ -29,7 +30,7 @@ class TestMetaPreviewAdminView(TempMediaMixin, TestCase, WagtailTestUtils):
             )
         )
 
-        self.login()
+        self.user = self.login()
 
     def test_twitter_panels_markup(self):
         add_page = reverse(
@@ -65,6 +66,27 @@ class TestMetaPreviewAdminView(TempMediaMixin, TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, '<div class="meta-preview meta-preview--single">')
+
+    def test_previews_follow_admin_language(self):
+        profile = UserProfile.get_for_user(self.user)
+        profile.preferred_language = "sv"
+        profile.save()
+
+        add_page = reverse(
+            "wagtailadmin_pages:add", args=("app", "metapage", self.root_page.id)
+        )
+        response = self.client.get(add_page)
+        self.assertContains(response, "Förhandsvisning för Facebook")
+        self.assertContains(response, "Förhandsvisning för Twitter")
+        self.assertContains(response, "Förhandsvisning för Google")
+        self.assertContains(
+            response,
+            '<span class="meta-facebook-link-bold">Facebook-användare</span> '
+            'har delat en <span class="meta-facebook-link">länk</span>',
+        )
+        self.assertContains(response, "Igår 13:37")
+        self.assertContains(response, "Twitter-användare")
+        self.assertContains(response, "Kolla in den här grymma artikeln!")
 
     def test_google_default_values(self):
         meta_page = self.root_page.add_child(

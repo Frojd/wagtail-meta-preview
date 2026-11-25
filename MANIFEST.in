@@ -3,3 +3,4 @@ include README.md
 
 recursive-include wagtail_meta_preview/templates *
 recursive-include wagtail_meta_preview/static *
+recursive-include wagtail_meta_preview/locale *

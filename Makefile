@@ -9,3 +9,6 @@ lint:
 
 format_code:
 	uv run ruff format .
+
+messages:
+	docker compose exec web sh -c "cd wagtail_meta_preview && django-admin makemessages -l en -l sv && django-admin compilemessages"

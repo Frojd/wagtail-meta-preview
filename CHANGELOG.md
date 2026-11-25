@@ -6,6 +6,7 @@
 - Add Python 3.14 and 3.15 support (@marteinn)
 - Add Django 5.2, 6.0 and 6.1 to supported versions and CI matrix (@marteinn)
 - Add coverage reporting with a 100 percent threshold and shuffled test order in CI (@marteinn)
+- Add translatable preview texts with Swedish translation #10 (@marteinn)
 
 ### Changed
 - Update GitHub Actions, black, Docker Python image and Postgres image to latest versions (@marteinn)
