@@ -24,7 +24,7 @@ META_PREVIEW_TWITTER_IMAGE_FIELDS = "twitter_image,og_image"
 
 # Default image (show before image is chosen), requires absolute url
 META_PREVIEW_TWITTER_DEFAULT_IMAGE = ""
-META_PREVIEW_FASEBOOK_DEFAULT_IMAGE = ""
+META_PREVIEW_FACEBOOK_DEFAULT_IMAGE = ""
 ```
 
 They are supposed to mimic what you would do if you had html-meta tags that looks like this:

@@ -33,3 +33,13 @@ known-first-party = ["wagtail_meta_preview", "tests"]
 [tool.ruff.lint.per-file-ignores]
 "settings_dev.py" = ["F405"]
 "tests/**" = ["S101", "S105", "S106", "PLR2004"]
+
+[tool.coverage.run]
+branch = true
+source = ["wagtail_meta_preview"]
+omit = ["wagtail_meta_preview/version.py"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true

@@ -50,8 +50,8 @@ class BaseSettings:
     TYPE = Literal["GOOGLE", "TWITTER", "FACEBOOK"]
 
     type: TYPE
-    title_max_chars: int = -1
-    description_max_chars: int = -1
+    title_max_chars: int
+    description_max_chars: int
 
     def __init__(self, instance=None):
         self.instance = instance
@@ -75,9 +75,6 @@ class BaseSettings:
         value = getattr(self.instance, title_field) or ""
         value = strip_tags(value)
         value = html.unescape(value)
-
-        if self.title_max_chars == -1:
-            return value
 
         return self._get_truncated_str(value, self.title_max_chars)
 
@@ -104,9 +101,6 @@ class BaseSettings:
         value = strip_tags(value)
         value = html.unescape(value)
 
-        if self.description_max_chars == -1:
-            return value
-
         return self._get_truncated_str(value, self.description_max_chars)
 
     def get_image(self):
@@ -125,14 +119,10 @@ class BaseSettings:
             return getattr(
                 meta_settings, self.DEFAULT_IMAGE_SETTING_NAME_DICT[self.type]
             )
-        image_instance = getattr(self.instance, image_field, "")
-        return (
-            image_instance.get_rendition(
-                meta_settings.META_PREVIEW_IMAGE_DEFAULT_SIZE
-            ).url
-            if image_instance
-            else ""
-        )
+        image_instance = getattr(self.instance, image_field)
+        return image_instance.get_rendition(
+            meta_settings.META_PREVIEW_IMAGE_DEFAULT_SIZE
+        ).url
 
     def get_defaults(self):
         title = self.get_title()

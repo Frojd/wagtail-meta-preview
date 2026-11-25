@@ -1,8 +1,8 @@
 test:
-	docker-compose exec web python runtests.py
+	docker compose exec web python runtests.py --shuffle
 
 coverage:
-	docker-compose exec web coverage run --source "./wagtail_meta_preview" runtests.py && coverage report && coverage html
+	docker compose exec web sh -c "coverage run runtests.py --shuffle && coverage html --fail-under=0 && coverage report"
 
 lint:
 	uv run ruff check .

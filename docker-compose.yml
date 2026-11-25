@@ -10,6 +10,8 @@ services:
       - "./tests:/srv/tests"
       - "./wagtail_meta_preview:/srv/wagtail_meta_preview"
       - "./settings_dev.py:/srv/settings_dev.py"
+      - "./pyproject.toml:/srv/pyproject.toml"
+      - "./htmlcov:/srv/htmlcov"
     working_dir: /srv
     environment:
       - DATABASE_HOST=db

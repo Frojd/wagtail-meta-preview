@@ -5,6 +5,7 @@
 - Add Wagtail 7.4, 8.0 and 8.1 support (@marteinn)
 - Add Python 3.14 and 3.15 support (@marteinn)
 - Add Django 5.2, 6.0 and 6.1 to supported versions and CI matrix (@marteinn)
+- Add coverage reporting with a 100 percent threshold and shuffled test order in CI (@marteinn)
 
 ### Changed
 - Update GitHub Actions, black, Docker Python image and Postgres image to latest versions (@marteinn)
@@ -12,18 +13,22 @@
 - Replace black and isort with ruff and enable all lint rules except a documented ignore list (@marteinn)
 - Test lowest declared dependency versions in CI (@marteinn)
 - Document supported Python, Django and Wagtail versions in README (@marteinn)
+- Read meta preview settings on access so override_settings works (@marteinn)
 - Remove deprecated setup_requires from setup.py and replace the license classifier with an SPDX license expression (@marteinn)
 
 ### Fixed
 - Address Trivy findings in dev Docker setup by running as non root user and moving superuser password out of Dockerfile (@marteinn)
 - Keep Facebook and Twitter preview images at real card aspect ratio regardless of panel width (@marteinn)
 - Stop testing Wagtail 7.4 against unsupported Django 6.1 in CI (@marteinn)
+- Read Twitter default image from META_PREVIEW_TWITTER_DEFAULT_IMAGE instead of the Facebook setting (@marteinn)
+- Fix META_PREVIEW_FACEBOOK_DEFAULT_IMAGE typo in settings docs (@marteinn)
 
 ### Removed
 - Remove PostGIS from dev Docker setup and use plain Postgres image (@marteinn)
 - Drop support for EOL Wagtail versions 5.2, 6.x, 7.0 to 7.3 (@marteinn)
 - Drop support for EOL Python versions 3.9 and 3.10 (@marteinn)
 - Drop support for EOL Django versions 4.2 and 5.1 (@marteinn)
+- Remove unused no truncation mode from BaseSettings (@marteinn)
 
 ## [4.2.1] - 2025-03-14
 ### Changed

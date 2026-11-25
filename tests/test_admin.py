@@ -1,13 +1,15 @@
 from django.test import TestCase, override_settings
 from django.urls import reverse
+from wagtail.images.models import Rendition
 from wagtail.models import Page
 from wagtail.test.utils import WagtailTestUtils
 
-from tests.app.models import FacebookPage, TwitterPage
+from tests.app.models import FacebookPage, MetaPage, TwitterPage
+from tests.utils import TempMediaMixin, create_image
 
 
 @override_settings(ALLOWED_HOSTS=["*"])
-class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
+class TestMetaPreviewAdminView(TempMediaMixin, TestCase, WagtailTestUtils):
     def setUp(self):
         self.root_page = Page.objects.first()
 
@@ -28,28 +30,6 @@ class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
         )
 
         self.login()
-
-    def test_add(self):
-        add_page = reverse(
-            "wagtailadmin_pages:add", args=("app", "twitterpage", self.root_page.id)
-        )
-        response = self.client.get(add_page)
-        self.assertEqual(response.status_code, 200)
-
-        add_page = reverse(
-            "wagtailadmin_pages:add", args=("app", "facebookpage", self.root_page.id)
-        )
-        response = self.client.get(add_page)
-        self.assertEqual(response.status_code, 200)
-
-    def test_edit(self):
-        edit_page = reverse("wagtailadmin_pages:edit", args=(self.twitter_page.id,))
-        response = self.client.get(edit_page)
-        self.assertEqual(response.status_code, 200)
-
-        edit_page = reverse("wagtailadmin_pages:edit", args=(self.facebook_page.id,))
-        response = self.client.get(edit_page)
-        self.assertEqual(response.status_code, 200)
 
     def test_twitter_panels_markup(self):
         add_page = reverse(
@@ -85,3 +65,34 @@ class TestMetaPreviewAdminView(TestCase, WagtailTestUtils):
         )
         response = self.client.get(add_page)
         self.assertContains(response, '<div class="meta-preview meta-preview--single">')
+
+    def test_google_default_values(self):
+        meta_page = self.root_page.add_child(
+            instance=MetaPage(
+                title="Meta Page",
+                seo_title="Epic Google Title",
+                search_description="Epic Google Description",
+                og_title="Epic Facebook Title",
+                og_description="Epic Facebook Description",
+                twitter_title="Epic Twitter Title",
+                twitter_description="Epic Twitter Description",
+            )
+        )
+        edit_page = reverse("wagtailadmin_pages:edit", args=(meta_page.id,))
+        response = self.client.get(edit_page)
+        self.assertContains(response, "google-preview-panel")
+        self.assertContains(response, 'title">Epic Google Title</h2>', count=2)
+        self.assertContains(
+            response, 'description">Epic Google Description</div>', count=2
+        )
+
+    def test_default_image_in_preview(self):
+        image = create_image()
+        self.twitter_page.og_image = image
+        self.twitter_page.save()
+
+        edit_page = reverse("wagtailadmin_pages:edit", args=(self.twitter_page.id,))
+        response = self.client.get(edit_page)
+
+        rendition = Rendition.objects.get(image=image, filter_spec="fill-1200x628")
+        self.assertContains(response, f"background-image: url('{rendition.url}')")
