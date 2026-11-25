@@ -16,6 +16,7 @@
 - Document supported Python, Django and Wagtail versions in README (@marteinn)
 - Read meta preview settings on access so override_settings works (@marteinn)
 - Remove deprecated setup_requires from setup.py and replace the license classifier with an SPDX license expression (@marteinn)
+- Restyle Google, Twitter and Facebook previews to match how the sites look today (@marteinn)
 
 ### Fixed
 - Address Trivy findings in dev Docker setup by running as non root user and moving superuser password out of Dockerfile (@marteinn)
@@ -23,6 +24,9 @@
 - Stop testing Wagtail 7.4 against unsupported Django 6.1 in CI (@marteinn)
 - Read Twitter default image from META_PREVIEW_TWITTER_DEFAULT_IMAGE instead of the Facebook setting (@marteinn)
 - Fix META_PREVIEW_FACEBOOK_DEFAULT_IMAGE typo in settings docs (@marteinn)
+- Insert preview text as plain text so HTML in fields is never executed in the editor (@marteinn)
+- Let the Google preview go full width on narrow screens like the other previews (@marteinn)
+- Keep uploaded images in a Docker volume so they survive container rebuilds in dev setup (@marteinn)
 
 ### Removed
 - Remove PostGIS from dev Docker setup and use plain Postgres image (@marteinn)

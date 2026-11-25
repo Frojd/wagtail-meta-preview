@@ -3,8 +3,15 @@
     <h2>{% translate "Google preview" %}</h2>
     <div class="meta-preview-box-container">
         <div class="meta-google-preview">
+            <div class="meta-google-preview-site">
+                <div class="meta-google-preview-favicon"></div>
+                <div class="meta-google-preview-site-text">
+                    {# Translators: Placeholder site name in a fake search result #}
+                    <div class="meta-google-preview-site-name">{% translate "Site name" %}</div>
+                    <div class="meta-google-preview-link">https://site.com</div>
+                </div>
+            </div>
             <div class="meta-google-preview-content">
-                <div class="meta-google-preview-link">site.com</div>
                 <h2 class="meta-preview-box-title">{{ default_title }}</h2>
                 <div class="meta-preview-box-description">{{ default_description }}</div>
             </div>

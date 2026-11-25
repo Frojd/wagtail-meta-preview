@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
         }
       }
-      elem.querySelector(".meta-preview-box-" + field).innerHTML = value || "";
+      elem.querySelector(".meta-preview-box-" + field).textContent = value || "";
     };
 
     for (let i = 0; i < fields.length; i++) {
@@ -140,9 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const stripHtmlTags = function (html) {
-    let tmpDiv = document.createElement("div");
-    tmpDiv.innerHTML = html;
-    return tmpDiv.textContent || tmpDiv.innerText || "";
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || "";
   };
 
   const initPreview = function (elem) {

@@ -16,7 +16,7 @@ Django 6.0 and 6.1 require Python 3.12 or newer, Wagtail 7.4 supports Django 5.2
 Wagtail Meta Preview provides panels for previewing Facebook sharing, Twitter sharing and Google search results in the Wagtail admin.
 Example of how the Facebook share looks like:
 
-![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-example.PNG)
+![example-facebook-preview](https://raw.githubusercontent.com/Frojd/wagtail-meta-preview/main/docs/img/facebook-preview-example.PNG)
 
 ## Documentation
 

@@ -40,7 +40,7 @@ class SomePage(Page):
 
 This sets up a facebook preview panel with the fields left of the preview:
 
-![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-example.PNG)
+![example-facebook-preview](https://raw.githubusercontent.com/Frojd/wagtail-meta-preview/main/docs/img/facebook-preview-example.PNG)
 
 If you'd rather separate the preview from the fields it's possible to use the `FacebookPreviewPanel`:
 
@@ -57,7 +57,7 @@ If you'd rather separate the preview from the fields it's possible to use the `F
 
 Which will look like this:
 
-![example-facebook-preview](https://raw.githubusercontent.com/rinti/wagtail-meta-preview/master/docs/img/facebook-preview-single-example.PNG)
+![example-facebook-preview](https://raw.githubusercontent.com/Frojd/wagtail-meta-preview/main/docs/img/facebook-preview-single-example.PNG)
 
 ## How settings will affect the panels
 

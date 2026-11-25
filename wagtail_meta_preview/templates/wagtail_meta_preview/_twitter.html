@@ -2,24 +2,28 @@
 <div class="meta-preview-box" aria-hidden="true">
     <h2>{% translate "Twitter preview" %}</h2>
     <div class="meta-preview-box-container">
-        <div class="meta-twitter-author">
+        <div class="meta-twitter-post">
             <div class="meta-twitter-avatar"></div>
-            {# Translators: Placeholder user name in a fake social media post #}
-            <div class="meta-twitter-author-name">{% translate "Twitter User" %}</div>
-            <div class="meta-twitter-author-handle">@some_twitter_user</div>
-        </div>
-        <div class="meta-twitter-text">
-            {# Translators: Placeholder text in a fake social media post #}
-            {% translate "Look at this awesome article!" %}
-        </div>
+            <div class="meta-twitter-body">
+                <div class="meta-twitter-author">
+                    {# Translators: Placeholder user name in a fake social media post #}
+                    <span class="meta-twitter-author-name">{% translate "Twitter User" %}</span>
+                    {# Translators: Placeholder post age in a fake social media post, short for one hour ago #}
+                    <span class="meta-twitter-author-handle">@some_twitter_user · {% translate "1h" %}</span>
+                </div>
+                <div class="meta-twitter-text">
+                    {# Translators: Placeholder text in a fake social media post #}
+                    {% translate "Look at this awesome article!" %}
+                </div>
 
-        <div class="meta-twitter-preview">
-            <div class="meta-twitter-preview-image" style="background-image: url('{{ default_image}}')">
-            </div>
-            <div class="meta-twitter-preview-content">
-                <h2 class="meta-preview-box-title">{{ default_title }}</h2>
-                <div class="meta-preview-box-description">{{ default_description }}</div>
-                <div class="meta-twitter-preview-link">site.com</div>
+                <div class="meta-twitter-preview">
+                    <div class="meta-twitter-preview-image" style="background-image: url('{{ default_image}}')">
+                    </div>
+                    <h2 class="meta-preview-box-title">{{ default_title }}</h2>
+                    <div class="meta-preview-box-description">{{ default_description }}</div>
+                </div>
+                {# Translators: Shown under a link card in a fake social media post, followed by a domain #}
+                <div class="meta-twitter-preview-link">{% blocktranslate with domain="site.com" %}From {{ domain }}{% endblocktranslate %}</div>
             </div>
         </div>
     </div>

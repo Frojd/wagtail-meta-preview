@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 21:02+0100\n"
+"POT-Creation-Date: 2026-11-25 21:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,27 +22,19 @@ msgid "Facebook preview"
 msgstr "Förhandsvisning för Facebook"
 
 #. Translators: Placeholder user name in a fake social media post
-#: templates/wagtail_meta_preview/_facebook.html:8
+#: templates/wagtail_meta_preview/_facebook.html:9
 msgid "Facebook User"
 msgstr "Facebook-användare"
 
-#. Translators: Placeholder timestamp in a fake social media post
-#: templates/wagtail_meta_preview/_facebook.html:10
-msgid "Yesterday 13:37"
-msgstr "Igår 13:37"
-
-#: templates/wagtail_meta_preview/_facebook.html:11
-#, python-format
-msgid ""
-"<span class=\"meta-facebook-link-bold\">%(user_name)s</span> has shared a "
-"<span class=\"meta-facebook-link\">link</span>"
-msgstr ""
-"<span class=\"meta-facebook-link-bold\">%(user_name)s</span> har delat en "
-"<span class=\"meta-facebook-link\">länk</span>"
+#. Translators: Placeholder post age in a fake social media post, short for one hour ago
+#: templates/wagtail_meta_preview/_facebook.html:12
+#: templates/wagtail_meta_preview/_twitter.html:12
+msgid "1h"
+msgstr "1 tim"
 
 #. Translators: Placeholder text in a fake social media post
-#: templates/wagtail_meta_preview/_facebook.html:16
-#: templates/wagtail_meta_preview/_twitter.html:13
+#: templates/wagtail_meta_preview/_facebook.html:19
+#: templates/wagtail_meta_preview/_twitter.html:16
 msgid "Look at this awesome article!"
 msgstr "Kolla in den här grymma artikeln!"
 
@@ -50,11 +42,22 @@ msgstr "Kolla in den här grymma artikeln!"
 msgid "Google preview"
 msgstr "Förhandsvisning för Google"
 
+#. Translators: Placeholder site name in a fake search result
+#: templates/wagtail_meta_preview/_google.html:10
+msgid "Site name"
+msgstr "Webbplatsens namn"
+
 #: templates/wagtail_meta_preview/_twitter.html:3
 msgid "Twitter preview"
 msgstr "Förhandsvisning för Twitter"
 
 #. Translators: Placeholder user name in a fake social media post
-#: templates/wagtail_meta_preview/_twitter.html:8
+#: templates/wagtail_meta_preview/_twitter.html:10
 msgid "Twitter User"
 msgstr "Twitter-användare"
+
+#. Translators: Shown under a link card in a fake social media post, followed by a domain
+#: templates/wagtail_meta_preview/_twitter.html:26
+#, python-format
+msgid "From %(domain)s"
+msgstr "Från %(domain)s"

@@ -81,10 +81,11 @@ class TestMetaPreviewAdminView(TempMediaMixin, TestCase, WagtailTestUtils):
         self.assertContains(response, "Förhandsvisning för Google")
         self.assertContains(
             response,
-            '<span class="meta-facebook-link-bold">Facebook-användare</span> '
-            'har delat en <span class="meta-facebook-link">länk</span>',
+            '<div class="meta-facebook-author-name">Facebook-användare</div>',
         )
-        self.assertContains(response, "Igår 13:37")
+        self.assertContains(response, "1 tim")
+        self.assertContains(response, "Från site.com")
+        self.assertContains(response, "Webbplatsens namn")
         self.assertContains(response, "Twitter-användare")
         self.assertContains(response, "Kolla in den här grymma artikeln!")
 

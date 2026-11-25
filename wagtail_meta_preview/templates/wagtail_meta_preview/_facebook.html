@@ -4,12 +4,15 @@
     <div class="meta-preview-box-container">
         <div class="meta-facebook-author">
             <div class="meta-facebook-avatar"></div>
-            {# Translators: Placeholder user name in a fake social media post #}
-            {% translate "Facebook User" as user_name %}
-            {# Translators: Placeholder timestamp in a fake social media post #}
-            {% translate "Yesterday 13:37" as post_time %}
-            <div class="meta-facebook-author-name">{% blocktranslate trimmed %}<span class="meta-facebook-link-bold">{{ user_name }}</span> has shared a <span class="meta-facebook-link">link</span>{% endblocktranslate %}<br><span class="meta-facebeook-time">{{ post_time }}</span></div>
-            <!-- <div class="meta-facebook-author-handle">@some_facebook_user</div> -->
+            <div class="meta-facebook-author-text">
+                {# Translators: Placeholder user name in a fake social media post #}
+                <div class="meta-facebook-author-name">{% translate "Facebook User" %}</div>
+                <div class="meta-facebook-time">
+                    {# Translators: Placeholder post age in a fake social media post, short for one hour ago #}
+                    {% translate "1h" %} ·
+                    <svg class="meta-facebook-globe" viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm5.9 7h-2.4a12 12 0 0 0-1-4.6A6 6 0 0 1 13.9 7zM8 2.1c.7.9 1.4 2.6 1.5 4.9h-3C6.6 4.7 7.3 3 8 2.1zM5.5 2.4a12 12 0 0 0-1 4.6H2.1a6 6 0 0 1 3.4-4.6zM2.1 9h2.4a12 12 0 0 0 1 4.6A6 6 0 0 1 2.1 9zM8 13.9c-.7-.9-1.4-2.6-1.5-4.9h3c-.1 2.3-.8 4-1.5 4.9zm2.5-.3a12 12 0 0 0 1-4.6h2.4a6 6 0 0 1-3.4 4.6z"/></svg>
+                </div>
+            </div>
         </div>
         <div class="meta-facebook-text">
             {# Translators: Placeholder text in a fake social media post #}
