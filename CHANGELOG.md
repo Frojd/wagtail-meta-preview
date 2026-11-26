@@ -2,11 +2,19 @@
 
 ## [Unreleased]
 ### Added
+### Changed
+### Fixed
+### Removed
+### Security
+
+## [5.0.0] - 2026-11-26
+### Added
 - Add Wagtail 7.4, 8.0 and 8.1 support (@marteinn)
 - Add Python 3.14 and 3.15 support (@marteinn)
 - Add Django 5.2, 6.0 and 6.1 to supported versions and CI matrix (@marteinn)
 - Add coverage reporting with a 100 percent threshold and shuffled test order in CI (@marteinn)
 - Add translatable preview texts with Swedish translation #10 (@marteinn)
+- Add CONTRIBUTING guide covering setup, tests, code style, CI and the release process (@marteinn)
 
 ### Changed
 - Update GitHub Actions, black, Docker Python image and Postgres image to latest versions (@marteinn)
